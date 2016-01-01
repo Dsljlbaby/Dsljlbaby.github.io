@@ -4,26 +4,45 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>test | Dsljlbaby&#39;s Blog</title>
+    <title>Spider | Dsljlbaby&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Dsljlbaby">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+
+爬虫的原理？
+爬虫的作用？
+爬虫的实现？
+爬虫的工具？
+
+爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://dsljlbaby.github.io/2015/12/29/test/index.html">
+<meta property="og:title" content="Spider">
+<meta property="og:url" content="http://dsljlbaby.github.io/2016/01/01/Spider/index.html">
 <meta property="og:site_name" content="Dsljlbaby's Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-12-29T08:56:46.935Z">
+<meta property="og:description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+
+爬虫的原理？
+爬虫的作用？
+爬虫的实现？
+爬虫的工具？
+
+爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
+<meta property="og:image" content="http://i.imgur.com/AJenPpZ.png">
+<meta property="og:updated_time" content="2016-01-01T12:47:11.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Spider">
+<meta name="twitter:description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+
+爬虫的原理？
+爬虫的作用？
+爬虫的实现？
+爬虫的工具？
+
+爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
 
     
     <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
@@ -82,14 +101,14 @@ Quick">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/12/29/test/" title="test" itemprop="url">test</a>
+      <a href="/2016/01/01/Spider/" title="Spider" itemprop="url">Spider</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T08:55:43.000Z" itemprop="datePublished"> 发表于 2015-12-29</time>
+    <time datetime="2016-01-01T12:44:26.000Z" itemprop="datePublished"> 发表于 2016-01-01</time>
     
   </p>
 </header>
@@ -98,19 +117,28 @@ Quick">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><span class="toc-number">1.</span> <span class="toc-text">Python 网络爬虫（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">1.3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">1.4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">1.5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" title="Python 网络爬虫（一）"></a>Python 网络爬虫（一）</h1><h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
+<ul>
+<li>爬虫的原理？</li>
+<li>爬虫的作用？</li>
+<li>爬虫的实现？</li>
+<li>爬虫的工具？</li>
+</ul>
+<h2 id="u722C_u866B_u7684_u539F_u7406"><a href="#u722C_u866B_u7684_u539F_u7406" class="headerlink" title="爬虫的原理"></a>爬虫的原理</h2><p>爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止。网络爬虫的基本操作是抓取网页。</p>
+<h2 id="u722C_u866B_u7684_u4F5C_u7528"><a href="#u722C_u866B_u7684_u4F5C_u7528" class="headerlink" title="爬虫的作用"></a>爬虫的作用</h2><p>方便获取互联网数据，为我所用。假如你是一个科幻迷，想要获取豆瓣上关于科幻电影的信息，你就可以通过写一个简单的脚本，去抓取关于科幻电影的信息。又或者朋友向你推荐一部好看的动漫，你想要下载整部动漫时，你也可以写个爬虫程序，去获取下载链接。</p>
+<h2 id="u722C_u866B_u7684_u5B9E_u73B0"><a href="#u722C_u866B_u7684_u5B9E_u73B0" class="headerlink" title="爬虫的实现"></a>爬虫的实现</h2><p><img src="http://i.imgur.com/AJenPpZ.png" alt=""></p>
+<p>爬虫实现的过程中主要包括了抓取网页、存储、网页分析、展示预期结果。</p>
+<h2 id="u722C_u866B_u7684_u5DE5_u5177"><a href="#u722C_u866B_u7684_u5DE5_u5177" class="headerlink" title="爬虫的工具"></a>爬虫的工具</h2><p>刚开始学习爬虫，我们需要掌握以下几个库的使用。</p>
+<ol>
+<li>打开网页，下载文件：urllib、urllib2</li>
+<li>解析网页：BeautifulSoup，熟悉JQuery的可以用Pyquery </li>
+<li>使用Requests来提交各种类型的请求，支持重定向，cookies等。</li>
+<li>使用Selenium，模拟浏览器提交类似用户的操作，处理js动态产生的网页</li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -118,13 +146,13 @@ Quick">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/other/">其他</a>
+  <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/test/">test</a>
+  <span></span> <a href="/tags/Python/">Python</a>
   </div>
 
 </div>
@@ -181,7 +209,7 @@ Quick">
 
 	
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015/12/29/test/" data-title="test" data-url="http://dsljlbaby.github.io/2015/12/29/test/"></div>
+	<div class="ds-thread" data-thread-key="2016/01/01/Spider/" data-title="Spider" data-url="http://dsljlbaby.github.io/2016/01/01/Spider/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -206,7 +234,7 @@ Quick">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><span class="toc-number">1.</span> <span class="toc-text">Python 网络爬虫（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">1.3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">1.4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">1.5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol></li></ol>
  
   </div>
 
@@ -233,7 +261,7 @@ Quick">
 		<ul>
 		
 		  
-			<li><a href="/categories/other/" title="其他">其他<sup>1</sup></a></li>
+			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
 		  
 		
 		</ul>
@@ -246,7 +274,7 @@ Quick">
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/test/" title="test">test<sup>1</sup></a></li>
+				<li><a href="/tags/Python/" title="Python">Python<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -257,7 +285,7 @@ Quick">
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/test/" style="font-size: 16px; color: #90f">test</a>
+      <a href="/tags/Python/" style="font-size: 16px; color: #90f">Python</a>
     </div>
   </div>
 
@@ -322,7 +350,7 @@ Quick">
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
 		<a href="/about" target="_blank" title="Dsljlbaby">Dsljlbaby</a>
 		
