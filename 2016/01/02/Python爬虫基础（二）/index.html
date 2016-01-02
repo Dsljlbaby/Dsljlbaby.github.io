@@ -4,22 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Dsljlbaby&#39;s Blog</title>
+    <title>Python爬虫基础（二） | Dsljlbaby&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Dsljlbaby">
     
 
     
-    <meta name="description" content="Walk steps step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dsljlbaby's Blog">
-<meta property="og:url" content="http://dsljlbaby.github.io/index.html">
+    <meta name="description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
+爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
+浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬虫基础（二）">
+<meta property="og:url" content="http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（二）/index.html">
 <meta property="og:site_name" content="Dsljlbaby's Blog">
-<meta property="og:description" content="Walk steps step by step">
+<meta property="og:description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
+爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
+浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
+<meta property="og:updated_time" content="2016-01-02T01:57:09.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dsljlbaby's Blog">
-<meta name="twitter:description" content="Walk steps step by step">
+<meta name="twitter:title" content="Python爬虫基础（二）">
+<meta name="twitter:description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
+爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
+浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
 
     
     <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
@@ -72,92 +79,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/02/Python爬虫基础（一）/" title="Python爬虫基础（一）" itemprop="url">Python爬虫基础（一）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-02T01:53:50.000Z" itemprop="datePublished"> 发表于 2016-01-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" title="Python 网络爬虫（一）"></a>Python 网络爬虫（一）</h1><h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
-<ul>
-<li>爬虫的原理？</li>
-<li>爬虫的作用？</li>
-<li>爬虫的实现？</li>
-<li>爬虫的工具？</li>
-</ul>
-<h2 id="u722C_u866B_u7684_u539F_u7406"><a href="#u722C_u866B_u7684_u539F_u7406" class="headerlink" title="爬虫的原理"></a>爬虫的原理</h2><p>爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止。网络爬虫的基本操作是抓取网页。</p>
-<h2 id="u722C_u866B_u7684_u4F5C_u7528"><a href="#u722C_u866B_u7684_u4F5C_u7528" class="headerlink" title="爬虫的作用"></a>爬虫的作用</h2><p>方便获取互联网数据，为我所用。假如你是一个科幻迷，想要获取豆瓣上关于科幻电影的信息，你就可以通过写一个简单的脚本，去抓取关于科幻电影的信息。又或者朋友向你推荐一部好看的动漫，你想要下载整部动漫时，你也可以写个爬虫程序，去获取下载链接。</p>
-<h2 id="u722C_u866B_u7684_u5B9E_u73B0"><a href="#u722C_u866B_u7684_u5B9E_u73B0" class="headerlink" title="爬虫的实现"></a>爬虫的实现</h2><p><img src="http://i.imgur.com/AJenPpZ.png" alt=""></p>
-<p>爬虫实现的过程中主要包括了抓取网页、存储、网页分析、展示预期结果。</p>
-<h2 id="u722C_u866B_u7684_u5DE5_u5177"><a href="#u722C_u866B_u7684_u5DE5_u5177" class="headerlink" title="爬虫的工具"></a>爬虫的工具</h2><p>刚开始学习爬虫，我们需要掌握以下几个库的使用。</p>
-<ol>
-<li>打开网页，下载文件：urllib、urllib2</li>
-<li>解析网页：BeautifulSoup，熟悉JQuery的可以用Pyquery </li>
-<li>使用Requests来提交各种类型的请求，支持重定向，cookies等。</li>
-<li>使用Selenium，模拟浏览器提交类似用户的操作，处理js动态产生的网页</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
-</div>
-
-
-  <div class="article-tags">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-  <span></span> <a href="/tags/Python/">Python</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/02/Python爬虫基础（一）/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/02/Python爬虫基础（一）/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2016/01/02/Python爬虫基础（二）/" title="Python爬虫基础（二）" itemprop="url">Python爬虫基础（二）</a>
@@ -171,9 +96,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URI_u548CURL_u7684_u8BA4_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">URI和URL的认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURI_uFF1F"><span class="toc-number">2.1.</span> <span class="toc-text">什么是URI？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURL_uFF1F"><span class="toc-number">2.2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL_u548CURI_u7684_u533A_u522B"><span class="toc-number">2.3.</span> <span class="toc-text">URL和URI的区别</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。</p>
 <p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。</p>
 <h2 id="u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><a href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B" class="headerlink" title="浏览网页的过程"></a>浏览网页的过程</h2><p>用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器发出一个请求，服务器经过解析之后，发送给用户的浏览器 HTML、JS、CSS 等文件，浏览器解析出来，用户便可以看到我们所需要的信息啦。</p>
 <p>浏览器的功能是将获取到的HTML代码进行解析，然后将原始的代码转变成我们直接看到的网站页面。</p>
@@ -215,14 +147,9 @@
 <li>interactivepython1存放在主机www.coursera.org上的目录/course下</li>
 </ol>
 <h3 id="URL_u548CURI_u7684_u533A_u522B"><a href="#URL_u548CURI_u7684_u533A_u522B" class="headerlink" title="URL和URI的区别"></a>URL和URI的区别</h3><p>URL是URI的一个子集，URI表示请求服务器的路径，定义这么一个资源，而URL同时说明要如何访问这个资源（http://）</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -240,27 +167,99 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-	  	<span></span>
-		<a href="/2016/01/02/Python爬虫基础（二）/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/02/Python爬虫基础（二）/" data-count-type="comments">&nbsp;</a>
-	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"5304795630"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2078685
+2078685" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/02/Python爬虫基础（一）/" title="Python爬虫基础（一）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Python爬虫基础（一）</span>
+</a>
 </div>
+
+
+</nav>
+
+	
+
+ <nav id="pagination" >
+    
+    <a href="/2016/01/02/Python爬虫基础（一）/" class="alignleft prev" >上一页</a>
+    
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/01/02/Python爬虫基础（二）/" data-title="Python爬虫基础（二）" data-url="http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"dsljlbaby"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URI_u548CURL_u7684_u8BA4_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">URI和URL的认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURI_uFF1F"><span class="toc-number">2.1.</span> <span class="toc-text">什么是URI？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURL_uFF1F"><span class="toc-number">2.2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL_u548CURI_u7684_u533A_u522B"><span class="toc-number">2.3.</span> <span class="toc-text">URL和URI的区别</span></a></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -439,8 +438,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -536,4 +563,4 @@ var _hmt = _hmt || [];
 </script>
 
   </body>
- </html>
+</html>

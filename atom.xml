@@ -4,7 +4,7 @@
   <subtitle><![CDATA[只有行动才能说明一切]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://dsljlbaby.github.io/"/>
-  <updated>2016-01-01T12:47:11.967Z</updated>
+  <updated>2016-01-02T01:54:51.305Z</updated>
   <id>http://dsljlbaby.github.io/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Spider]]></title>
-    <link href="http://dsljlbaby.github.io/2016/01/01/Spider/"/>
-    <id>http://dsljlbaby.github.io/2016/01/01/Spider/</id>
-    <published>2016-01-01T12:44:26.000Z</published>
-    <updated>2016-01-01T12:47:11.967Z</updated>
+    <title><![CDATA[Python爬虫基础（一）]]></title>
+    <link href="http://dsljlbaby.github.io/2016/01/02/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（一）/</id>
+    <published>2016-01-02T01:53:50.000Z</published>
+    <updated>2016-01-02T01:54:51.305Z</updated>
     <content type="html"><![CDATA[<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" title="Python 网络爬虫（一）"></a>Python 网络爬虫（一）</h1><h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
 <ul>
 <li>爬虫的原理？</li>
@@ -41,6 +41,66 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" t]]>
+    </summary>
+    
+      <category term="Python" scheme="http://dsljlbaby.github.io/tags/Python/"/>
+    
+      <category term="爬虫" scheme="http://dsljlbaby.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python爬虫基础（二）]]></title>
+    <link href="http://dsljlbaby.github.io/2016/01/02/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（二）/</id>
+    <published>2016-01-02T01:44:33.000Z</published>
+    <updated>2016-01-02T01:57:09.657Z</updated>
+    <content type="html"><![CDATA[<p>在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。</p>
+<p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。</p>
+<h2 id="u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><a href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B" class="headerlink" title="浏览网页的过程"></a>浏览网页的过程</h2><p>用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器发出一个请求，服务器经过解析之后，发送给用户的浏览器 HTML、JS、CSS 等文件，浏览器解析出来，用户便可以看到我们所需要的信息啦。</p>
+<p>浏览器的功能是将获取到的HTML代码进行解析，然后将原始的代码转变成我们直接看到的网站页面。</p>
+<p>HTML是一种标记语言，用标签标记内容并加以解析和区分</p>
+<p>因此，抓取网页的过程其实和用户平时使用浏览器浏览网页的道理是一样的。用户看到的网页实质是由 HTML 代码构成的，爬虫爬来的便是这些内容，通过分析和过滤这些 HTML 代码，实现对图片、文字等资源的获取。</p>
+<h2 id="URI_u548CURL_u7684_u8BA4_u8BC6"><a href="#URI_u548CURL_u7684_u8BA4_u8BC6" class="headerlink" title="URI和URL的认识"></a>URI和URL的认识</h2><p>在爬虫的实现中，我们曾提到调度器首先要从URL管理器中获得URL，才可以进行下一步的访问。那么URL是什么呢？简单的来讲，URL就是在浏览器端输入一个要访问的网址，比如说百度首页的网址    <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>    就是一个URL。</p>
+<p>在理解URL（统一资源定位符）之前，我们还是首先理解下URI（统一资源标识符）的概念。</p>
+<h3 id="u4EC0_u4E48_u662FURI_uFF1F"><a href="#u4EC0_u4E48_u662FURI_uFF1F" class="headerlink" title="什么是URI？"></a>什么是URI？</h3><p>Web上每种可用的资源，如 HTML文档、图像、视频片段、程序等都由一个通用资源标志符(Universal Resource Identifier， URI)进行定位。 </p>
+<p>URI通常由三部分组成：</p>
+<ol>
+<li>访问资源的命名机制；</li>
+<li>存放资源的主机名；</li>
+<li>资源自身的名称，由路径表示。</li>
+</ol>
+<p>如下面的URI：</p>
+<p><a href="http://mooc.guokr.com/html/html21/" target="_blank" rel="external">http://mooc.guokr.com/html/html21/</a></p>
+<p>我们可以这样解释它：</p>
+<ol>
+<li>这是一个可以通过HTTP协议访问的资源,使用http:或者https:等协议方案名获取资源时需要制定协议类型。</li>
+<li>位于主机mooc.guokr.com上。</li>
+<li>通过路径”/html/html21”访问。</li>
+</ol>
+<h3 id="u4EC0_u4E48_u662FURL_uFF1F"><a href="#u4EC0_u4E48_u662FURL_uFF1F" class="headerlink" title="什么是URL？"></a>什么是URL？</h3><p>URL是URI的一个子集。它是Uniform Resource Locator的缩写，译为“统一资源定位符”。也就是我们说的网址，统一资源定位符是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
+<p>采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。</p>
+<p>URL的一般格式为(带方括号[]的为可选项)：<br>protocol :// hostname[:port] / path / [;parameters][?query]#fragment</p>
+<p>同样地，URL的格式也主要由三部分组成： </p>
+<ol>
+<li>第一部分是协议(或称为服务方式)。</li>
+<li>第二部分是存有该资源的主机IP地址(有时也包括端口号)。</li>
+<li>第三部分是主机资源的具体地址，如目录和文件名等。<br>第一部分和第二部分用“://”符号隔开，</li>
+</ol>
+<p>第二部分和第三部分用“/”符号隔开。</p>
+<p>第一部分和第二部分是不可缺少的，第三部分有时可以省略。</p>
+<p>如下面的URL：</p>
+<p><a href="https://www.coursera.org/course/interactivepython1" target="_blank" rel="external">https://www.coursera.org/course/interactivepython1</a></p>
+<ol>
+<li>这是一个可以通过HTTPS协议访问的资源</li>
+<li>计算机域名是www.coursera.org</li>
+<li>interactivepython1存放在主机www.coursera.org上的目录/course下</li>
+</ol>
+<h3 id="URL_u548CURI_u7684_u533A_u522B"><a href="#URL_u548CURI_u7684_u533A_u522B" class="headerlink" title="URL和URI的区别"></a>URL和URI的区别</h3><p>URL是URI的一个子集，URI表示请求服务器的路径，定义这么一个资源，而URL同时说明要如何访问这个资源（http://）</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。</p>
+<p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫]]>
     </summary>
     
       <category term="Python" scheme="http://dsljlbaby.github.io/tags/Python/"/>
