@@ -40,8 +40,9 @@
     <link href="http://dsljlbaby.github.io/2016/01/02/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（一）/</id>
     <published>2016-01-02T01:53:50.000Z</published>
-    <updated>2016-01-02T01:54:51.305Z</updated>
-    <content type="html"><![CDATA[<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" title="Python 网络爬虫（一）"></a>Python 网络爬虫（一）</h1><h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
+    <updated>2016-01-02T07:29:34.123Z</updated>
+    <content type="html"><![CDATA[<p>大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。</p>
+<h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
 <ul>
 <li>爬虫的原理？</li>
 <li>爬虫的作用？</li>
@@ -61,7 +62,8 @@
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" t]]>
+    <![CDATA[<p>大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。</p>
+<h2 id="u7F51_u]]>
     </summary>
     
       <category term="Python" scheme="http://dsljlbaby.github.io/tags/Python/"/>

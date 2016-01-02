@@ -11,38 +11,41 @@
     
 
     
-    <meta name="description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+    <meta name="description" content="大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。
+网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
 
 爬虫的原理？
 爬虫的作用？
 爬虫的实现？
 爬虫的工具？
 
-爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
+爬虫的原理爬虫就是一种自动获取网页内容，提取有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬虫基础（一）">
 <meta property="og:url" content="http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（一）/index.html">
 <meta property="og:site_name" content="Dsljlbaby's Blog">
-<meta property="og:description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+<meta property="og:description" content="大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。
+网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
 
 爬虫的原理？
 爬虫的作用？
 爬虫的实现？
 爬虫的工具？
 
-爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
+爬虫的原理爬虫就是一种自动获取网页内容，提取有">
 <meta property="og:image" content="http://i.imgur.com/AJenPpZ.png">
-<meta property="og:updated_time" content="2016-01-02T01:54:51.305Z">
+<meta property="og:updated_time" content="2016-01-02T07:29:34.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫基础（一）">
-<meta name="twitter:description" content="Python 网络爬虫（一）网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
+<meta name="twitter:description" content="大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。
+网络爬虫的基本介绍学习爬虫，我想主要从以下几个方面来切入
 
 爬虫的原理？
 爬虫的作用？
 爬虫的实现？
 爬虫的工具？
 
-爬虫的原理爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一">
+爬虫的原理爬虫就是一种自动获取网页内容，提取有">
 
     
     <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
@@ -117,11 +120,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><span class="toc-number">1.</span> <span class="toc-text">Python 网络爬虫（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">1.3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">1.4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">1.5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><a href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09" class="headerlink" title="Python 网络爬虫（一）"></a>Python 网络爬虫（一）</h1><h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
+		<p>大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。</p>
+<h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
 <ul>
 <li>爬虫的原理？</li>
 <li>爬虫的作用？</li>
@@ -259,7 +263,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python__u7F51_u7EDC_u722C_u866B_uFF08_u4E00_uFF09"><span class="toc-number">1.</span> <span class="toc-text">Python 网络爬虫（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">1.3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">1.4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">1.5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><span class="toc-number">1.</span> <span class="toc-text">网络爬虫的基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u539F_u7406"><span class="toc-number">2.</span> <span class="toc-text">爬虫的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u4F5C_u7528"><span class="toc-number">3.</span> <span class="toc-text">爬虫的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5B9E_u73B0"><span class="toc-number">4.</span> <span class="toc-text">爬虫的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u722C_u866B_u7684_u5DE5_u5177"><span class="toc-number">5.</span> <span class="toc-text">爬虫的工具</span></a></li></ol>
  
   </div>
 
