@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dsljlbaby.github.io/about/index.html</loc>
+    <lastmod>2016-01-11T08:51:54.583Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dsljlbaby.github.io/2016/01/02/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     <lastmod>2016-01-02T07:29:34.123Z</lastmod>
   </url>
@@ -29,11 +34,6 @@
   <url>
     <loc>http://dsljlbaby.github.io/tags/index.html</loc>
     <lastmod>2015-12-27T07:59:41.507Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://dsljlbaby.github.io/about/index.html</loc>
-    <lastmod>2015-12-10T13:49:52.354Z</lastmod>
   </url>
   
 </urlset>
