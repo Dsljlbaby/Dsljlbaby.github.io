@@ -4,29 +4,47 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Python爬虫基础（二） | Dsljlbaby&#39;s Blog</title>
+    <title>Python数据结构(一) | Dsljlbaby&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Dsljlbaby">
     
 
     
-    <meta name="description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
-爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
-浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
+    <meta name="description" content="Python堆栈的实现堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。
+源代码：
+class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.to">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python爬虫基础（二）">
-<meta property="og:url" content="http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（二）/index.html">
+<meta property="og:title" content="Python数据结构(一)">
+<meta property="og:url" content="http://dsljlbaby.github.io/2016/01/13/Python数据结构-一/index.html">
 <meta property="og:site_name" content="Dsljlbaby's Blog">
-<meta property="og:description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
-爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
-浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
-<meta property="og:updated_time" content="2016-01-02T01:57:09.657Z">
+<meta property="og:description" content="Python堆栈的实现堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。
+源代码：
+class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.to">
+<meta property="og:updated_time" content="2016-01-13T03:29:03.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python爬虫基础（二）">
-<meta name="twitter:description" content="在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。
-爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。
-浏览网页的过程用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器">
+<meta name="twitter:title" content="Python数据结构(一)">
+<meta name="twitter:description" content="Python堆栈的实现堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。
+源代码：
+class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.to">
 
     
     <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
@@ -85,14 +103,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/02/Python爬虫基础（二）/" title="Python爬虫基础（二）" itemprop="url">Python爬虫基础（二）</a>
+      <a href="/2016/01/13/Python数据结构-一/" title="Python数据结构(一)" itemprop="url">Python数据结构(一)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-02T01:44:33.000Z" itemprop="datePublished"> 发表于 2016-01-02</time>
+    <time datetime="2016-01-13T03:03:18.000Z" itemprop="datePublished"> 发表于 2016-01-13</time>
     
   </p>
 </header>
@@ -101,52 +119,88 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URI_u548CURL_u7684_u8BA4_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">URI和URL的认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURI_uFF1F"><span class="toc-number">2.1.</span> <span class="toc-text">什么是URI？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURL_uFF1F"><span class="toc-number">2.2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL_u548CURI_u7684_u533A_u522B"><span class="toc-number">2.3.</span> <span class="toc-text">URL和URI的区别</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_u5806_u6808_u7684_u5B9E_u73B0"><span class="toc-number">1.</span> <span class="toc-text">Python堆栈的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0"><span class="toc-number">2.</span> <span class="toc-text">Python对列的实现</span></a></li></ol>
 		
 		</div>
 		
-		<p>在上一篇博文中，我们大概地了解了网络爬虫的一些基本知识，这篇博文主要讲述下我们平时浏览网页时，浏览器如何响应我们的访问以及URL、URI的相关知识。</p>
-<p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。</p>
-<h2 id="u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><a href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B" class="headerlink" title="浏览网页的过程"></a>浏览网页的过程</h2><p>用户在浏览器中输入我们想要查询的信息后，浏览器就会作为一个客户端，经过DNS服务器，找到服务器主机，向服务器发出一个请求，服务器经过解析之后，发送给用户的浏览器 HTML、JS、CSS 等文件，浏览器解析出来，用户便可以看到我们所需要的信息啦。</p>
-<p>浏览器的功能是将获取到的HTML代码进行解析，然后将原始的代码转变成我们直接看到的网站页面。</p>
-<p>HTML是一种标记语言，用标签标记内容并加以解析和区分</p>
-<p>因此，抓取网页的过程其实和用户平时使用浏览器浏览网页的道理是一样的。用户看到的网页实质是由 HTML 代码构成的，爬虫爬来的便是这些内容，通过分析和过滤这些 HTML 代码，实现对图片、文字等资源的获取。</p>
-<h2 id="URI_u548CURL_u7684_u8BA4_u8BC6"><a href="#URI_u548CURL_u7684_u8BA4_u8BC6" class="headerlink" title="URI和URL的认识"></a>URI和URL的认识</h2><p>在爬虫的实现中，我们曾提到调度器首先要从URL管理器中获得URL，才可以进行下一步的访问。那么URL是什么呢？简单的来讲，URL就是在浏览器端输入一个要访问的网址，比如说百度首页的网址    <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>    就是一个URL。</p>
-<p>在理解URL（统一资源定位符）之前，我们还是首先理解下URI（统一资源标识符）的概念。</p>
-<h3 id="u4EC0_u4E48_u662FURI_uFF1F"><a href="#u4EC0_u4E48_u662FURI_uFF1F" class="headerlink" title="什么是URI？"></a>什么是URI？</h3><p>Web上每种可用的资源，如 HTML文档、图像、视频片段、程序等都由一个通用资源标志符(Universal Resource Identifier， URI)进行定位。 </p>
-<p>URI通常由三部分组成：</p>
-<ol>
-<li>访问资源的命名机制；</li>
-<li>存放资源的主机名；</li>
-<li>资源自身的名称，由路径表示。</li>
-</ol>
-<p>如下面的URI：</p>
-<p><a href="http://mooc.guokr.com/html/html21/" target="_blank" rel="external">http://mooc.guokr.com/html/html21/</a></p>
-<p>我们可以这样解释它：</p>
-<ol>
-<li>这是一个可以通过HTTP协议访问的资源,使用http:或者https:等协议方案名获取资源时需要制定协议类型。</li>
-<li>位于主机mooc.guokr.com上。</li>
-<li>通过路径”/html/html21”访问。</li>
-</ol>
-<h3 id="u4EC0_u4E48_u662FURL_uFF1F"><a href="#u4EC0_u4E48_u662FURL_uFF1F" class="headerlink" title="什么是URL？"></a>什么是URL？</h3><p>URL是URI的一个子集。它是Uniform Resource Locator的缩写，译为“统一资源定位符”。也就是我们说的网址，统一资源定位符是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
-<p>采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。</p>
-<p>URL的一般格式为(带方括号[]的为可选项)：<br>protocol :// hostname[:port] / path / [;parameters][?query]#fragment</p>
-<p>同样地，URL的格式也主要由三部分组成： </p>
-<ol>
-<li>第一部分是协议(或称为服务方式)。</li>
-<li>第二部分是存有该资源的主机IP地址(有时也包括端口号)。</li>
-<li>第三部分是主机资源的具体地址，如目录和文件名等。<br>第一部分和第二部分用“://”符号隔开，</li>
-</ol>
-<p>第二部分和第三部分用“/”符号隔开。</p>
-<p>第一部分和第二部分是不可缺少的，第三部分有时可以省略。</p>
-<p>如下面的URL：</p>
-<p><a href="https://www.coursera.org/course/interactivepython1" target="_blank" rel="external">https://www.coursera.org/course/interactivepython1</a></p>
-<ol>
-<li>这是一个可以通过HTTPS协议访问的资源</li>
-<li>计算机域名是www.coursera.org</li>
-<li>interactivepython1存放在主机www.coursera.org上的目录/course下</li>
-</ol>
-<h3 id="URL_u548CURI_u7684_u533A_u522B"><a href="#URL_u548CURI_u7684_u533A_u522B" class="headerlink" title="URL和URI的区别"></a>URL和URI的区别</h3><p>URL是URI的一个子集，URI表示请求服务器的路径，定义这么一个资源，而URL同时说明要如何访问这个资源（http://）</p>
+		<h2 id="Python_u5806_u6808_u7684_u5B9E_u73B0"><a href="#Python_u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="Python堆栈的实现"></a>Python堆栈的实现</h2><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
+<p>源代码：</p>
+<pre><code>class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.top == self.size - 1:
+            return True
+        else:
+            return False
+    def _Empty(self):
+        if self.top == -1:
+            return True
+        else:
+            return False
+    def instack(self,_list):
+        if self._Full():
+            print &apos;The stack is Full.&apos;
+        else:
+            self.list.append(_list)
+            self.top = self.top + 1
+    def outstack(self):
+        if self._Empty():
+            print &apos;The stack is empty.!&apos;
+        else:
+            self.list.pop()
+            self.top = self.top - 1
+s = Stack(10)
+print s._Full()
+print s._Empty()
+for i in range(10):
+    s.instack(i)
+print s._Full()
+for i in range(10):
+    s.outstack()
+print s._Empty()
+</code></pre><h2 id="Python_u5BF9_u5217_u7684_u5B9E_u73B0"><a href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0" class="headerlink" title="Python对列的实现"></a>Python对列的实现</h2><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
+<p>源代码：</p>
+<pre><code>class Queue():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.front = -1
+        self.rear = -1
+    def _Empty(self):
+        if self.front == self.rear:
+            return True
+        else:
+            return False
+    def _Full(self):
+        if self.rear - self.front + 1 == self.size:
+            return True
+        else:
+            return False
+    def inqueue(self,_list):
+        if self._Full():
+            print &apos;The Queue is full.&apos;
+        else:
+            self.list.append(_list)
+            self.rear = self.rear + 1
+    def outqueue(self):
+        if self._Empty():
+            print &apos;The Queue is empty.&apos;
+        else:
+            self.list.pop()
+            self.front = self.front + 1
+q = Queue(10)
+print q._Empty()
+print q._Full()
+for i in range(10):
+    q.inqueue(i)
+print q._Full()
+for i in range(10):
+    q.outqueue()
+print q._Empty()
+</code></pre><p>堆栈和队列的容器均之所以选择列表list，而不选择元组tuple,主要是因为列表具有可以进行动态修改，元组不允许修改。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -154,13 +208,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Python/">Python</a>
+  <span></span> <a href="/tags/堆栈/">堆栈</a><a href="/tags/队列/">队列</a>
   </div>
 
 </div>
@@ -205,14 +259,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/01/02/Python爬虫基础（一）/" title="Python爬虫基础（一）">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Python爬虫基础（一）</span>
+
+<div class="next">
+<a href="/2016/01/02/不一样的2016/"  title="不一样的2016">
+ <strong>下一篇：</strong><br/> 
+ <span>不一样的2016
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -220,8 +274,8 @@
 
  <nav id="pagination" >
     
-    <a href="/2016/01/02/Python爬虫基础（一）/" class="alignleft prev" >上一页</a>
     
+    <a href="/2016/01/02/不一样的2016/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -232,7 +286,7 @@
 
 	
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/01/02/Python爬虫基础（二）/" data-title="Python爬虫基础（二）" data-url="http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（二）/"></div>
+	<div class="ds-thread" data-thread-key="2016/01/13/Python数据结构-一/" data-title="Python数据结构(一)" data-url="http://dsljlbaby.github.io/2016/01/13/Python数据结构-一/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -257,7 +311,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u6D4F_u89C8_u7F51_u9875_u7684_u8FC7_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URI_u548CURL_u7684_u8BA4_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">URI和URL的认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURI_uFF1F"><span class="toc-number">2.1.</span> <span class="toc-text">什么是URI？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EC0_u4E48_u662FURL_uFF1F"><span class="toc-number">2.2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL_u548CURI_u7684_u533A_u522B"><span class="toc-number">2.3.</span> <span class="toc-text">URL和URI的区别</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_u5806_u6808_u7684_u5B9E_u73B0"><span class="toc-number">1.</span> <span class="toc-text">Python堆栈的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0"><span class="toc-number">2.</span> <span class="toc-text">Python对列的实现</span></a></li></ol>
  
   </div>
 

@@ -80,6 +80,146 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/01/13/Python数据结构-一/" title="Python数据结构(一)" itemprop="url">Python数据结构(一)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-13T03:03:18.000Z" itemprop="datePublished"> 发表于 2016-01-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Python_u5806_u6808_u7684_u5B9E_u73B0"><a href="#Python_u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="Python堆栈的实现"></a>Python堆栈的实现</h2><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
+<p>源代码：</p>
+<pre><code>class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.top == self.size - 1:
+            return True
+        else:
+            return False
+    def _Empty(self):
+        if self.top == -1:
+            return True
+        else:
+            return False
+    def instack(self,_list):
+        if self._Full():
+            print &apos;The stack is Full.&apos;
+        else:
+            self.list.append(_list)
+            self.top = self.top + 1
+    def outstack(self):
+        if self._Empty():
+            print &apos;The stack is empty.!&apos;
+        else:
+            self.list.pop()
+            self.top = self.top - 1
+s = Stack(10)
+print s._Full()
+print s._Empty()
+for i in range(10):
+    s.instack(i)
+print s._Full()
+for i in range(10):
+    s.outstack()
+print s._Empty()
+</code></pre><h2 id="Python_u5BF9_u5217_u7684_u5B9E_u73B0"><a href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0" class="headerlink" title="Python对列的实现"></a>Python对列的实现</h2><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
+<p>源代码：</p>
+<pre><code>class Queue():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.front = -1
+        self.rear = -1
+    def _Empty(self):
+        if self.front == self.rear:
+            return True
+        else:
+            return False
+    def _Full(self):
+        if self.rear - self.front + 1 == self.size:
+            return True
+        else:
+            return False
+    def inqueue(self,_list):
+        if self._Full():
+            print &apos;The Queue is full.&apos;
+        else:
+            self.list.append(_list)
+            self.rear = self.rear + 1
+    def outqueue(self):
+        if self._Empty():
+            print &apos;The Queue is empty.&apos;
+        else:
+            self.list.pop()
+            self.front = self.front + 1
+q = Queue(10)
+print q._Empty()
+print q._Full()
+for i in range(10):
+    q.inqueue(i)
+print q._Full()
+for i in range(10):
+    q.outqueue()
+print q._Empty()
+</code></pre><p>堆栈和队列的容器均之所以选择列表list，而不选择元组tuple,主要是因为列表具有可以进行动态修改，元组不允许修改。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/堆栈/">堆栈</a><a href="/tags/队列/">队列</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/13/Python数据结构-一/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/13/Python数据结构-一/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/02/不一样的2016/" title="不一样的2016" itemprop="url">不一样的2016</a>
   </h1>
   <p class="article-author">By
@@ -352,6 +492,10 @@
 		<ul>
 		
 		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>2</sup></a></li>
 		  
 		
@@ -376,6 +520,14 @@
 				<li><a href="/tags/生活/" title="生活">生活<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/堆栈/" title="堆栈">堆栈<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/队列/" title="队列">队列<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -384,7 +536,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a>
+      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a>
     </div>
   </div>
 

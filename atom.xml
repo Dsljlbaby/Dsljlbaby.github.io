@@ -4,7 +4,7 @@
   <subtitle><![CDATA[只有行动才能说明一切]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://dsljlbaby.github.io/"/>
-  <updated>2016-01-02T07:19:00.993Z</updated>
+  <updated>2016-01-13T03:29:03.071Z</updated>
   <id>http://dsljlbaby.github.io/</id>
   
   <author>
@@ -13,6 +13,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Python数据结构(一)]]></title>
+    <link href="http://dsljlbaby.github.io/2016/01/13/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%80/"/>
+    <id>http://dsljlbaby.github.io/2016/01/13/Python数据结构-一/</id>
+    <published>2016-01-13T03:03:18.000Z</published>
+    <updated>2016-01-13T03:29:03.071Z</updated>
+    <content type="html"><![CDATA[<h2 id="Python_u5806_u6808_u7684_u5B9E_u73B0"><a href="#Python_u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="Python堆栈的实现"></a>Python堆栈的实现</h2><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
+<p>源代码：</p>
+<pre><code>class Stack():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.top = -1
+    def _Full(self):
+        if self.top == self.size - 1:
+            return True
+        else:
+            return False
+    def _Empty(self):
+        if self.top == -1:
+            return True
+        else:
+            return False
+    def instack(self,_list):
+        if self._Full():
+            print &apos;The stack is Full.&apos;
+        else:
+            self.list.append(_list)
+            self.top = self.top + 1
+    def outstack(self):
+        if self._Empty():
+            print &apos;The stack is empty.!&apos;
+        else:
+            self.list.pop()
+            self.top = self.top - 1
+s = Stack(10)
+print s._Full()
+print s._Empty()
+for i in range(10):
+    s.instack(i)
+print s._Full()
+for i in range(10):
+    s.outstack()
+print s._Empty()
+</code></pre><h2 id="Python_u5BF9_u5217_u7684_u5B9E_u73B0"><a href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0" class="headerlink" title="Python对列的实现"></a>Python对列的实现</h2><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
+<p>源代码：</p>
+<pre><code>class Queue():
+    def __init__(self,size):
+        self.list = []
+        self.size = size
+        self.front = -1
+        self.rear = -1
+    def _Empty(self):
+        if self.front == self.rear:
+            return True
+        else:
+            return False
+    def _Full(self):
+        if self.rear - self.front + 1 == self.size:
+            return True
+        else:
+            return False
+    def inqueue(self,_list):
+        if self._Full():
+            print &apos;The Queue is full.&apos;
+        else:
+            self.list.append(_list)
+            self.rear = self.rear + 1
+    def outqueue(self):
+        if self._Empty():
+            print &apos;The Queue is empty.&apos;
+        else:
+            self.list.pop()
+            self.front = self.front + 1
+q = Queue(10)
+print q._Empty()
+print q._Full()
+for i in range(10):
+    q.inqueue(i)
+print q._Full()
+for i in range(10):
+    q.outqueue()
+print q._Empty()
+</code></pre><p>堆栈和队列的容器均之所以选择列表list，而不选择元组tuple,主要是因为列表具有可以进行动态修改，元组不允许修改。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Python_u5806_u6808_u7684_u5B9E_u73B0"><a href="#Python_u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="Python堆栈的实现"></a>Pyt]]>
+    </summary>
+    
+      <category term="堆栈" scheme="http://dsljlbaby.github.io/tags/%E5%A0%86%E6%A0%88/"/>
+    
+      <category term="队列" scheme="http://dsljlbaby.github.io/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="Python" scheme="http://dsljlbaby.github.io/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[不一样的2016]]></title>
