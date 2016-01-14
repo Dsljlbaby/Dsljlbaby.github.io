@@ -80,6 +80,243 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/01/14/Python数据结构-二/" title="Python数据结构(二)" itemprop="url">Python数据结构(二)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-14T02:28:32.000Z" itemprop="datePublished"> 发表于 2016-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="u4E8C_u53C9_u6811_u7684_u5B9E_u73B0"><a href="#u4E8C_u53C9_u6811_u7684_u5B9E_u73B0" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h2><h3 id="u6811_u7684_u5B9A_u4E49"><a href="#u6811_u7684_u5B9A_u4E49" class="headerlink" title="树的定义"></a>树的定义　　</h3><p>　　树是一种重要的非线性数据结构，直观地看，它是数据元素（在树中称为结点）按分支关系组织起来的结构，很象自然界中的树那样。树结构在客观世界中广泛存在，如人类社会的族谱和各种社会组织机构都可用树形象表示。树在计算机领域中也得到广泛应用，如在编译源程序时，可用树表示源程序的语法结构。又如在数据库系统中，树型结构也是信息的重要组织形式之一。一切具有层次关系的问题都可用树来描述。</p>
+<p> 树结构的特点是：它的每一个结点都可以有不止一个直接后继，除根结点外的所有结点都有且只有一个直接前驱。</p>
+<p>树的递归定义如下：</p>
+<ul>
+<li>至少有一个结点（称为根）</li>
+<li>其它是互不相交的子树</li>
+</ul>
+<h3 id="u4E8C_u53C9_u6811"><a href="#u4E8C_u53C9_u6811" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树是由n（n≥0）个结点组成的有限集合、每个结点最多有两个子树的有序树。它或者是空集，或者是由一个根和称为左、右子树的两个不相交的二叉树组成。</p>
+<p>特点：</p>
+<ul>
+<li>二叉树是有序树，即使只有一个子树，也必须区分左、右子树；</li>
+</ul>
+<ul>
+<li>二叉树的每个结点的度不能大于2，只能取0、1、2三者之一；</li>
+</ul>
+<ul>
+<li>二叉树中所有结点的形态有5种：空结点、无左右子树的结点、只有左子树的结点、只有右子树的结点和具有左右子树的结点。</li>
+</ul>
+<h3 id="u6E90_u4EE3_u7801_uFF1A"><a href="#u6E90_u4EE3_u7801_uFF1A" class="headerlink" title="源代码："></a>源代码：</h3><pre><code>#-*- encoding:utf-8 -*-
+
+&apos;&apos;&apos;
+树的构建：
+     5
+  6     7
+8         9
+&apos;&apos;&apos;
+
+class Tree():
+   &apos;树的实现&apos;
+    def __init__(self,ltree = 0,rtree = 0,data = 0):
+        self.ltree = ltree
+        self.rtree = rtree
+        self.data = data
+class BTree():
+    &apos;二叉树的实现&apos;
+    def __init__(self,base = 0):
+        self.base = base
+    def _Empty(self):
+        &apos;是否为空树&apos;
+        if self.base == 0:
+            return True
+        else:
+            return False
+    def qout(self,tree_base):
+        &apos;前序遍历:根-左-右&apos;
+        if tree_base == 0:
+            return
+        print tree_base.data
+        self.qout(tree_base.ltree)
+        self.qout(tree_base.rtree)
+    def mout(self,tree_base):
+        &apos;中序遍历:左-根-右&apos;
+        if tree_base == 0:
+            return
+        self.mout(tree_base.ltree)
+        print tree_base.data
+        self.mout(tree_base.rtree)
+    def hout(self,tree_base):
+        &apos;后序遍历:左-右-根&apos;
+        if tree_base == 0:
+            return
+        self.hout(tree_base.ltree)
+        self.hout(tree_base.rtree)
+        print tree_base.data
+#test
+
+tree1 = Tree(data=8)
+tree2 = Tree(data=9)
+tree3 = Tree(tree1,data=6)
+tree4 = Tree(tree2,0,data=7)
+base = Tree(tree3,tree4,5)
+btree = BTree(base)
+print &apos;前序遍历结果:&apos;
+btree.qout(btree.base)
+print &apos;中序遍历结果:&apos;
+btree.mout(btree.base)
+print &apos;后序遍历结果:&apos;
+btree.hout(btree.base)
+</code></pre><h2 id="u94FE_u8868_u7684_u5B9E_u73B0"><a href="#u94FE_u8868_u7684_u5B9E_u73B0" class="headerlink" title="链表的实现"></a>链表的实现</h2><h3 id="u94FE_u8868_u7684_u5B9A_u4E49"><a href="#u94FE_u8868_u7684_u5B9A_u4E49" class="headerlink" title="链表的定义"></a>链表的定义</h3><p>　　链表(linked list)是由一组被称为结点的数据元素组成的数据结构，每个结点都包含结点本身的信息和指向下一个结点的地址。由于每个结点都包含了可以链接起来的地址信息，所以用一个变量就能够访问整个结点序列。也就是说，结点包含两部分信息：一部分用于存储数据元素的值，称为信息域；另一部分用于存储下一个数据元素地址的指针，称为指针域。链表中的第一个结点的地址存储在一个单独的结点中，称为头结点或首结点。链表中的最后一个结点没有后继元素，其指针域为空。</p>
+<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
+class Node():
+    &apos;创建节点&apos;
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkList():
+    &apos;创建列表&apos;
+    def __init__(self, node):
+        &apos;初始化列表&apos;
+        self.head = node
+        self.head.next = None
+        self.tail = self.head
+
+    def add_node(self, node):
+        &apos;添加节点&apos;
+        self.tail.next = node
+        self.tail = self.tail.next
+
+    def view(self):
+        &apos;查看列表&apos;
+        node = self.head
+        link_str = &apos;&apos;
+        while node is not None:
+            if node.next is not None:
+                link_str += str(node.data) + &apos;--&gt;&apos;
+            else:
+                link_str += str(node.data)
+            node = node.next
+        print &apos;The Linklist is:&apos; + link_str
+
+    def length(self):
+        &apos;列表长度&apos;
+        node = self.head
+        count = 1
+        while node.next is not None:
+            count += 1
+            node = node.next
+        print &apos;The length of linklist are %d&apos; % count
+        return count
+
+    def delete_node(self, index):
+        &apos;删除节点&apos;
+        if index+1 &gt; self.length():
+            raise IndexError(&apos;index out of bounds&apos;)
+        num = 0
+        node = self.head
+        while True:
+            if num == index-1:
+                break
+            node = node.next
+            num += 1
+        tmp_node = node.next
+        node.next = node.next.next
+        return tmp_node.data
+
+    def find_node(self, index):
+        &apos;查看具体节点&apos;
+        if index+1 &gt; self.length():
+            raise IndexError(&apos;index out of bounds&apos;)
+        num = 0
+        node = self.head
+        while True:
+            if num == index:
+                break
+            node = node.next
+            num += 1
+        return node.data
+
+# test
+
+node1 = Node(10)
+node2 = Node(&apos;dec&apos;)
+node3 = Node(1010)
+node4 = Node(&apos;bin&apos;)
+node5 = Node(12)
+node6 = Node(&apos;oct&apos;)
+node7 = Node(&apos;A&apos;)
+node8 = Node(&apos;hex&apos;)
+
+linklist = LinkList(node1)
+linklist.add_node(node2)
+linklist.add_node(node3)
+linklist.add_node(node4)
+linklist.add_node(node5)
+linklist.add_node(node6)
+linklist.add_node(node7)
+linklist.add_node(node8)
+
+linklist.view()
+linklist.length()
+linklist.delete_node(1)
+linklist.view()
+find_node = linklist.find_node(6)
+print find_node
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/二叉树/">二叉树</a><a href="/tags/链表/">链表</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/14/Python数据结构-二/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/14/Python数据结构-二/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/13/Python数据结构-一/" title="Python数据结构(一)" itemprop="url">Python数据结构(一)</a>
   </h1>
   <p class="article-author">By
@@ -93,9 +330,8 @@
 </header>
     <div class="article-content">
         
-        <h2 id="Python_u5806_u6808_u7684_u5B9E_u73B0"><a href="#Python_u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="Python堆栈的实现"></a>Python堆栈的实现</h2><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
-<p>源代码：</p>
-<pre><code>class Stack():
+        <h3 id="u5806_u6808_u7684_u5B9E_u73B0"><a href="#u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="堆栈的实现"></a>堆栈的实现</h3><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
+<h4 id="u6E90_u4EE3_u7801_uFF1A"><a href="#u6E90_u4EE3_u7801_uFF1A" class="headerlink" title="源代码："></a>源代码：</h4><pre><code>class Stack():
     def __init__(self,size):
         self.list = []
         self.size = size
@@ -122,6 +358,8 @@
         else:
             self.list.pop()
             self.top = self.top - 1
+# test
+
 s = Stack(10)
 print s._Full()
 print s._Empty()
@@ -131,9 +369,8 @@ print s._Full()
 for i in range(10):
     s.outstack()
 print s._Empty()
-</code></pre><h2 id="Python_u5BF9_u5217_u7684_u5B9E_u73B0"><a href="#Python_u5BF9_u5217_u7684_u5B9E_u73B0" class="headerlink" title="Python对列的实现"></a>Python对列的实现</h2><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
-<p>源代码：</p>
-<pre><code>class Queue():
+</code></pre><h3 id="u961F_u5217_u7684_u5B9E_u73B0"><a href="#u961F_u5217_u7684_u5B9E_u73B0" class="headerlink" title="队列的实现"></a>队列的实现</h3><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
+<h4 id="u6E90_u4EE3_u7801_uFF1A-1"><a href="#u6E90_u4EE3_u7801_uFF1A-1" class="headerlink" title="源代码："></a>源代码：</h4><pre><code>class Queue():
     def __init__(self,size):
         self.list = []
         self.size = size
@@ -161,6 +398,8 @@ print s._Empty()
         else:
             self.list.pop()
             self.front = self.front + 1
+#test
+
 q = Queue(10)
 print q._Empty()
 print q._Full()
@@ -492,7 +731,7 @@ print q._Empty()
 		<ul>
 		
 		  
-			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>2</sup></a></li>
 		  
 		
 		  
@@ -521,6 +760,14 @@ print q._Empty()
 			
 		
 			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/堆栈/" title="堆栈">堆栈<sup>1</sup></a></li>
 			
 		
@@ -536,7 +783,7 @@ print q._Empty()
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a>
+      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a>
     </div>
   </div>
 
