@@ -4,7 +4,7 @@
   <subtitle><![CDATA[只有行动才能说明一切]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://dsljlbaby.github.io/"/>
-  <updated>2016-01-15T02:50:17.445Z</updated>
+  <updated>2016-01-16T02:31:43.618Z</updated>
   <id>http://dsljlbaby.github.io/</id>
   
   <author>
@@ -13,6 +13,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Python数据结构(四)]]></title>
+    <link href="http://dsljlbaby.github.io/2016/01/16/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%9B/"/>
+    <id>http://dsljlbaby.github.io/2016/01/16/Python数据结构-四/</id>
+    <published>2016-01-16T02:10:58.000Z</published>
+    <updated>2016-01-16T02:31:43.618Z</updated>
+    <content type="html"><![CDATA[<h2 id="u56FE"><a href="#u56FE" class="headerlink" title="图"></a>图</h2><p>图是由边或者弧连接起来的节点的网络。在有向图中，节点之间的连接是有方向的，叫做弧(arcs)。在无向图中，节点间的连接没有方向，叫做边(edge)。图算法包括查找两点间路径、两点间的最短路径、判断一个图中是否存在环(环是从一个节点可以沿一条非空路径回到它自己)、找到可以遍历所有节点的路径(著名的TSP问题，即旅行商问题)等等</p>
+<h2 id="u56FE_u7684_u5B9E_u73B0"><a href="#u56FE_u7684_u5B9E_u73B0" class="headerlink" title="图的实现"></a>图的实现</h2><p>在Python中，图主要是通过列表和词典来构造。比如说下面这张图，</p>
+<pre><code>A --&gt; B
+A --&gt; C
+B --&gt; C
+B --&gt; D
+C --&gt; D
+D --&gt; C
+E --&gt; F
+F --&gt; C
+</code></pre><p>就是通过下面这个字典和列表的结合进行构造</p>
+<pre><code>graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
+         &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
+         &apos;C&apos;: [&apos;D&apos;],
+         &apos;D&apos;: [&apos;C&apos;],
+         &apos;E&apos;: [&apos;F&apos;],
+         &apos;F&apos;: [&apos;C&apos;]}
+</code></pre><h2 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h2><pre><code># -*- encoding:utf-8 -*-
+&apos;&apos;&apos;
+
+ A --&gt; B
+ A --&gt; C
+ B --&gt; C
+ B --&gt; D
+ C --&gt; D
+ D --&gt; C
+ E --&gt; F
+ F --&gt; C
+
+&apos;&apos;&apos;
+
+
+def find_path(graph, start, end, path=[]):
+        &apos;寻找一条路径&apos;
+        path = path + [start]
+        if start == end:
+            return path
+        if not graph.has_key(start):
+            return None
+        for node in graph[start]:
+            if node not in path:
+                newpath = find_path(graph, node, end, path)
+                if newpath:
+                    return newpath
+        return path
+
+def find_all_paths(graph, start, end, path=[]):
+        &apos;查找所有的路径&apos;
+        path = path + [start]
+        if start == end:
+            return [path]
+        if not graph.has_key(start):
+            return []
+        paths = []
+        for node in graph[start]:
+            if node not in path:
+                newpaths = find_all_paths(graph, node, end, path)
+                for newpath in newpaths:
+                    paths.append(newpath)
+        return paths
+
+def find_shortest_path(graph, start, end, path=[]):
+        &apos;查找最短路径&apos;
+        path = path + [start]
+        if start == end:
+            return path
+        if not graph.has_key(start):
+            return None
+        shortest = None
+        for node in graph[start]:
+            if node not in path:
+                newpath = find_shortest_path(graph, node, end, path)
+                if newpath:
+                    if not shortest or len(newpath) &lt; len(shortest):
+                        shortest = newpath
+        return shortest
+
+#test
+
+if __name__ == &apos;__main__&apos;:
+    graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
+             &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
+             &apos;C&apos;: [&apos;D&apos;],
+             &apos;D&apos;: [&apos;C&apos;],
+             &apos;E&apos;: [&apos;F&apos;],
+             &apos;F&apos;: [&apos;C&apos;]}
+    print find_path(graph,&apos;A&apos;,&apos;D&apos;)
+    print find_all_paths(graph,&apos;A&apos;,&apos;D&apos;)
+    print find_shortest_path(graph,&apos;A&apos;,&apos;D&apos;)
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="u56FE"><a href="#u56FE" class="headerlink" title="图"></a>图</h2><p>图是由边或者弧连接起来的节点的网络。在有向图中，节点之间的连接是有方向的，叫做弧(arcs)。在无向图中，节点间的连接没有方向，叫做]]>
+    </summary>
+    
+      <category term="图" scheme="http://dsljlbaby.github.io/tags/%E5%9B%BE/"/>
+    
+      <category term="Python" scheme="http://dsljlbaby.github.io/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Python数据结构(三)]]></title>
