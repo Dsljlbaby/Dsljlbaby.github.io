@@ -80,6 +80,349 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/01/31/Python学习笔记之字符串/" title="Python学习笔记之字符串" itemprop="url">Python学习笔记之字符串</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-31T05:22:45.000Z" itemprop="datePublished"> 发表于 2016-01-31</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>字符串是Python中常见的数据类型，在Python中，可以通过单引号或者双引号来创建字符串，它们的作用是一样的，但在其他编程语言中有所不同，如C语言中使用单引号来创建字符，使用双引号来创建字符串。</p>
+<h1 id="u5B57_u7B26_u4E32"><a href="#u5B57_u7B26_u4E32" class="headerlink" title="字符串"></a>字符串</h1><p>字符串是Python中常见的数据类型，在Python中，可以通过单引号或者双引号来创建字符串，它们的作用是一样的，但在其他编程语言中有所不同，如C语言中使用单引号来创建字符，使用双引号来创建字符串。字符串是一种不可变的序列，而列表属于一种可变的序列，元组和字符串一样也是一种不可变的序列。字符串是由独立的字符构成的，我们可以通过切片操作顺序地访问。</p>
+<h2 id="u5B57_u7B26_u4E32_u7684_u521B_u5EFA"><a href="#u5B57_u7B26_u4E32_u7684_u521B_u5EFA" class="headerlink" title="字符串的创建"></a>字符串的创建</h2><p>我们可以使用单引号或者双引号来创建一个新的字符串，还可以使用str()将任何一种类型的数据转换成字符串。</p>
+<pre><code>string1 = &quot;Hello,Word!&quot;  # 使用双引号
+string2 = &apos;Python is good!&apos;  # 使用单引号
+string3 = str(range(10))  # 使用str()
+</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u8BBF_u95EE"><a href="#u5B57_u7B26_u4E32_u7684_u8BBF_u95EE" class="headerlink" title="字符串的访问"></a>字符串的访问</h2><p>我们通常使用操作符string[index]、切片操作符string[start_index:end_index]和string[start_index:end_index:num]来对一个字符串的访问。</p>
+<pre><code>string2 = &apos;Python is good!&apos;
+print string2[3]
+print string2[2:9]
+print string2[2:9:2]
+</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u4FEE_u6539"><a href="#u5B57_u7B26_u4E32_u7684_u4FEE_u6539" class="headerlink" title="字符串的修改"></a>字符串的修改</h2><p>字符串是一种不可变的序列，我们无法对一个字符串的某个元素进行修改或者删除，我们只能通过创建新的字符串来修改它。我们可以使用赋一个空字符串或者使用del语句进行删除一个字符串。</p>
+<pre><code>string1 = &quot;Hello,Word!&quot;
+string1 = &apos; &apos;  # 使用空字符串
+del string1   #使用del语句
+</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u8FD0_u7B97"><a href="#u5B57_u7B26_u4E32_u7684_u8FD0_u7B97" class="headerlink" title="字符串的运算"></a>字符串的运算</h2><p>我们可以使用标准类型操作符(&lt;,&gt;,&lt;=,&gt;=,!=,==,and,not,or)对两个字符串进行逻辑运算，得到的将会是一个布尔值True/False。</p>
+<pre><code>&gt;&gt;&gt; str1 = &apos;abc&apos;
+&gt;&gt;&gt; str2 = &apos;xyz&apos;
+&gt;&gt;&gt; str3 = &apos;ABC&apos;
+&gt;&gt;&gt; str1 == str3  
+False
+&gt;&gt;&gt; str1 &lt; str2 and str1 == str3
+False
+&gt;&gt;&gt; str1 &gt; str3
+True
+</code></pre><p>注意：在做比较操作时，字符串是按照ASCII值的大小进行比较的</p>
+<h2 id="u5B57_u7B26_u4E32_u7C7B_u578B_u64CD_u4F5C_u7B26"><a href="#u5B57_u7B26_u4E32_u7C7B_u578B_u64CD_u4F5C_u7B26" class="headerlink" title="字符串类型操作符"></a>字符串类型操作符</h2><p>因为字符串是属于序列的一类，所以序列中常见的操作符（成员关系操作符（in 、not in）、连接操作符（+）、重复操作符（*）、切片操作符（[]、[:]、[::]））都适用于字符串。</p>
+<h3 id="u539F_u59CB_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08r/R_uFF09"><a href="#u539F_u59CB_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08r/R_uFF09" class="headerlink" title="原始字符串操作符（r/R）"></a>原始字符串操作符（r/R）</h3><p>在原始字符串里，所有的字符串都是按照字面的意思来使用的，没有转义特殊或者不能打印的字符，这种表现方式很方便我们对程序的调试和正则表达式的创建。</p>
+<pre><code>&gt;&gt;&gt; &apos;\n&apos;
+&apos;\n&apos;
+&gt;&gt;&gt; r&apos;\n&apos;
+&apos;\\n&apos;
+&gt;&gt;&gt; print &apos;\n&apos; # 下面之出现两个空行，是因为除了换行符之外，print还存在一个换行符
+
+
+&gt;&gt;&gt; print r&apos;\n&apos; # 打印换行符，不对其进行转义
+\n
+</code></pre><h3 id="Unicode_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08u/U_uFF09"><a href="#Unicode_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08u/U_uFF09" class="headerlink" title="Unicode字符串操作符（u/U）"></a>Unicode字符串操作符（u/U）</h3><p>Unicode字符串操作符是用来把标准字符串转化成Unicode字符串对象的。</p>
+<h4 id="Unicode_u7684_u7B80_u5355_u4E86_u89E3"><a href="#Unicode_u7684_u7B80_u5355_u4E86_u89E3" class="headerlink" title="Unicode的简单了解"></a>Unicode的简单了解</h4><p>起初，我们计算机编码是采用ASCII编码，ASCII码虽然简单，但是可用范围小（32-126），每个英文字符都是以7位二进制的方式储存在计算机中的，尽管后来，软件厂商将ASCII码拓展为8位的，但是面对成千上万的非欧洲语系的语言来说仍然很少。Unicode通过使用一个或者多个字节来表示一个字符的方法实现了可以超过90000个字符的表示。<br>Python中内建函数str()和char()只能处理常规的ASCII编码字符串。如果一个Unicode字符串作为参数传给str()函数，它首先会转换成为ASCII字符串然后进行操作，如果超过了它的处理范围就会出错。针对Unicode出现的unicode()和unichar()表现出更强大的处理功能。<br>Unicode支持多种编码格式。</p>
+<h4 id="u5185_u5EFA_u7684decode_28_29/encode_28_29_u65B9_u6CD5"><a href="#u5185_u5EFA_u7684decode_28_29/encode_28_29_u65B9_u6CD5" class="headerlink" title="内建的decode()/encode()方法"></a>内建的decode()/encode()方法</h4><p>decode()和encode()内建函数接收一个字符串做参数返回该字符串对应的编码后/解码后的字符串<br>下面的代码创建了一个Unicode字符串，用UTF-8编码器将它编码，然后写入一个文件，接着把数据从文件中读取出来，解码成Unicode字符串对象，最后打印出来。</p>
+<pre><code>CODEC = &apos;utf-8&apos;  # 8位UTF转化格式（无符号字节序列，长度为1-4字节）
+filename = &apos;unicode.txt&apos;
+hello_out = u&apos;Hello,World!&apos;
+bytes_out = hello_out.encode(CODEC)
+f = open(filename,&apos;w&apos;)
+f.write(bytes_out)
+f.close()
+
+f = open(filename)
+bytes_in = f.read()
+f.close()
+hello_in = bytes_in.decode(CODEC)
+print hello_in
+</code></pre><h3 id="u5185_u5EFA_u51FD_u6570"><a href="#u5185_u5EFA_u51FD_u6570" class="headerlink" title="内建函数"></a>内建函数</h3><h4 id="u6807_u51C6_u7C7B_u578B_u51FD_u6570"><a href="#u6807_u51C6_u7C7B_u578B_u51FD_u6570" class="headerlink" title="标准类型函数"></a>标准类型函数</h4><p>cmp()和比较操作符相似，根据字符串的ASCII码值进行比较,当两个字符床相等时，返回0,大于时返回1，小于时返回-1.</p>
+<pre><code>&gt;&gt;&gt; str1 = &apos;abc&apos;
+&gt;&gt;&gt; str2 = &apos;ABC&apos;
+&gt;&gt;&gt; str3 = &apos;xyz&apos;
+&gt;&gt;&gt; cmp(str1,str2)
+1
+&gt;&gt;&gt; cmp(str2,str3)
+-1
+&gt;&gt;&gt; cmp(str1,&apos;abc&apos;)
+0
+</code></pre><h4 id="u5E8F_u5217_u7C7B_u578B_u51FD_u6570"><a href="#u5E8F_u5217_u7C7B_u578B_u51FD_u6570" class="headerlink" title="序列类型函数"></a>序列类型函数</h4><p>len()返回一个字符串的字符数。<br>max()返回一个字符串的最大字符。<br>min()返回一个字符串的最小字符。<br>enumerate()将一个字符串转化成字典形式。</p>
+<pre><code>&gt;&gt;&gt; str1 = &apos;foobar&apos;
+&gt;&gt;&gt; len(str1)
+6
+&gt;&gt;&gt; max(str1)
+&apos;r&apos;
+&gt;&gt;&gt; min(str1)
+&apos;a&apos;
+&gt;&gt;&gt; for key,value in enumerate(str1):
+    print key,value
+
+0 f
+1 o
+2 o
+3 b
+4 a
+5 r
+</code></pre><h4 id="u5B57_u7B26_u4E32_u7C7B_u578B_u51FD_u6570"><a href="#u5B57_u7B26_u4E32_u7C7B_u578B_u51FD_u6570" class="headerlink" title="字符串类型函数"></a>字符串类型函数</h4><p>raw_input()函数使用给定字符串提示用户输入并将这个输入返回。</p>
+<pre><code>&gt;&gt;&gt; username = raw_input(&quot;Please enter your name:&quot;)
+Please enter your name:Joe
+&gt;&gt;&gt; print &quot;Hello,%s&quot; % username
+Hello,Joe
+</code></pre><p>str()和unicode()函数都可以接受一个任意类型的对象，然后创建该对象的可打印的或Unicode的字符串表示。str()函数将接收的对象首先转化成ASCII码，然后对其操作。它们都可以作为参数传给isinstance()函数来判断一个对象的类型。</p>
+<pre><code>&gt;&gt;&gt; isinstance(u&apos;\0xAB&apos;,str)
+False
+&gt;&gt;&gt; isinstance(&apos;foobar&apos;,str)
+True
+&gt;&gt;&gt; isinstance(u&apos;\0xAB&apos;,unicode)
+True
+&gt;&gt;&gt; isinstance(&apos;foobar&apos;,unicode)
+False
+</code></pre><p>chr()函数用于一个范围在0-255内的整数作为参数，返回对应的字符。<br>unichr()函数和chr()函数类似，只不过返回的是Unicode字符。<br>ord()函数以一个字符作为参数，返回对应的ASCII数值或者Unicode数值。</p>
+<pre><code>&gt;&gt;&gt; chr(65)
+&apos;A&apos;
+&gt;&gt;&gt; ord(&apos;A&apos;)
+65
+&gt;&gt;&gt; unichr(1234)
+u&apos;\u04d2&apos;
+&gt;&gt;&gt; ord(u&apos;\u04d2&apos;)
+1234
+</code></pre><h3 id="u5B57_u7B26_u4E32_u5185_u5EFA_u51FD_u6570"><a href="#u5B57_u7B26_u4E32_u5185_u5EFA_u51FD_u6570" class="headerlink" title="字符串内建函数"></a>字符串内建函数</h3><ul>
+<li>string.count(str,beg=0,end=len(string)) 返回str在字符串string中出现的次数</li>
+<li>string.find(str,beg=0,end=len(string)) 检测str是否存在字符串string中，存在返回索引值，否则返回-1</li>
+<li>string.isalnum() 判断字符串中是否全部为数字或字母</li>
+<li>string.isalpha() 判断字符串中是否全部为字母</li>
+<li>string.islower() 判断字符串中是否全部为小写字母</li>
+<li>string.isupper() 判断字符串中是否全部为大写字母</li>
+<li>string.join(seq) 以string作为分隔符，将seq中所有的元素（字符串表示）合并成新的字符串</li>
+<li>string.lower() 将字符串中的大写字母全部转成小写字母</li>
+<li>string.upper() 将字符串中的小写字母全部转成大写字母</li>
+<li>string.strip() 删除字符串中的空格，与string.lstrip()、strng.rstrip()相似</li>
+</ul>
+<p>代码：</p>
+<pre><code>&gt;&gt;&gt; string1 = &apos;Python&apos;
+&gt;&gt;&gt; string2 = &apos;Python2.7&apos;
+&gt;&gt;&gt; string3 = &apos;123&apos;
+&gt;&gt;&gt; string4 = &apos;Python is cool!&apos;
+&gt;&gt;&gt; string4.count(&apos;o&apos;)
+3
+&gt;&gt;&gt; string4.find(&apos;Python&apos;)
+0
+&gt;&gt;&gt; string3.find(&apos;Python&apos;)
+-1
+&gt;&gt;&gt; string1.isalnum()
+True
+&gt;&gt;&gt; string2.isalnum()
+False
+&gt;&gt;&gt; string3.isalnum()
+True
+&gt;&gt;&gt; string1.isalpha()
+True
+&gt;&gt;&gt; string3.isalpha()
+False
+&gt;&gt;&gt; string1.islower()
+False
+&gt;&gt;&gt; string2.isupper()
+False
+&gt;&gt;&gt; string1.join(string3)
+&apos;1Python2Python3&apos;
+&gt;&gt;&gt; string3.join(string1)
+&apos;P123y123t123h123o123n&apos;
+&gt;&gt;&gt; string1.lower()
+&apos;python&apos;
+&gt;&gt;&gt; string1.lower().islower()
+True
+&gt;&gt;&gt; string1.upper()
+&apos;PYTHON&apos;
+&gt;&gt;&gt; string1.upper().isupper()
+True
+&gt;&gt;&gt; string4.strip()
+&apos;Python is cool!&apos;
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python学习笔记/">Python学习笔记</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/字符串/">字符串</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/31/Python学习笔记之字符串/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/31/Python学习笔记之字符串/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/31/Python学习笔记之序列/" title="Python学习笔记之序列" itemprop="url">Python学习笔记之序列</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-31T02:59:45.000Z" itemprop="datePublished"> 发表于 2016-01-31</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p> 在Python数据类型中，我们经常会接触到这样一种数据类型，它们的成员是<em>有序排列</em>的，并且能够通过下标偏移量可以访问它的具体的成员，这种Python类型统称为<strong>序列</strong>，序列主要包括<em>字符串、列表和元组</em>。</p>
+<h1 id="u5E8F_u5217"><a href="#u5E8F_u5217" class="headerlink" title="序列"></a>序列</h1><p>序列：一种有序排列的、可以通过下标偏移量进行访问的数据类型。下标偏移量是从0开始到总元素数-1，这种访问形式和我们C语言中的数组的访问形式相同。</p>
+<h2 id="u5E8F_u5217_u7C7B_u578B_u64CD_u4F5C_u7B26"><a href="#u5E8F_u5217_u7C7B_u578B_u64CD_u4F5C_u7B26" class="headerlink" title="序列类型操作符"></a>序列类型操作符</h2><p>序列类型操作符主要分为成员关系操作符（in 、not in）、连接操作符（+）、重复操作符（*）、切片操作符（[]、[:]、[::]）</p>
+<h3 id="u6210_u5458_u5173_u7CFB_u64CD_u4F5C_u7B26_uFF08in_u3001not_in_uFF09"><a href="#u6210_u5458_u5173_u7CFB_u64CD_u4F5C_u7B26_uFF08in_u3001not_in_uFF09" class="headerlink" title="成员关系操作符（in、not in）"></a>成员关系操作符（in、not in）</h3><p>成员关系操作符主要是用来判断一个元素是否属于一个序列的。in/not in操作符的返回值一般来讲是一个布尔值False/True。满足成员关系就返回True，否则返回False。</p>
+<p>对象 [not] in 序列</p>
+<pre><code>seq = &quot;Hello&quot; # 字符串
+&apos;H&apos; in seq  True
+
+number = (1,2,3,4,5) # 元组
+2 not in number  False 
+</code></pre><h3 id="u8FDE_u63A5_u64CD_u4F5C_u7B26_uFF08+_uFF09"><a href="#u8FDE_u63A5_u64CD_u4F5C_u7B26_uFF08+_uFF09" class="headerlink" title="连接操作符（+）"></a>连接操作符（+）</h3><p>通过这个操作符，我们可以简单地把两个相同类型的序列连接成一个新的序列。</p>
+<p>sequeue = sequeue1 + sequeue2</p>
+<p>注意：这种操作虽然简单，但是比较占用内存，尽量少使用。</p>
+<pre><code>sequeue1 = &quot;Hello&quot;
+sequeue2 = &quot; Word!&quot;
+sequeue = sequeue1 + sequeue2
+print sequeue
+</code></pre><h3 id="u91CD_u590D_u64CD_u4F5C_u7B26_uFF08*_uFF09"><a href="#u91CD_u590D_u64CD_u4F5C_u7B26_uFF08*_uFF09" class="headerlink" title="重复操作符（*）"></a>重复操作符（*）</h3><p>如果我们需要一个序列的多份拷贝时，这种操作符比较有用。</p>
+<p>sequeue * copy_num</p>
+<pre><code># 使用它来做分割线
+sequeue = _
+sequeue = sequeue * 6
+print sequeue 
+</code></pre><h3 id="u64CD_u4F5C_u7B26_uFF08_5B_5D_u3001_5B_3A_5D_u3001_5B_3A_3A_5D_uFF09"><a href="#u64CD_u4F5C_u7B26_uFF08_5B_5D_u3001_5B_3A_5D_u3001_5B_3A_3A_5D_uFF09" class="headerlink" title="操作符（[]、[:]、[::]）"></a>操作符（[]、[:]、[::]）</h3><p>序列类型就是包含一些顺序排列的对象的一个结构。我们可以使用[]加下标偏移量来访问一个元素或者[start_index:end_index]访问连续的几个元素或使用[start_index:end_index:num]来间隔num个元素访问序列。</p>
+<h4 id="u64CD_u4F5C_u7B26_5B_5D"><a href="#u64CD_u4F5C_u7B26_5B_5D" class="headerlink" title="操作符[]"></a>操作符[]</h4><p>使用这种操作符只能访问一个元素。</p>
+<p>sequeue[index]</p>
+<p>注意：index是想要访问元素的下标偏移量，偏移量既可以为正，也可以为负。它们的区别在于正索引以序列的开始为起点，负索引是以序列的结束为起点。在使用过程尽量避免访问一个越界的索引，它会引发异常。 </p>
+<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
+print names[0] 
+
+print names[6] # 这是一个越界的索引
+Traceback (most recent call last):
+   File &quot;&lt;pyshell#1&gt;&quot;, line 1, in &lt;module&gt;
+     print names[6]
+IndexError: list index out of range
+</code></pre><h4 id="u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_5D"><a href="#u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_5D" class="headerlink" title="切片操作符[:]"></a>切片操作符[:]</h4><p>当我们需要同时获取多个元素时，操作符[]就有点力不从心了，虽然它可以实现，但是代码太丑陋了，所以我们就得寻找新的操作符[:]来解决问题。</p>
+<p>sequeue[start_index:end_index]</p>
+<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
+print names[2:4]
+# result
+[&apos;Faye&apos;,&apos;Ammy&apos;]
+</code></pre><p>如果我们没有提供任何的起始索引和结束索引，它就会访问整个序列。</p>
+<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
+# 这种方法和names[0:6]是一样的结果
+print names[:]  
+# result
+[&apos;Dava&apos;, &apos;Joe&apos;, &apos;Faye&apos;, &apos;Ammy&apos;, &apos;Frakle&apos;, &apos;Talor&apos;]
+</code></pre><p>如果我们只是提过起始索引或者结束索引，如果我们只提供起始索引，它会返回从起始索引到index-1的所有元素，如果我们只提供结束索引，它会返回从索引为0到结束索引的元素。</p>
+<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
+# 我们只给了起始索引
+print names[2:]
+# result
+[&apos;Faye&apos;, &apos;Ammy&apos;, &apos;Frakle&apos;, &apos;Talor&apos;]
+# 我们只给了结束索引
+print names[:3]
+# result
+[&apos;Dava&apos;, &apos;Joe&apos;, &apos;Faye&apos;]
+</code></pre><h4 id="u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_3A_5D"><a href="#u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_3A_5D" class="headerlink" title="切片操作符[::]"></a>切片操作符[::]</h4><p>操作符[::]比操作符[:]多出来的第三个索引值是用做步长参数的，它和range()里面的步长参数功能相似。</p>
+<p>[start_index:end_index:num]</p>
+<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
+# 隔一个取一个
+print names[2:6:2] 
+# result
+[&apos;Faye&apos;, &apos;Frakle&apos;]
+</code></pre><p>注意：在序列的操作过程中，我们的打印结果是不包括结束索引所对应的那个元素的。切片索引的语法要比单一元素索引灵活得多，开始和结束索引值可以超过字符串的长度。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python学习笔记/">Python学习笔记</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/序列/">序列</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/31/Python学习笔记之序列/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/31/Python学习笔记之序列/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/16/Python数据结构-四/" title="Python数据结构(四)" itemprop="url">Python数据结构(四)</a>
   </h1>
   <p class="article-author">By
@@ -585,214 +928,6 @@ print find_node
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/13/Python数据结构-一/" title="Python数据结构(一)" itemprop="url">Python数据结构(一)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-13T03:03:18.000Z" itemprop="datePublished"> 发表于 2016-01-13</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="u5806_u6808_u7684_u5B9E_u73B0"><a href="#u5806_u6808_u7684_u5B9E_u73B0" class="headerlink" title="堆栈的实现"></a>堆栈的实现</h3><p>堆栈的实现方式主要为“先进后出”，类似于我们清洗饭后的碗碟。</p>
-<h4 id="u6E90_u4EE3_u7801_uFF1A"><a href="#u6E90_u4EE3_u7801_uFF1A" class="headerlink" title="源代码："></a>源代码：</h4><pre><code>class Stack():
-    def __init__(self,size):
-        self.list = []
-        self.size = size
-        self.top = -1
-    def _Full(self):
-        if self.top == self.size - 1:
-            return True
-        else:
-            return False
-    def _Empty(self):
-        if self.top == -1:
-            return True
-        else:
-            return False
-    def instack(self,_list):
-        if self._Full():
-            print &apos;The stack is Full.&apos;
-        else:
-            self.list.append(_list)
-            self.top = self.top + 1
-    def outstack(self):
-        if self._Empty():
-            print &apos;The stack is empty.!&apos;
-        else:
-            self.list.pop()
-            self.top = self.top - 1
-# test
-
-s = Stack(10)
-print s._Full()
-print s._Empty()
-for i in range(10):
-    s.instack(i)
-print s._Full()
-for i in range(10):
-    s.outstack()
-print s._Empty()
-</code></pre><h3 id="u961F_u5217_u7684_u5B9E_u73B0"><a href="#u961F_u5217_u7684_u5B9E_u73B0" class="headerlink" title="队列的实现"></a>队列的实现</h3><p>队列的实现方式主要为“先进先出”，类似于我们生活中排队。</p>
-<h4 id="u6E90_u4EE3_u7801_uFF1A-1"><a href="#u6E90_u4EE3_u7801_uFF1A-1" class="headerlink" title="源代码："></a>源代码：</h4><pre><code>class Queue():
-    def __init__(self,size):
-        self.list = []
-        self.size = size
-        self.front = -1
-        self.rear = -1
-    def _Empty(self):
-        if self.front == self.rear:
-            return True
-        else:
-            return False
-    def _Full(self):
-        if self.rear - self.front + 1 == self.size:
-            return True
-        else:
-            return False
-    def inqueue(self,_list):
-        if self._Full():
-            print &apos;The Queue is full.&apos;
-        else:
-            self.list.append(_list)
-            self.rear = self.rear + 1
-    def outqueue(self):
-        if self._Empty():
-            print &apos;The Queue is empty.&apos;
-        else:
-            self.list.pop()
-            self.front = self.front + 1
-#test
-
-q = Queue(10)
-print q._Empty()
-print q._Full()
-for i in range(10):
-    q.inqueue(i)
-print q._Full()
-for i in range(10):
-    q.outqueue()
-print q._Empty()
-</code></pre><p>堆栈和队列的容器均之所以选择列表list，而不选择元组tuple,主要是因为列表具有可以进行动态修改，元组不允许修改。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/堆栈/">堆栈</a><a href="/tags/队列/">队列</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/13/Python数据结构-一/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/13/Python数据结构-一/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/02/不一样的2016/" title="不一样的2016" itemprop="url">不一样的2016</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-02T02:57:50.000Z" itemprop="datePublished"> 发表于 2016-01-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>2015已经悄然逝去，早已忘却2015年的计划，每一年的开始，我都会满怀信心的写下自己的计划，等到年末的时候，拿出来才发现并没有几个计划如愿以偿地完成，然后，又继续重新欺骗自己，这样的岁月一载又一载，想想就会令人发笑。2016是否会继续下去？我的内心发出“不，我要不一样的2016！”</p>
-<p>唯一值得肯定的就是在2015年，我会保证每月至少读一本书，这样的习惯还算不错的。有人说过，我们生活中碰到的各种各样的问题都会在书中得以找到答案，只要你肯。我想这也是我坚持读书的原因吧。在知乎或者Quora上存在这样一类问题“在20岁的时候，你应该懂得什么?”,”20岁做什么，可以在5年后受益匪浅”，“20岁的时候，学习XX晚不晚？”，我经常想，为什么这类问题会这么多？我想大概是因为在20岁的时候，我们最迷茫，我们不知道接下来的路如何去走下去，而迷茫与困惑的核心原因难道不是对外部环境缺乏规律性的认识？有人说“人生最重要的两天：你出生的那天和你想明白自己为什么出生在这个世界的那天”，我想我们不要急于追寻未知的自己，做好当下的自己，对于那些一直在询问“XX时候学习XX晚不晚”的想法，我想说的是“15岁觉得游泳难，放弃游泳，到18岁遇到一个你喜欢的人约你去游泳，你只好说“我不会耶”。18岁觉得英文难，放弃英文，28岁出现一个很棒但要会英文的工作，你只好说“我不会耶”。人生前期越嫌麻烦，越懒得学，后来就越可能错过让你动心的人和事，错过新风景。”</p>
-<p>2016年，我大三，意味着接下来摆在我面前的将会有两条路，要么考研？要么工作？每一种选择后面都有不一样的人生。人最可悲的事情莫过于欺骗自己，当看见别人的辉煌时，我们总是想象着要是我拥有XX的环境，我也会和他一样，甚至比他优秀。可是，当我们真的拥有一样的环境时，我们会做的更好吗？可能是，也可能不是。我觉得一个人是否成功最重要是是认清自己，认清所处的环境，我们需要去适应环境。每一次，打电话给父母，父母都会劝我读研，我一直含含糊糊地回答这个问题，我知道我一直在逃避，我也不知道我接下来的路该如何走？正如我当初并没有做好上大学的准备，也就这样浑浑噩噩地度过了三年，当考研摆在我面前时，我不想再像三年前不知道如何面对大学的自己一样，我不想把我的青春浪费在无知上，我要为我做出的每一个选择负责，同时，我也要明白自己为什么这样选择。我感觉采铜老师的这份答案蛮不错的，建议每一个迷茫的大学生看看。<a href="https://www.zhihu.com/question/20079854/answer/15158846" title="大学和职场的脱节" target="_blank" rel="external">https://www.zhihu.com/question/20079854/answer/15158846</a></p>
-<p>最后，我希望自己在2016年只要做好两件事就可以了，即读书与反思。<br><img src="http://i.imgur.com/LtOVsT0.jpg" alt=""></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/随笔/">随笔</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/生活/">生活</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/02/不一样的2016/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/02/不一样的2016/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -825,6 +960,10 @@ print q._Empty()
 		
 		  
 			<li><a href="/categories/Python/" title="Python">Python<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>2</sup></a></li>
 		  
 		
 		  
@@ -876,6 +1015,14 @@ print q._Empty()
 				<li><a href="/tags/队列/" title="队列">队列<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/序列/" title="序列">序列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/字符串/" title="字符串">字符串<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -884,7 +1031,7 @@ print q._Empty()
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a>
+      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a>
     </div>
   </div>
 
