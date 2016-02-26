@@ -4,7 +4,7 @@
   <subtitle><![CDATA[只有行动才能证明一切]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://dsljlbaby.github.io/"/>
-  <updated>2016-02-16T03:26:36.891Z</updated>
+  <updated>2016-02-26T10:20:28.072Z</updated>
   <id>http://dsljlbaby.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://dsljlbaby.github.io/2016/02/15/%E9%9B%86%E4%BD%93%E7%BC%96%E7%A8%8B%E6%99%BA%E6%85%A7%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://dsljlbaby.github.io/2016/02/15/集体编程智慧笔记（二）/</id>
     <published>2016-02-15T08:30:54.000Z</published>
-    <updated>2016-02-16T03:26:36.891Z</updated>
+    <updated>2016-02-26T10:20:28.072Z</updated>
     <content type="html"><![CDATA[<p>《集体智慧编程》的第二章“提供推荐”主要讲解如何利用<strong>协作型过滤</strong>技术构建一个根据群体偏好来为人们提供推荐的系统。</p>
 <h1 id="u534F_u4F5C_u578B_u8FC7_u6EE4"><a href="#u534F_u4F5C_u578B_u8FC7_u6EE4" class="headerlink" title="协作型过滤"></a>协作型过滤</h1><p>协作型过滤(collaborative filtering)是David Goldberg 1992年在施乐帕克研究所中心的一篇题为《Using collaborative filtering to weave an information tapestry》的论文中提出的，他设计了一个名为Tapestry的系统，该系统允许人们根据自己对文档感兴趣的程度为其添加标注，并利用这一信息为他人进行文档过滤。</p>
 <p>协作型过滤技术的做法：对一大群人进行搜索，并从其中找出与我们品味相近的一小群人。算法对这些人所偏爱的其它内容进行考察，并将它们组合起来构造出一个经过排名的推荐列表。</p>
@@ -230,7 +230,9 @@ def getRecommendedItems(prefs, itemMatch, user):
     
       <category term="协作型过滤" scheme="http://dsljlbaby.github.io/tags/%E5%8D%8F%E4%BD%9C%E5%9E%8B%E8%BF%87%E6%BB%A4/"/>
     
-      <category term="欧几里德距离，皮尔逊相关系数" scheme="http://dsljlbaby.github.io/tags/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E8%B7%9D%E7%A6%BB%EF%BC%8C%E7%9A%AE%E5%B0%94%E9%80%8A%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/"/>
+      <category term="尔逊相关系数" scheme="http://dsljlbaby.github.io/tags/%E5%B0%94%E9%80%8A%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/"/>
+    
+      <category term="欧几里德距离" scheme="http://dsljlbaby.github.io/tags/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E8%B7%9D%E7%A6%BB/"/>
     
       <category term="Python学习笔记" scheme="http://dsljlbaby.github.io/categories/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
