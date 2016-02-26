@@ -45,7 +45,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Dsljlbaby&#39;s Blog">Dsljlbaby&#39;s Blog</a></h1>
-				<h2 class="blog-motto">只有行动才能说明一切</h2>
+				<h2 class="blog-motto">只有行动才能证明一切</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -80,300 +80,221 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/31/Python学习笔记之字符串/" title="Python学习笔记之字符串" itemprop="url">Python学习笔记之字符串</a>
+      <a href="/2016/02/15/集体编程智慧笔记（二）/" title="集体编程智慧笔记（二）" itemprop="url">集体编程智慧笔记（二）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-31T05:22:45.000Z" itemprop="datePublished"> 发表于 2016-01-31</time>
+    <time datetime="2016-02-15T08:30:54.000Z" itemprop="datePublished"> 发表于 2016-02-15</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>字符串是Python中常见的数据类型，在Python中，可以通过单引号或者双引号来创建字符串，它们的作用是一样的，但在其他编程语言中有所不同，如C语言中使用单引号来创建字符，使用双引号来创建字符串。</p>
-<h1 id="u5B57_u7B26_u4E32"><a href="#u5B57_u7B26_u4E32" class="headerlink" title="字符串"></a>字符串</h1><p>字符串是Python中常见的数据类型，在Python中，可以通过单引号或者双引号来创建字符串，它们的作用是一样的，但在其他编程语言中有所不同，如C语言中使用单引号来创建字符，使用双引号来创建字符串。字符串是一种不可变的序列，而列表属于一种可变的序列，元组和字符串一样也是一种不可变的序列。字符串是由独立的字符构成的，我们可以通过切片操作顺序地访问。</p>
-<h2 id="u5B57_u7B26_u4E32_u7684_u521B_u5EFA"><a href="#u5B57_u7B26_u4E32_u7684_u521B_u5EFA" class="headerlink" title="字符串的创建"></a>字符串的创建</h2><p>我们可以使用单引号或者双引号来创建一个新的字符串，还可以使用str()将任何一种类型的数据转换成字符串。</p>
-<pre><code>string1 = &quot;Hello,Word!&quot;  # 使用双引号
-string2 = &apos;Python is good!&apos;  # 使用单引号
-string3 = str(range(10))  # 使用str()
-</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u8BBF_u95EE"><a href="#u5B57_u7B26_u4E32_u7684_u8BBF_u95EE" class="headerlink" title="字符串的访问"></a>字符串的访问</h2><p>我们通常使用操作符string[index]、切片操作符string[start_index:end_index]和string[start_index:end_index:num]来对一个字符串的访问。</p>
-<pre><code>string2 = &apos;Python is good!&apos;
-print string2[3]
-print string2[2:9]
-print string2[2:9:2]
-</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u4FEE_u6539"><a href="#u5B57_u7B26_u4E32_u7684_u4FEE_u6539" class="headerlink" title="字符串的修改"></a>字符串的修改</h2><p>字符串是一种不可变的序列，我们无法对一个字符串的某个元素进行修改或者删除，我们只能通过创建新的字符串来修改它。我们可以使用赋一个空字符串或者使用del语句进行删除一个字符串。</p>
-<pre><code>string1 = &quot;Hello,Word!&quot;
-string1 = &apos; &apos;  # 使用空字符串
-del string1   #使用del语句
-</code></pre><h2 id="u5B57_u7B26_u4E32_u7684_u8FD0_u7B97"><a href="#u5B57_u7B26_u4E32_u7684_u8FD0_u7B97" class="headerlink" title="字符串的运算"></a>字符串的运算</h2><p>我们可以使用标准类型操作符(&lt;,&gt;,&lt;=,&gt;=,!=,==,and,not,or)对两个字符串进行逻辑运算，得到的将会是一个布尔值True/False。</p>
-<pre><code>&gt;&gt;&gt; str1 = &apos;abc&apos;
-&gt;&gt;&gt; str2 = &apos;xyz&apos;
-&gt;&gt;&gt; str3 = &apos;ABC&apos;
-&gt;&gt;&gt; str1 == str3  
-False
-&gt;&gt;&gt; str1 &lt; str2 and str1 == str3
-False
-&gt;&gt;&gt; str1 &gt; str3
-True
-</code></pre><p>注意：在做比较操作时，字符串是按照ASCII值的大小进行比较的</p>
-<h2 id="u5B57_u7B26_u4E32_u7C7B_u578B_u64CD_u4F5C_u7B26"><a href="#u5B57_u7B26_u4E32_u7C7B_u578B_u64CD_u4F5C_u7B26" class="headerlink" title="字符串类型操作符"></a>字符串类型操作符</h2><p>因为字符串是属于序列的一类，所以序列中常见的操作符（成员关系操作符（in 、not in）、连接操作符（+）、重复操作符（*）、切片操作符（[]、[:]、[::]））都适用于字符串。</p>
-<h3 id="u539F_u59CB_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08r/R_uFF09"><a href="#u539F_u59CB_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08r/R_uFF09" class="headerlink" title="原始字符串操作符（r/R）"></a>原始字符串操作符（r/R）</h3><p>在原始字符串里，所有的字符串都是按照字面的意思来使用的，没有转义特殊或者不能打印的字符，这种表现方式很方便我们对程序的调试和正则表达式的创建。</p>
-<pre><code>&gt;&gt;&gt; &apos;\n&apos;
-&apos;\n&apos;
-&gt;&gt;&gt; r&apos;\n&apos;
-&apos;\\n&apos;
-&gt;&gt;&gt; print &apos;\n&apos; # 下面之出现两个空行，是因为除了换行符之外，print还存在一个换行符
+        <p>《集体智慧编程》的第二章“提供推荐”主要讲解如何利用<strong>协作型过滤</strong>技术构建一个根据群体偏好来为人们提供推荐的系统。</p>
+<h1 id="u534F_u4F5C_u578B_u8FC7_u6EE4"><a href="#u534F_u4F5C_u578B_u8FC7_u6EE4" class="headerlink" title="协作型过滤"></a>协作型过滤</h1><p>协作型过滤(collaborative filtering)是David Goldberg 1992年在施乐帕克研究所中心的一篇题为《Using collaborative filtering to weave an information tapestry》的论文中提出的，他设计了一个名为Tapestry的系统，该系统允许人们根据自己对文档感兴趣的程度为其添加标注，并利用这一信息为他人进行文档过滤。</p>
+<p>协作型过滤技术的做法：对一大群人进行搜索，并从其中找出与我们品味相近的一小群人。算法对这些人所偏爱的其它内容进行考察，并将它们组合起来构造出一个经过排名的推荐列表。</p>
+<p>协作型过滤技术要考虑的两个重点：一是寻找一个表达不同人及其偏好的方法；二是确定人们在品味方面的相似程度。</p>
+<h2 id="u641C_u7D22_u504F_u597D"><a href="#u641C_u7D22_u504F_u597D" class="headerlink" title="搜索偏好"></a>搜索偏好</h2><p>如果我们要做一个影片观赏推荐系统，第一步应该是寻找一个表达不同人及其偏好的方法，而在Python中，实现这一目的的方法是构建一个<em>嵌套字典</em>。下面示例构建了一个涉及影评者及评分情况的字典，影评者对电影的喜爱程度用０－５表示，５表示喜爱程度最高，０表示喜爱程度最低。</p>
+<pre><code>#　一个涉及影评者及评分情况的字典
+critics = {
+       &apos;Lisa Rose&apos;:{&apos;Lady in the Water&apos;:2.5,&apos;Snakes on the a Plane&apos;:3.5,&apos;Just My Luck&apos;:3.0,&apos;Superman Returns&apos;:3.5,&apos;You, Me and Durpree&apos;:2.5,&apos;The Night Listener&apos;:3.0},
+       &apos;Gene Seymour&apos;:{&apos;Lady in the Water&apos;:3.0,&apos;Snakes on the a Plane&apos;:3.5,&apos;Just My Luck&apos;:1.5,&apos;Superman Returns&apos;:5.0,&apos;You, Me and Durpree&apos;:3.5,&apos;The Night Listener&apos;:3.0},
+       &apos;Michael Phillips&apos;:{&apos;Lady in the Water&apos;:2.5,&apos;Snakes on the a Plane&apos;:3.0,&apos;Superman Returns&apos;:3.5,&apos;The Night Listener&apos;:4.0},
+       &apos;Claudia Puig&apos;:{&apos;Snakes on the a Plane&apos;:3.5,&apos;Just My Luck&apos;:3.0,&apos;Superman Returns&apos;:4.0,&apos;You, Me and Durpree&apos;:2.5,&apos;The Night Listener&apos;:4.5},
+       &apos;Mick LaSallpe&apos;:{&apos;Lady in the Water&apos;:3.0,&apos;Snakes on the a Plane&apos;:4.0,&apos;Just My Luck&apos;:2.0,&apos;Superman Returns&apos;:3.0,&apos;You, Me and Durpree&apos;:2.0,&apos;The Night Listener&apos;:3.0},
+       &apos;Jack Matthews&apos;:{&apos;Lady in the Water&apos;:3.0,&apos;Snakes on the a Plane&apos;:4.0,&apos;Superman Returns&apos;:5.0,&apos;You, Me and Durpree&apos;:3.5,&apos;The Night Listener&apos;:3.0},
+       &apos;Toby&apos;:{&apos;Snakes on the a Plane&apos;:4.5,&apos;Superman Returns&apos;:4.0,&apos;You, Me and Durpree&apos;:1.0}
+       }
+</code></pre><h2 id="u786E_u5B9A_u76F8_u4F3C_u5EA6"><a href="#u786E_u5B9A_u76F8_u4F3C_u5EA6" class="headerlink" title="确定相似度"></a>确定相似度</h2><p>在搜集完人们的偏好数据之后，我们接下来要对这些数据进行处理，即计算人们在品味方面的相似度评价值。我们采用两种计算相似度评价值的算法：<strong>欧几里德距离</strong>和<strong>皮尔逊相关度</strong>。</p>
+<h3 id="u6B27_u51E0_u91CC_u5FB7_u8DDD_u79BB_u8BC4_u4EF7"><a href="#u6B27_u51E0_u91CC_u5FB7_u8DDD_u79BB_u8BC4_u4EF7" class="headerlink" title="欧几里德距离评价"></a>欧几里德距离评价</h3><p>欧几里德距离是指多维空间中两点间的距离。</p>
+<p>算法实现：</p>
+<pre><code>def euclidean(p, q):
+    sumSq = 0.0
+    # 将差值的平方累加
+    for i in range(len(p)):
+        sumSq += (p[i]-q[i])**2
+    # 求平方根
+    return (sumSq**0.5)
+</code></pre><p>如果两个人的兴趣偏好越接近，则它们的欧几里德距离越短。</p>
+<p>假设两个人的兴趣偏好完全相同，它们的欧几里德距离则为零。而我们想要定义一个函数，来对偏好越相近的情况给出越大的值(取倒数)，为了避免除零错误，我们需要对欧几里德计算出的函数值加一，然后对其取倒数。</p>
+<p>函数实现：</p>
+<pre><code>from math import sqrt
 
+# 基于欧几里得距离的相似度计算
+def sim_distance(prefs,person1,person2):
+    si = {}
+    for item in prefs[person1]:
+        if item in prefs[person2]:
+            si[item] = 1
 
-&gt;&gt;&gt; print r&apos;\n&apos; # 打印换行符，不对其进行转义
-\n
-</code></pre><h3 id="Unicode_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08u/U_uFF09"><a href="#Unicode_u5B57_u7B26_u4E32_u64CD_u4F5C_u7B26_uFF08u/U_uFF09" class="headerlink" title="Unicode字符串操作符（u/U）"></a>Unicode字符串操作符（u/U）</h3><p>Unicode字符串操作符是用来把标准字符串转化成Unicode字符串对象的。</p>
-<h4 id="Unicode_u7684_u7B80_u5355_u4E86_u89E3"><a href="#Unicode_u7684_u7B80_u5355_u4E86_u89E3" class="headerlink" title="Unicode的简单了解"></a>Unicode的简单了解</h4><p>起初，我们计算机编码是采用ASCII编码，ASCII码虽然简单，但是可用范围小（32-126），每个英文字符都是以7位二进制的方式储存在计算机中的，尽管后来，软件厂商将ASCII码拓展为8位的，但是面对成千上万的非欧洲语系的语言来说仍然很少。Unicode通过使用一个或者多个字节来表示一个字符的方法实现了可以超过90000个字符的表示。<br>Python中内建函数str()和char()只能处理常规的ASCII编码字符串。如果一个Unicode字符串作为参数传给str()函数，它首先会转换成为ASCII字符串然后进行操作，如果超过了它的处理范围就会出错。针对Unicode出现的unicode()和unichar()表现出更强大的处理功能。<br>Unicode支持多种编码格式。</p>
-<h4 id="u5185_u5EFA_u7684decode_28_29/encode_28_29_u65B9_u6CD5"><a href="#u5185_u5EFA_u7684decode_28_29/encode_28_29_u65B9_u6CD5" class="headerlink" title="内建的decode()/encode()方法"></a>内建的decode()/encode()方法</h4><p>decode()和encode()内建函数接收一个字符串做参数返回该字符串对应的编码后/解码后的字符串<br>下面的代码创建了一个Unicode字符串，用UTF-8编码器将它编码，然后写入一个文件，接着把数据从文件中读取出来，解码成Unicode字符串对象，最后打印出来。</p>
-<pre><code>CODEC = &apos;utf-8&apos;  # 8位UTF转化格式（无符号字节序列，长度为1-4字节）
-filename = &apos;unicode.txt&apos;
-hello_out = u&apos;Hello,World!&apos;
-bytes_out = hello_out.encode(CODEC)
-f = open(filename,&apos;w&apos;)
-f.write(bytes_out)
-f.close()
+    # 如果两者没有共同之处，返回0
+    if len(si) == 0:
+        return 0
 
-f = open(filename)
-bytes_in = f.read()
-f.close()
-hello_in = bytes_in.decode(CODEC)
-print hello_in
-</code></pre><h3 id="u5185_u5EFA_u51FD_u6570"><a href="#u5185_u5EFA_u51FD_u6570" class="headerlink" title="内建函数"></a>内建函数</h3><h4 id="u6807_u51C6_u7C7B_u578B_u51FD_u6570"><a href="#u6807_u51C6_u7C7B_u578B_u51FD_u6570" class="headerlink" title="标准类型函数"></a>标准类型函数</h4><p>cmp()和比较操作符相似，根据字符串的ASCII码值进行比较,当两个字符床相等时，返回0,大于时返回1，小于时返回-1.</p>
-<pre><code>&gt;&gt;&gt; str1 = &apos;abc&apos;
-&gt;&gt;&gt; str2 = &apos;ABC&apos;
-&gt;&gt;&gt; str3 = &apos;xyz&apos;
-&gt;&gt;&gt; cmp(str1,str2)
-1
-&gt;&gt;&gt; cmp(str2,str3)
--1
-&gt;&gt;&gt; cmp(str1,&apos;abc&apos;)
-0
-</code></pre><h4 id="u5E8F_u5217_u7C7B_u578B_u51FD_u6570"><a href="#u5E8F_u5217_u7C7B_u578B_u51FD_u6570" class="headerlink" title="序列类型函数"></a>序列类型函数</h4><p>len()返回一个字符串的字符数。<br>max()返回一个字符串的最大字符。<br>min()返回一个字符串的最小字符。<br>enumerate()将一个字符串转化成字典形式。</p>
-<pre><code>&gt;&gt;&gt; str1 = &apos;foobar&apos;
-&gt;&gt;&gt; len(str1)
-6
-&gt;&gt;&gt; max(str1)
-&apos;r&apos;
-&gt;&gt;&gt; min(str1)
-&apos;a&apos;
-&gt;&gt;&gt; for key,value in enumerate(str1):
-    print key,value
+    # 计算所有差值的平方和
+    sum_of_squares = sum ([pow(prefs[person1][item] - prefs[person2][item],2) for item in prefs[person1] if item in prefs[person2]])
+    return 1 / (1 + sqrt(sum_of_squares))
+</code></pre><h3 id="u76AE_u5C14_u900A_u76F8_u5173_u7CFB_u6570_u8BC4_u4EF7"><a href="#u76AE_u5C14_u900A_u76F8_u5173_u7CFB_u6570_u8BC4_u4EF7" class="headerlink" title="皮尔逊相关系数评价"></a>皮尔逊相关系数评价</h3><p>皮尔逊相关系数是一种度量两个变量间相关程度的方法。它是一个介于1和-1之间的值。其中1表示变量完全正相关，0表示无关，-1表示完全负相关。</p>
+<p>该相关系数是判断两组数据与某一直线拟合程度的一种度量。它在数据不是很规范时，会倾于给出更好地结果</p>
+<p>算法实现：</p>
+<pre><code>def person(x, y):
+    n = len(x)
+    vals = range(n)
+    # 简单求和
+    sumx = sum(float(x[i]) for i in vals)
+    sumy = sum(float(x[i]) for i in vals)
+    # 求平方和
+    sumxSq = sum(x[i]**2.0 for i in vals)
+    sumySq = sum(y[i]**2.0 for i in vals)
+    #求乘积之和
+    pSum = sum(x[i]*y[i] fpr i in vals)
+    #计算皮尔逊评价值
+    num = pSum - (sumx * sumy / n)
+    den = ((sumxSq- pow(sumx, 2) / n) * (sumySq - pow(sumy, 2) / 2)) ** 0.5
 
-0 f
-1 o
-2 o
-3 b
-4 a
-5 r
-</code></pre><h4 id="u5B57_u7B26_u4E32_u7C7B_u578B_u51FD_u6570"><a href="#u5B57_u7B26_u4E32_u7C7B_u578B_u51FD_u6570" class="headerlink" title="字符串类型函数"></a>字符串类型函数</h4><p>raw_input()函数使用给定字符串提示用户输入并将这个输入返回。</p>
-<pre><code>&gt;&gt;&gt; username = raw_input(&quot;Please enter your name:&quot;)
-Please enter your name:Joe
-&gt;&gt;&gt; print &quot;Hello,%s&quot; % username
-Hello,Joe
-</code></pre><p>str()和unicode()函数都可以接受一个任意类型的对象，然后创建该对象的可打印的或Unicode的字符串表示。str()函数将接收的对象首先转化成ASCII码，然后对其操作。它们都可以作为参数传给isinstance()函数来判断一个对象的类型。</p>
-<pre><code>&gt;&gt;&gt; isinstance(u&apos;\0xAB&apos;,str)
-False
-&gt;&gt;&gt; isinstance(&apos;foobar&apos;,str)
-True
-&gt;&gt;&gt; isinstance(u&apos;\0xAB&apos;,unicode)
-True
-&gt;&gt;&gt; isinstance(&apos;foobar&apos;,unicode)
-False
-</code></pre><p>chr()函数用于一个范围在0-255内的整数作为参数，返回对应的字符。<br>unichr()函数和chr()函数类似，只不过返回的是Unicode字符。<br>ord()函数以一个字符作为参数，返回对应的ASCII数值或者Unicode数值。</p>
-<pre><code>&gt;&gt;&gt; chr(65)
-&apos;A&apos;
-&gt;&gt;&gt; ord(&apos;A&apos;)
-65
-&gt;&gt;&gt; unichr(1234)
-u&apos;\u04d2&apos;
-&gt;&gt;&gt; ord(u&apos;\u04d2&apos;)
-1234
-</code></pre><h3 id="u5B57_u7B26_u4E32_u5185_u5EFA_u51FD_u6570"><a href="#u5B57_u7B26_u4E32_u5185_u5EFA_u51FD_u6570" class="headerlink" title="字符串内建函数"></a>字符串内建函数</h3><ul>
-<li>string.count(str,beg=0,end=len(string)) 返回str在字符串string中出现的次数</li>
-<li>string.find(str,beg=0,end=len(string)) 检测str是否存在字符串string中，存在返回索引值，否则返回-1</li>
-<li>string.isalnum() 判断字符串中是否全部为数字或字母</li>
-<li>string.isalpha() 判断字符串中是否全部为字母</li>
-<li>string.islower() 判断字符串中是否全部为小写字母</li>
-<li>string.isupper() 判断字符串中是否全部为大写字母</li>
-<li>string.join(seq) 以string作为分隔符，将seq中所有的元素（字符串表示）合并成新的字符串</li>
-<li>string.lower() 将字符串中的大写字母全部转成小写字母</li>
-<li>string.upper() 将字符串中的小写字母全部转成大写字母</li>
-<li>string.strip() 删除字符串中的空格，与string.lstrip()、strng.rstrip()相似</li>
-</ul>
-<p>代码：</p>
-<pre><code>&gt;&gt;&gt; string1 = &apos;Python&apos;
-&gt;&gt;&gt; string2 = &apos;Python2.7&apos;
-&gt;&gt;&gt; string3 = &apos;123&apos;
-&gt;&gt;&gt; string4 = &apos;Python is cool!&apos;
-&gt;&gt;&gt; string4.count(&apos;o&apos;)
-3
-&gt;&gt;&gt; string4.find(&apos;Python&apos;)
-0
-&gt;&gt;&gt; string3.find(&apos;Python&apos;)
--1
-&gt;&gt;&gt; string1.isalnum()
-True
-&gt;&gt;&gt; string2.isalnum()
-False
-&gt;&gt;&gt; string3.isalnum()
-True
-&gt;&gt;&gt; string1.isalpha()
-True
-&gt;&gt;&gt; string3.isalpha()
-False
-&gt;&gt;&gt; string1.islower()
-False
-&gt;&gt;&gt; string2.isupper()
-False
-&gt;&gt;&gt; string1.join(string3)
-&apos;1Python2Python3&apos;
-&gt;&gt;&gt; string3.join(string1)
-&apos;P123y123t123h123o123n&apos;
-&gt;&gt;&gt; string1.lower()
-&apos;python&apos;
-&gt;&gt;&gt; string1.lower().islower()
-True
-&gt;&gt;&gt; string1.upper()
-&apos;PYTHON&apos;
-&gt;&gt;&gt; string1.upper().isupper()
-True
-&gt;&gt;&gt; string4.strip()
-&apos;Python is cool!&apos;
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    if den ==0:
+        return 1
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python学习笔记/">Python学习笔记</a>
-</div>
+    r = num / den
+    return r
+</code></pre><p>相比于欧几里德距离评价算法，皮尔逊相关系数评价可以修正“夸大分值”的情况。比如:对于电影的影片来说。如果某人总是倾于给出比另一个人更好地分值，而两者的分值之差又始终保持一致，则他们仍旧存在很好的相关性，但是，欧几里德距离评价会因为一个人的评价始终比另一个人的高，而得出两者不相近的结论。</p>
+<p>函数实现：</p>
+<pre><code># 基于皮尔逊相关系数的相似度计算
+def sim_person(prefs,person1,person2):
+    si = {}
+    for item in prefs[person1]:
+        if item in prefs[person2]:
+            si[item] = 1
 
+    n = len(si)
+    if n == 0:
+        return 1
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/字符串/">字符串</a>
-  </div>
+    sum1 = sum([prefs[person1][item] for item in si])
+    sum2 = sum([prefs[person2][item] for item in si])
 
-</div>
+    sum1_sqrt = sum([pow(prefs[person1][item],2) for item in si])
+    sum2_sqrt = sum([pow(prefs[person2][item],2) for item in si])
 
+    pSum = sum([prefs[person1][item] * prefs[person2][item] for item in si])
 
+    # 计算皮尔逊相关系数值
+    num = pSum - (sum1 * sum2 / n)
+    den = sqrt((sum1_sqrt - pow(sum1,2) / n) * (sum2_sqrt - pow(sum2,2) / n))
+    if den == 0:
+        return 0
+    return num / den
+</code></pre><h2 id="u76F8_u4F3C_u5EA6_u5EA6_u91CF_u65B9_u6CD5_u7684_u9009_u62E9"><a href="#u76F8_u4F3C_u5EA6_u5EA6_u91CF_u65B9_u6CD5_u7684_u9009_u62E9" class="headerlink" title="相似度度量方法的选择"></a>相似度度量方法的选择</h2><p>我们已经介绍了两种不同的度量方法，实际上，还有更多的度量方法可以衡量两组数据的相似程度。使用哪一种方法，取决于具体的应用。</p>
+<p>而作为相似度计算函数，需要他们满足如下条件：拥有同样地函数签名，以一个浮点数作为返回值，其数值越大代表相似度越近。</p>
+<h3 id="u504F_u597D_u8005_u6392_u5E8F"><a href="#u504F_u597D_u8005_u6392_u5E8F" class="headerlink" title="偏好者排序"></a>偏好者排序</h3><p>我们已经有了对两个人进行相似度计算的算法，下面我们需要对这些与我们偏好相近的人进行排序，找出与我们相似度最高的人，这样我们就可以在选择时采纳他的建议。</p>
+<pre><code># 寻找与自己有相似品味的影评者
+def topMatches(prefs,person,n=5,similarity=sim_person):
+    scores= [(similarity(prefs,person,other),other) for other in prefs if other != person]
 
+    # 对列表排序
+    scores.sort()
+    scores.reverse()
+    return scores[0:n]
+</code></pre><h3 id="u63A8_u8350_u7269_u54C1"><a href="#u63A8_u8350_u7269_u54C1" class="headerlink" title="推荐物品"></a>推荐物品</h3><p>我们找到一个趣味相投的人固然不错，但是在生活中，我们往往需要的不止这个，我们还需要一个真正的物品推荐清单。虽然我们可以从与自己趣味相投的人的物品清单寻找自己满意的物品，但是如果他尚未体验某些物品，而这些物品当中或许有我们喜欢的，那岂不是错过了。</p>
+<p>为此，我们可以通过一个经过加权的评价值来为物品打分，然后根据分数的高低去选择性的挑选商品。</p>
+<p>相应地，在这个影片推荐的实现系统中，我们的实现步骤：</p>
+<ol>
+<li>取得所有影评者与自己的相似度</li>
+<li>相似度*他们为每部影片的评价值</li>
+<li>分别计算他们的每部影片相似度*评价值的总分</li>
+<li>总分/相似度之和</li>
+<li>对计算结果排序</li>
+</ol>
+<p>函数实现：</p>
+<pre><code># 利用其它评论者的评论值加权平均值，为某人推荐物品
+def getRecommendations(prefs,person,similarity=sim_person):
+    totals = {}
+    simSums = {}
+    for other in prefs:
+        if other == person:
+            continue
+        sim = similarity(prefs,person,other)
 
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/31/Python学习笔记之字符串/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/31/Python学习笔记之字符串/" data-count-type="comments">&nbsp;</a>
-	
-</div>
+        if sim &lt;= 0:
+            continue
+        for item in prefs[other]:
+            # 只对某人没有看过的影片进行评价
+            if item not in prefs[person] or prefs[person][item] == 0:
+                totals.setdefault(item,0)
+                totals[item] += prefs[other][item] * sim
+                simSums.setdefault(item,0)
+                simSums[item] += sim
 
-</footer>
+    # 建立一个归一化的列表
+    rankings = [(total / simSums[item],item) for item,total in totals.items()]
 
+    rankings.sort()
+    rankings.reverse()
+    return rankings
+</code></pre><h2 id="u5339_u914D_u5546_u54C1"><a href="#u5339_u914D_u5546_u54C1" class="headerlink" title="匹配商品"></a>匹配商品</h2><p>现在，我们已经知道了如何为指定人员寻找品味相近者，以及如何向其推荐商品的方法，但是如果我们想了解哪些商品是彼此相近的，那又该如何？</p>
+<p>在这种情况下，我们可以通过查看哪些人喜欢某一特定物品，以及这些人喜欢哪些其他物品来决定相似度。事实上，只要我们将人员与物品对换，然后利用前面的人与人之间相似度计算方法就可以得到。</p>
+<p>转化函数实现：</p>
+<pre><code># 将人员与物品调换
+def transformPrefs(prefs):
+    result = {}
+    for person in prefs:
+        for item in prefs[person]:
+            result.setdefault(item, {})
 
-    </article>
+            result[item][person] = prefs[person][item]
+    return result
+</code></pre><h3 id="u6784_u5EFA_u6570_u636E_u96C6"><a href="#u6784_u5EFA_u6570_u636E_u96C6" class="headerlink" title="构建数据集"></a>构建数据集</h3><p>为了对物品进行比较，我们需要构造一个包含相近物品的完整数据集。构建完一次后，我们在需要的时候可以反复使用它。</p>
+<p>函数实现：</p>
+<pre><code># 构建物品比较数据集
+def calculateSimilarItems(prefs, n =10):
+    result = {} # 建立字典，给出与这些物品相近的其他物品
 
+    # 以物品为中心对偏好矩阵实施倒置处理
+    itemPrefs = transformPrefs(prefs)
+    c = 0
+    for item in itemPrefs:
+        # 针对大数据集更新状态变量
+        c += 1
+        if c % 100 == 0:
+            print &quot;%d / %d&quot; % (c, len(itemPrefs))
+        # 寻找相近的物品
+        scores = topMatches(itemPrefs, item, n=n, similarity = sim_distance)
+        result[item] = socres
+    return result
+</code></pre><p>这个函数利用之前定义的transformPrefs函数，对反映评价值的字典进行倒置，得到一个关于物品及其用户评价情况的列表。然后，程序遍历每项物品，并将转换了的字典传入topMatches函数，求得最为相近的物品及其相似度评价值。最后，返回一个包含物品及其相近物品列表的字典。</p>
+<h3 id="u83B7_u5F97_u63A8_u8350"><a href="#u83B7_u5F97_u63A8_u8350" class="headerlink" title="获得推荐"></a>获得推荐</h3><p>函数getRecommendedItems实现基于物品寻找推荐的过程,与之前的getRecommendations函数实现算法基本相似。</p>
+<p>函数实现：</p>
+<pre><code># 基于物品的推荐
+def getRecommendedItems(prefs, itemMatch, user):
+    userRatings = prefs[user]
+    scores = {}
+    totalSim = {}
 
+    # 循环遍历由当前用户评分的物品
+    for (item, rating) in userRatings.items():
+        # 循环遍历与当前物品相近的物品
+        for (similarity, item2) in itemMatch[item]:
+            # 如果该用户对当前物品做过评价，则忽略
+            if item2 in userRatings:
+                continue
+            # 评价值与相似度的加权之和
+            scores.setdefault(item2, 0)
+            scores[item2] += similarity * rating
+            # 全部相似度之和
+            totalSim.setdefault(item2, 0)
+            totalSim[item2] += similarity
+    # 求出加权平均值
+    rankings = [(score / totalSim[item], item) for item, score in scores.items()]
 
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/31/Python学习笔记之序列/" title="Python学习笔记之序列" itemprop="url">Python学习笔记之序列</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-31T02:59:45.000Z" itemprop="datePublished"> 发表于 2016-01-31</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p> 在Python数据类型中，我们经常会接触到这样一种数据类型，它们的成员是<em>有序排列</em>的，并且能够通过下标偏移量可以访问它的具体的成员，这种Python类型统称为<strong>序列</strong>，序列主要包括<em>字符串、列表和元组</em>。</p>
-<h1 id="u5E8F_u5217"><a href="#u5E8F_u5217" class="headerlink" title="序列"></a>序列</h1><p>序列：一种有序排列的、可以通过下标偏移量进行访问的数据类型。下标偏移量是从0开始到总元素数-1，这种访问形式和我们C语言中的数组的访问形式相同。</p>
-<h2 id="u5E8F_u5217_u7C7B_u578B_u64CD_u4F5C_u7B26"><a href="#u5E8F_u5217_u7C7B_u578B_u64CD_u4F5C_u7B26" class="headerlink" title="序列类型操作符"></a>序列类型操作符</h2><p>序列类型操作符主要分为成员关系操作符（in 、not in）、连接操作符（+）、重复操作符（*）、切片操作符（[]、[:]、[::]）</p>
-<h3 id="u6210_u5458_u5173_u7CFB_u64CD_u4F5C_u7B26_uFF08in_u3001not_in_uFF09"><a href="#u6210_u5458_u5173_u7CFB_u64CD_u4F5C_u7B26_uFF08in_u3001not_in_uFF09" class="headerlink" title="成员关系操作符（in、not in）"></a>成员关系操作符（in、not in）</h3><p>成员关系操作符主要是用来判断一个元素是否属于一个序列的。in/not in操作符的返回值一般来讲是一个布尔值False/True。满足成员关系就返回True，否则返回False。</p>
-<p>对象 [not] in 序列</p>
-<pre><code>seq = &quot;Hello&quot; # 字符串
-&apos;H&apos; in seq  True
-
-number = (1,2,3,4,5) # 元组
-2 not in number  False 
-</code></pre><h3 id="u8FDE_u63A5_u64CD_u4F5C_u7B26_uFF08+_uFF09"><a href="#u8FDE_u63A5_u64CD_u4F5C_u7B26_uFF08+_uFF09" class="headerlink" title="连接操作符（+）"></a>连接操作符（+）</h3><p>通过这个操作符，我们可以简单地把两个相同类型的序列连接成一个新的序列。</p>
-<p>sequeue = sequeue1 + sequeue2</p>
-<p>注意：这种操作虽然简单，但是比较占用内存，尽量少使用。</p>
-<pre><code>sequeue1 = &quot;Hello&quot;
-sequeue2 = &quot; Word!&quot;
-sequeue = sequeue1 + sequeue2
-print sequeue
-</code></pre><h3 id="u91CD_u590D_u64CD_u4F5C_u7B26_uFF08*_uFF09"><a href="#u91CD_u590D_u64CD_u4F5C_u7B26_uFF08*_uFF09" class="headerlink" title="重复操作符（*）"></a>重复操作符（*）</h3><p>如果我们需要一个序列的多份拷贝时，这种操作符比较有用。</p>
-<p>sequeue * copy_num</p>
-<pre><code># 使用它来做分割线
-sequeue = _
-sequeue = sequeue * 6
-print sequeue 
-</code></pre><h3 id="u64CD_u4F5C_u7B26_uFF08_5B_5D_u3001_5B_3A_5D_u3001_5B_3A_3A_5D_uFF09"><a href="#u64CD_u4F5C_u7B26_uFF08_5B_5D_u3001_5B_3A_5D_u3001_5B_3A_3A_5D_uFF09" class="headerlink" title="操作符（[]、[:]、[::]）"></a>操作符（[]、[:]、[::]）</h3><p>序列类型就是包含一些顺序排列的对象的一个结构。我们可以使用[]加下标偏移量来访问一个元素或者[start_index:end_index]访问连续的几个元素或使用[start_index:end_index:num]来间隔num个元素访问序列。</p>
-<h4 id="u64CD_u4F5C_u7B26_5B_5D"><a href="#u64CD_u4F5C_u7B26_5B_5D" class="headerlink" title="操作符[]"></a>操作符[]</h4><p>使用这种操作符只能访问一个元素。</p>
-<p>sequeue[index]</p>
-<p>注意：index是想要访问元素的下标偏移量，偏移量既可以为正，也可以为负。它们的区别在于正索引以序列的开始为起点，负索引是以序列的结束为起点。在使用过程尽量避免访问一个越界的索引，它会引发异常。 </p>
-<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
-print names[0] 
-
-print names[6] # 这是一个越界的索引
-Traceback (most recent call last):
-   File &quot;&lt;pyshell#1&gt;&quot;, line 1, in &lt;module&gt;
-     print names[6]
-IndexError: list index out of range
-</code></pre><h4 id="u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_5D"><a href="#u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_5D" class="headerlink" title="切片操作符[:]"></a>切片操作符[:]</h4><p>当我们需要同时获取多个元素时，操作符[]就有点力不从心了，虽然它可以实现，但是代码太丑陋了，所以我们就得寻找新的操作符[:]来解决问题。</p>
-<p>sequeue[start_index:end_index]</p>
-<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
-print names[2:4]
-# result
-[&apos;Faye&apos;,&apos;Ammy&apos;]
-</code></pre><p>如果我们没有提供任何的起始索引和结束索引，它就会访问整个序列。</p>
-<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
-# 这种方法和names[0:6]是一样的结果
-print names[:]  
-# result
-[&apos;Dava&apos;, &apos;Joe&apos;, &apos;Faye&apos;, &apos;Ammy&apos;, &apos;Frakle&apos;, &apos;Talor&apos;]
-</code></pre><p>如果我们只是提过起始索引或者结束索引，如果我们只提供起始索引，它会返回从起始索引到index-1的所有元素，如果我们只提供结束索引，它会返回从索引为0到结束索引的元素。</p>
-<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
-# 我们只给了起始索引
-print names[2:]
-# result
-[&apos;Faye&apos;, &apos;Ammy&apos;, &apos;Frakle&apos;, &apos;Talor&apos;]
-# 我们只给了结束索引
-print names[:3]
-# result
-[&apos;Dava&apos;, &apos;Joe&apos;, &apos;Faye&apos;]
-</code></pre><h4 id="u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_3A_5D"><a href="#u5207_u7247_u64CD_u4F5C_u7B26_5B_3A_3A_5D" class="headerlink" title="切片操作符[::]"></a>切片操作符[::]</h4><p>操作符[::]比操作符[:]多出来的第三个索引值是用做步长参数的，它和range()里面的步长参数功能相似。</p>
-<p>[start_index:end_index:num]</p>
-<pre><code>names = [&apos;Dava&apos;,&apos;Joe&apos;,&apos;Faye&apos;,&apos;Ammy&apos;,&apos;Frakle&apos;,&apos;Talor&apos;]
-# 隔一个取一个
-print names[2:6:2] 
-# result
-[&apos;Faye&apos;, &apos;Frakle&apos;]
-</code></pre><p>注意：在序列的操作过程中，我们的打印结果是不包括结束索引所对应的那个元素的。切片索引的语法要比单一元素索引灵活得多，开始和结束索引值可以超过字符串的长度。</p>
+    # 对评分结果排序并返回
+    rankings.sort()
+    rankings.reverse()
+    return rankings
+</code></pre><h1 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h1><p>对于稀疏数据集，基于物品的过滤方法通常要优于基于用户的过滤方法，而对于密集数据集而言，两者的效果几乎一样。基于用户的过滤方法更易于实现，无需额外的步骤，所以它通常更适用于规模较小的变化非常频繁的内存数据集。</p>
+<p>现在，我们学会了如何计算相似度评价值，以及如何利用他们对用户和物品进行比较。</p>
 
         
         
@@ -392,7 +313,7 @@ print names[2:6:2]
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/序列/">序列</a>
+  <span></span> <a href="/tags/协作型过滤/">协作型过滤</a><a href="/tags/欧几里德距离，皮尔逊相关系数/">欧几里德距离，皮尔逊相关系数</a>
   </div>
 
 </div>
@@ -403,518 +324,7 @@ print names[2:6:2]
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2016/01/31/Python学习笔记之序列/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/31/Python学习笔记之序列/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/16/Python数据结构-四/" title="Python数据结构(四)" itemprop="url">Python数据结构(四)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-16T02:10:58.000Z" itemprop="datePublished"> 发表于 2016-01-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="u56FE"><a href="#u56FE" class="headerlink" title="图"></a>图</h2><p>图是由边或者弧连接起来的节点的网络。在有向图中，节点之间的连接是有方向的，叫做弧(arcs)。在无向图中，节点间的连接没有方向，叫做边(edge)。图算法包括查找两点间路径、两点间的最短路径、判断一个图中是否存在环(环是从一个节点可以沿一条非空路径回到它自己)、找到可以遍历所有节点的路径(著名的TSP问题，即旅行商问题)等等</p>
-<h2 id="u56FE_u7684_u5B9E_u73B0"><a href="#u56FE_u7684_u5B9E_u73B0" class="headerlink" title="图的实现"></a>图的实现</h2><p>在Python中，图主要是通过列表和词典来构造。比如说下面这张图，</p>
-<pre><code>A --&gt; B
-A --&gt; C
-B --&gt; C
-B --&gt; D
-C --&gt; D
-D --&gt; C
-E --&gt; F
-F --&gt; C
-</code></pre><p>就是通过下面这个字典和列表的结合进行构造</p>
-<pre><code>graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
-         &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
-         &apos;C&apos;: [&apos;D&apos;],
-         &apos;D&apos;: [&apos;C&apos;],
-         &apos;E&apos;: [&apos;F&apos;],
-         &apos;F&apos;: [&apos;C&apos;]}
-</code></pre><h2 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h2><pre><code># -*- encoding:utf-8 -*-
-&apos;&apos;&apos;
-
- A --&gt; B
- A --&gt; C
- B --&gt; C
- B --&gt; D
- C --&gt; D
- D --&gt; C
- E --&gt; F
- F --&gt; C
-
-&apos;&apos;&apos;
-
-
-def find_path(graph, start, end, path=[]):
-        &apos;寻找一条路径&apos;
-        path = path + [start]
-        if start == end:
-            return path
-        if not graph.has_key(start):
-            return None
-        for node in graph[start]:
-            if node not in path:
-                newpath = find_path(graph, node, end, path)
-                if newpath:
-                    return newpath
-        return path
-
-def find_all_paths(graph, start, end, path=[]):
-        &apos;查找所有的路径&apos;
-        path = path + [start]
-        if start == end:
-            return [path]
-        if not graph.has_key(start):
-            return []
-        paths = []
-        for node in graph[start]:
-            if node not in path:
-                newpaths = find_all_paths(graph, node, end, path)
-                for newpath in newpaths:
-                    paths.append(newpath)
-        return paths
-
-def find_shortest_path(graph, start, end, path=[]):
-        &apos;查找最短路径&apos;
-        path = path + [start]
-        if start == end:
-            return path
-        if not graph.has_key(start):
-            return None
-        shortest = None
-        for node in graph[start]:
-            if node not in path:
-                newpath = find_shortest_path(graph, node, end, path)
-                if newpath:
-                    if not shortest or len(newpath) &lt; len(shortest):
-                        shortest = newpath
-        return shortest
-
-#test
-
-if __name__ == &apos;__main__&apos;:
-    graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
-             &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
-             &apos;C&apos;: [&apos;D&apos;],
-             &apos;D&apos;: [&apos;C&apos;],
-             &apos;E&apos;: [&apos;F&apos;],
-             &apos;F&apos;: [&apos;C&apos;]}
-    print find_path(graph,&apos;A&apos;,&apos;D&apos;)
-    print find_all_paths(graph,&apos;A&apos;,&apos;D&apos;)
-    print find_shortest_path(graph,&apos;A&apos;,&apos;D&apos;)
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/图/">图</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/16/Python数据结构-四/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/16/Python数据结构-四/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/15/Python数据结构-三/" title="Python数据结构(三)" itemprop="url">Python数据结构(三)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-15T02:18:04.000Z" itemprop="datePublished"> 发表于 2016-01-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h2><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。</p>
-<h3 id="Bitmap_u7684_u5B9A_u4E49"><a href="#Bitmap_u7684_u5B9A_u4E49" class="headerlink" title="Bitmap的定义"></a>Bitmap的定义</h3><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。简单的来说，这种数据结构存储把原来的数转化成二进制储存，每一位占一个储存单元，我们操作bimap中的数据，就相当于操作一个位。对于Python来说，整数类型默认是有符号类型，所以一个整数的可用位数为31位。</p>
-<h3 id="Bitmap_u7684_u64CD_u4F5C"><a href="#Bitmap_u7684_u64CD_u4F5C" class="headerlink" title="Bitmap的操作"></a>Bitmap的操作</h3><p>如果我们想操作某一位数，要先获取到操作数组的第几个元素，再获取相应的位索引，然后执行操作。操作的过程大致分为初始化bitmap、计算在数组中的索引、计算在数组中的位索引、相关位置1、测试相关位。</p>
-<h4 id="u521D_u59CB_u5316bitmap"><a href="#u521D_u59CB_u5316bitmap" class="headerlink" title="初始化bitmap"></a>初始化bitmap</h4><p>初始化bitmap也就是计算所需数组的大小，通常采用对最大数向上取整的方法，如果可以找到储存最大数的数组，那么其他数就不成问题了。</p>
-<pre><code>class Bitmap():
-    def __init__(self,max):
-    self.size = int ((max + 31 - 1) / 31) #max需要传入的为要排序的最大数
-</code></pre><h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15" class="headerlink" title="计算在数组中的索引"></a>计算在数组中的索引</h4><p>计算在数组中的索引与初始化btimap不同的是采用向下取整的方法，其他相同。</p>
-<h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15" class="headerlink" title="计算在数组中的位索引"></a>计算在数组中的位索引</h4><p>数组元素中的位索引可以通过取模运算来得到。令需存储的整数跟31取模即可得到位索引</p>
-<pre><code>def bitindex(self,num):
-    return num % 31
-</code></pre><h4 id="u76F8_u5173_u4F4D_u7F6E1"><a href="#u76F8_u5173_u4F4D_u7F6E1" class="headerlink" title="相关位置1"></a>相关位置1</h4><p>二进制位默认是0，将某位置1则表示在此位存储了数据</p>
-<pre><code>def set_1(self,num):
-    elemindex = num / 31
-    byteindex = self.bitindex(num)
-    ele = self.array[elemindex]
-    self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
-</code></pre><h4 id="u6D4B_u8BD5_u76F8_u5173_u4F4D"><a href="#u6D4B_u8BD5_u76F8_u5173_u4F4D" class="headerlink" title="测试相关位"></a>测试相关位</h4><p>判断某位是否为1是为了取出之前所存储的数据</p>
-<pre><code>def test_1(self,i):
-    elemindex = i / 31
-    byteindex = self.bitindex(i)
-    if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
-        return True
-    return False
-</code></pre><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
-class Bitmap():
-    def __init__(self,max):
-        &apos;确定所需数组个数&apos;
-        self.size = int ((max + 31 - 1) / 31)
-        self.array = [0 for i in range(self.size)]
-
-    def bitindex(self,num):
-        &apos;确定数组中元素的位索引&apos;
-        return num % 31
-
-    def set_1(self,num):
-        &apos;将元素所在的位置1&apos;
-        elemindex = num / 31
-        byteindex = self.bitindex(num)
-        ele = self.array[elemindex]
-        self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
-
-    def test_1(self,i):
-        &apos;检测元素存在的位置&apos;
-        elemindex = i / 31
-        byteindex = self.bitindex(i)
-        if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
-            return True
-        return False
-if __name__ == &apos;__main__&apos;:
-    Max = ord(&apos;z&apos;)
-    suffle_array = [x for x in &apos;qwelmfg&apos;]
-    result = []
-    bitmap = Bitmap(Max)
-    for c in suffle_array:
-        bitmap.set_1(ord(c))
-    for i in range(Max+1):
-        if bitmap.test_1(i):
-            result.append(chr(i))
-    print u&apos;原始数组为:    %s&apos; % suffle_array
-    print u&apos;排序后的数组为: %s&apos; % result
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/bitmap/">bitmap</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/15/Python数据结构-三/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/15/Python数据结构-三/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/14/Python数据结构-二/" title="Python数据结构(二)" itemprop="url">Python数据结构(二)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-14T02:28:32.000Z" itemprop="datePublished"> 发表于 2016-01-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="u4E8C_u53C9_u6811_u7684_u5B9E_u73B0"><a href="#u4E8C_u53C9_u6811_u7684_u5B9E_u73B0" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h2><h3 id="u6811_u7684_u5B9A_u4E49"><a href="#u6811_u7684_u5B9A_u4E49" class="headerlink" title="树的定义"></a>树的定义　　</h3><p>　　树是一种重要的非线性数据结构，直观地看，它是数据元素（在树中称为结点）按分支关系组织起来的结构，很象自然界中的树那样。树结构在客观世界中广泛存在，如人类社会的族谱和各种社会组织机构都可用树形象表示。树在计算机领域中也得到广泛应用，如在编译源程序时，可用树表示源程序的语法结构。又如在数据库系统中，树型结构也是信息的重要组织形式之一。一切具有层次关系的问题都可用树来描述。</p>
-<p> 树结构的特点是：它的每一个结点都可以有不止一个直接后继，除根结点外的所有结点都有且只有一个直接前驱。</p>
-<p>树的递归定义如下：</p>
-<ul>
-<li>至少有一个结点（称为根）</li>
-<li>其它是互不相交的子树</li>
-</ul>
-<h3 id="u4E8C_u53C9_u6811"><a href="#u4E8C_u53C9_u6811" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树是由n（n≥0）个结点组成的有限集合、每个结点最多有两个子树的有序树。它或者是空集，或者是由一个根和称为左、右子树的两个不相交的二叉树组成。</p>
-<p>特点：</p>
-<ul>
-<li>二叉树是有序树，即使只有一个子树，也必须区分左、右子树；</li>
-</ul>
-<ul>
-<li>二叉树的每个结点的度不能大于2，只能取0、1、2三者之一；</li>
-</ul>
-<ul>
-<li>二叉树中所有结点的形态有5种：空结点、无左右子树的结点、只有左子树的结点、只有右子树的结点和具有左右子树的结点。</li>
-</ul>
-<h3 id="u6E90_u4EE3_u7801_uFF1A"><a href="#u6E90_u4EE3_u7801_uFF1A" class="headerlink" title="源代码："></a>源代码：</h3><pre><code>#-*- encoding:utf-8 -*-
-
-&apos;&apos;&apos;
-树的构建：
-     5
-  6     7
-8         9
-&apos;&apos;&apos;
-
-class Tree():
-   &apos;树的实现&apos;
-    def __init__(self,ltree = 0,rtree = 0,data = 0):
-        self.ltree = ltree
-        self.rtree = rtree
-        self.data = data
-class BTree():
-    &apos;二叉树的实现&apos;
-    def __init__(self,base = 0):
-        self.base = base
-    def _Empty(self):
-        &apos;是否为空树&apos;
-        if self.base == 0:
-            return True
-        else:
-            return False
-    def qout(self,tree_base):
-        &apos;前序遍历:根-左-右&apos;
-        if tree_base == 0:
-            return
-        print tree_base.data
-        self.qout(tree_base.ltree)
-        self.qout(tree_base.rtree)
-    def mout(self,tree_base):
-        &apos;中序遍历:左-根-右&apos;
-        if tree_base == 0:
-            return
-        self.mout(tree_base.ltree)
-        print tree_base.data
-        self.mout(tree_base.rtree)
-    def hout(self,tree_base):
-        &apos;后序遍历:左-右-根&apos;
-        if tree_base == 0:
-            return
-        self.hout(tree_base.ltree)
-        self.hout(tree_base.rtree)
-        print tree_base.data
-#test
-
-tree1 = Tree(data=8)
-tree2 = Tree(data=9)
-tree3 = Tree(tree1,data=6)
-tree4 = Tree(tree2,0,data=7)
-base = Tree(tree3,tree4,5)
-btree = BTree(base)
-print &apos;前序遍历结果:&apos;
-btree.qout(btree.base)
-print &apos;中序遍历结果:&apos;
-btree.mout(btree.base)
-print &apos;后序遍历结果:&apos;
-btree.hout(btree.base)
-</code></pre><h2 id="u94FE_u8868_u7684_u5B9E_u73B0"><a href="#u94FE_u8868_u7684_u5B9E_u73B0" class="headerlink" title="链表的实现"></a>链表的实现</h2><h3 id="u94FE_u8868_u7684_u5B9A_u4E49"><a href="#u94FE_u8868_u7684_u5B9A_u4E49" class="headerlink" title="链表的定义"></a>链表的定义</h3><p>　　链表(linked list)是由一组被称为结点的数据元素组成的数据结构，每个结点都包含结点本身的信息和指向下一个结点的地址。由于每个结点都包含了可以链接起来的地址信息，所以用一个变量就能够访问整个结点序列。也就是说，结点包含两部分信息：一部分用于存储数据元素的值，称为信息域；另一部分用于存储下一个数据元素地址的指针，称为指针域。链表中的第一个结点的地址存储在一个单独的结点中，称为头结点或首结点。链表中的最后一个结点没有后继元素，其指针域为空。</p>
-<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
-class Node():
-    &apos;创建节点&apos;
-    def __init__(self,data):
-        self.data = data
-        self.next = None
-
-class LinkList():
-    &apos;创建列表&apos;
-    def __init__(self, node):
-        &apos;初始化列表&apos;
-        self.head = node
-        self.head.next = None
-        self.tail = self.head
-
-    def add_node(self, node):
-        &apos;添加节点&apos;
-        self.tail.next = node
-        self.tail = self.tail.next
-
-    def view(self):
-        &apos;查看列表&apos;
-        node = self.head
-        link_str = &apos;&apos;
-        while node is not None:
-            if node.next is not None:
-                link_str += str(node.data) + &apos;--&gt;&apos;
-            else:
-                link_str += str(node.data)
-            node = node.next
-        print &apos;The Linklist is:&apos; + link_str
-
-    def length(self):
-        &apos;列表长度&apos;
-        node = self.head
-        count = 1
-        while node.next is not None:
-            count += 1
-            node = node.next
-        print &apos;The length of linklist are %d&apos; % count
-        return count
-
-    def delete_node(self, index):
-        &apos;删除节点&apos;
-        if index+1 &gt; self.length():
-            raise IndexError(&apos;index out of bounds&apos;)
-        num = 0
-        node = self.head
-        while True:
-            if num == index-1:
-                break
-            node = node.next
-            num += 1
-        tmp_node = node.next
-        node.next = node.next.next
-        return tmp_node.data
-
-    def find_node(self, index):
-        &apos;查看具体节点&apos;
-        if index+1 &gt; self.length():
-            raise IndexError(&apos;index out of bounds&apos;)
-        num = 0
-        node = self.head
-        while True:
-            if num == index:
-                break
-            node = node.next
-            num += 1
-        return node.data
-
-# test
-
-node1 = Node(10)
-node2 = Node(&apos;dec&apos;)
-node3 = Node(1010)
-node4 = Node(&apos;bin&apos;)
-node5 = Node(12)
-node6 = Node(&apos;oct&apos;)
-node7 = Node(&apos;A&apos;)
-node8 = Node(&apos;hex&apos;)
-
-linklist = LinkList(node1)
-linklist.add_node(node2)
-linklist.add_node(node3)
-linklist.add_node(node4)
-linklist.add_node(node5)
-linklist.add_node(node6)
-linklist.add_node(node7)
-linklist.add_node(node8)
-
-linklist.view()
-linklist.length()
-linklist.delete_node(1)
-linklist.view()
-find_node = linklist.find_node(6)
-print find_node
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/二叉树/">二叉树</a><a href="/tags/链表/">链表</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/01/14/Python数据结构-二/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/14/Python数据结构-二/" data-count-type="comments">&nbsp;</a>
+		<a href="/2016/02/15/集体编程智慧笔记（二）/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/15/集体编程智慧笔记（二）/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -930,7 +340,7 @@ print find_node
 
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
@@ -963,15 +373,11 @@ print find_node
 		  
 		
 		  
-			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>2</sup></a></li>
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
 		  
 		
 		</ul>
@@ -984,11 +390,23 @@ print find_node
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
+				<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/生活/" title="生活">生活<sup>1</sup></a></li>
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集体智慧编程/" title="集体智慧编程">集体智慧编程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
 			
 		
 			
@@ -1016,11 +434,39 @@ print find_node
 			
 		
 			
-				<li><a href="/tags/序列/" title="序列">序列<sup>1</sup></a></li>
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/字符串/" title="字符串">字符串<sup>1</sup></a></li>
+				<li><a href="/tags/协作型过滤/" title="协作型过滤">协作型过滤<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/欧几里德距离，皮尔逊相关系数/" title="欧几里德距离，皮尔逊相关系数">欧几里德距离，皮尔逊相关系数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生成器/" title="生成器">生成器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -1031,7 +477,7 @@ print find_node
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/生活/" style="font-size: 16px; color: #90f">生活</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a>
+      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离，皮尔逊相关系数/" style="font-size: 16px; color: #90f">欧几里德距离，皮尔逊相关系数</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
     </div>
   </div>
 

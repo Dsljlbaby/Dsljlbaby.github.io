@@ -1,0 +1,700 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Dsljlbaby&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Dsljlbaby">
+    
+
+    
+    <meta name="description" content="Walk steps step by step">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dsljlbaby's Blog">
+<meta property="og:url" content="http://dsljlbaby.github.io/page/9/index.html">
+<meta property="og:site_name" content="Dsljlbaby's Blog">
+<meta property="og:description" content="Walk steps step by step">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dsljlbaby's Blog">
+<meta name="twitter:description" content="Walk steps step by step">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Dsljlbaby&#39;s Blog" title="Dsljlbaby&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Dsljlbaby&#39;s Blog">Dsljlbaby&#39;s Blog</a></h1>
+				<h2 class="blog-motto">只有行动才能证明一切</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/05/Python学习笔记之函数/" title="Python学习笔记之函数" itemprop="url">Python学习笔记之函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-05T02:51:08.000Z" itemprop="datePublished"> 发表于 2016-02-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>函数就是对程序逻辑进行结构化或过程化的一种编程方法。函数可以将我们编写的代码进行格式化，便于管理和理解，以及节约空间，减少代码的重复性。</p>
+<h1 id="u51FD_u6570_u7684_u5B9A_u4E49"><a href="#u51FD_u6570_u7684_u5B9A_u4E49" class="headerlink" title="函数的定义"></a>函数的定义</h1><p>函数就是对程序逻辑进行结构化或过程化的一种编程方法。和我们数学中学习的函数基本相似。编程语言中函数的初现，有利于我们将整块代码巧妙地隔离成易于管理的小块，将重复代码放进函数中而不是进行大量的拷贝，节省空间，有助于一致性。</p>
+<h1 id="u51FD_u6570_VS__u8FC7_u7A0B"><a href="#u51FD_u6570_VS__u8FC7_u7A0B" class="headerlink" title="函数 VS 过程"></a>函数 VS 过程</h1><p>函数和过程都是可以被调用的实体。函数相当于一个黑盒子，给予输入(或者不带任何输入)，经过一定的处理，最后可以返回结果。过程则是简单、特殊、无返回值的函数。但是在Python中，过程等价于函数，解释器会隐式地返回默认值None。</p>
+<h1 id="u51FD_u6570_u7684_u521B_u5EFA"><a href="#u51FD_u6570_u7684_u521B_u5EFA" class="headerlink" title="函数的创建"></a>函数的创建</h1><p>在Python中，函数使用def语句进行创建。</p>
+<pre><code>def function_name(arguments):
+    &apos;function_documents_string&apos; # 函数的描述，可选，建议书写，可使代码阅读者更好地理解程序
+    function_body_suite
+</code></pre><h2 id="u51FD_u6570_u58F0_u660E_u4E0E_u5B9A_u4E49"><a href="#u51FD_u6570_u58F0_u660E_u4E0E_u5B9A_u4E49" class="headerlink" title="函数声明与定义"></a>函数声明与定义</h2><p>类似C、C++等编程语言中，函数声明和函数的定义是区分的，但在Python中，两者视为一体。函数的声明包括提供函数名、参数名、参数类型。函数的定义包括函数声明部分，并且还有函数的具体代码。</p>
+<h2 id="u51FD_u6570_u5C5E_u6027"><a href="#u51FD_u6570_u5C5E_u6027" class="headerlink" title="函数属性"></a>函数属性</h2><p>函数属性是Python的一个使用”.”属性标志并拥有<em>命名空间</em>的特性。我们可以通过’.’来访问函数的属性。</p>
+<pre><code>&gt;&gt;&gt; def func():
+    &apos;func() -- proper created doc string.&apos;
+    pass
+
+&gt;&gt;&gt; func.__doc__
+&apos;func() -- proper created doc string.&apos;
+&gt;&gt;&gt; func.__name__
+&apos;func&apos;
+</code></pre><h2 id="u51FD_u6570_u7684_u8C03_u7528_u4E0E_u5F15_u7528"><a href="#u51FD_u6570_u7684_u8C03_u7528_u4E0E_u5F15_u7528" class="headerlink" title="函数的调用与引用"></a>函数的调用与引用</h2><p>在Python中，函数是可以被<em>引用</em>(访问或者以其他变量作为其别名，指向同一块内存地址)的。函数的调用与引用最简单的区别就是。将一个函数名赋值给另外一个变量就是函数的引用，将一个函数赋值给另外一个变量就是函数的调用。</p>
+<pre><code>&gt;&gt;&gt; def func1():
+print &apos;in func1().&apos;
+
+
+&gt;&gt;&gt; func2 = func1 # 函数引用
+&gt;&gt;&gt; func3 = func1() # 函数调用
+in func1().
+&gt;&gt;&gt; func2()
+in func1().
+&gt;&gt;&gt; func1()
+in func1().
+&gt;&gt;&gt; func1
+&lt;function func1 at 0x02B044F0&gt;
+&gt;&gt;&gt; func2
+&lt;function func1 at 0x02B044F0&gt;
+</code></pre><h2 id="u51FD_u6570_u53C2_u6570"><a href="#u51FD_u6570_u53C2_u6570" class="headerlink" title="函数参数"></a>函数参数</h2><p>Python函数的参数集合包括了无参数、带参数、默认参数、关键字参数以及可变长度的参数。</p>
+<h3 id="u65E0_u53C2_u6570"><a href="#u65E0_u53C2_u6570" class="headerlink" title="无参数"></a>无参数</h3><p>Python函数中没有任何参数的传入，在函数调用时无需传入。</p>
+<pre><code>&gt;&gt;&gt; def func1():
+    print &apos;Hello World.&apos;
+
+&gt;&gt;&gt; func1()
+Hello World.
+</code></pre><h3 id="u5E26_u53C2_u6570"><a href="#u5E26_u53C2_u6570" class="headerlink" title="带参数"></a>带参数</h3><p>在调用函数时，必须传入参数且个数与定义函数的参数个数相等。</p>
+<pre><code>&gt;&gt;&gt; def func2(arg):
+    print &apos;Hello &apos;, arg
+
+&gt;&gt;&gt; func2(&apos;World&apos;)
+Hello  World
+</code></pre><h3 id="u9ED8_u8BA4_u53C2_u6570"><a href="#u9ED8_u8BA4_u53C2_u6570" class="headerlink" title="默认参数"></a>默认参数</h3><p>默认参数是指函数的定义时已经给出参数值。在调用函数时，如果没有提供参数将会按照默认参数值，如果重新给出，则按给出的参数值传入。</p>
+<pre><code>&gt;&gt;&gt; def func3(arg = &apos;World&apos;):
+    print &apos;Hello &apos;, arg
+
+&gt;&gt;&gt; func3()
+Hello  World
+&gt;&gt;&gt; func3(&apos;Python&apos;)
+Hello  Python
+</code></pre><h3 id="u5173_u952E_u5B57_u53C2_u6570"><a href="#u5173_u952E_u5B57_u53C2_u6570" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>关键字参数是指一顺序或者不按顺序传入，但是带有参数列表中曾定义过的关键字。</p>
+<pre><code>&gt;&gt;&gt; def cal(a，b = 4):
+    print &apos;%d + %d = %d&apos; % (a, b, a + b)
+
+&gt;&gt;&gt; cal(2，3)
+2 + 3 = 5
+&gt;&gt;&gt; cal(3)
+3 + 4 = 7
+&gt;&gt;&gt; cal(a = 2，b = 8)
+2 + 8 = 10
+</code></pre><p>注意：所有必须参数(在函数定义时，无默认值传入的参数)都要在默认参数之前。</p>
+<h3 id="u53EF_u53D8_u957F_u5EA6_u7684_u53C2_u6570"><a href="#u53EF_u53D8_u957F_u5EA6_u7684_u53C2_u6570" class="headerlink" title="可变长度的参数"></a>可变长度的参数</h3><p>有时，我们可能需要用函数处理可变数量的参数，这时就需要可变长度的参数列表。变长的参数在函数声明时并不是显式命名的。在函数调用中使用<em>和*</em>符号来指定元组和字典的元素作为非关键字以及关键字参数的方法。</p>
+<h4 id="u975E_u5173_u952E_u5B57_u53EF_u53D8_u957F_u53C2_u6570_28_u5143_u7EC4_29"><a href="#u975E_u5173_u952E_u5B57_u53EF_u53D8_u957F_u53C2_u6570_28_u5143_u7EC4_29" class="headerlink" title="非关键字可变长参数(元组)"></a>非关键字可变长参数(元组)</h4><p>当函数调用时，所有的形参都将值赋给了在函数声明中相对应的局部变量，剩下的非关键字参数按顺序插入到一个元组中便于访问。元组保存了所有传递给函数的”额外”的参数，如果没有给出额外的参数，元组将为空。</p>
+<p>可变长的参数元组必须在默认和关键字参数之后。</p>
+<pre><code>def function_name(formal_args, *vargs_tuple):
+    &apos;function_documentation_string&apos;
+    function_body_suite
+
+# eg
+&gt;&gt;&gt; def tupleVarArgs(arg1, arg2 = &apos;default&apos;, *theRest):
+    &apos;display regular args and non_keyword variable args&apos;
+    print &apos;formal arg 1:&apos;, arg1
+    print &apos;formal arg 2:&apos;, arg2
+    for eachXtrArg in theRest:
+        print &apos;another arg:&apos;, eachXtrArg
+
+&gt;&gt;&gt; tupleVarArgs(&apos;abc&apos;)
+formal arg 1: abc
+formal arg 2: default
+&gt;&gt;&gt; tupleVarArgs(&apos;abc&apos;, 123, &apos;xyz&apos;, 37.2)
+formal arg 1: abc
+formal arg 2: 123
+another arg: xyz
+another arg: 37.2
+</code></pre><h4 id="u5173_u952E_u5B57_u53EF_u53D8_u957F_u53C2_u6570_28_u5B57_u5178_29"><a href="#u5173_u952E_u5B57_u53EF_u53D8_u957F_u53C2_u6570_28_u5B57_u5178_29" class="headerlink" title="关键字可变长参数(字典)"></a>关键字可变长参数(字典)</h4><p>当我们有不定数目的或者额外的关键字参数时，我们需要将参数放入一个字典(字典的键为参数名，值对为相应的参数值)中。需要注意的是关键字可变长参数的位置在所有参数之后。</p>
+<pre><code>def function_name(formal_args，*vargs_tuple， **vargs_dict):
+    &apos;function_documentation_string&apos;
+    function_body_suite
+
+# eg
+&gt;&gt;&gt; def dictVarArgs(arg1, arg2 = &apos;default&apos;, **theRest):
+    &apos;display regular args and non_keyword variable args&apos;
+    print &apos;formal arg 1:&apos;, arg1
+    print &apos;formal arg 2:&apos;, arg2
+    for eachXtrArg in theRest.keys():
+        print &apos;Xtra arg %s: %s&apos; % (eachXtrArg, str(theRest[eachXtrArg]))
+
+
+&gt;&gt;&gt; dictVarArgs(789,&apos;hi&apos;,language = &apos;Python&apos;)
+formal arg 1: 789
+formal arg 2: hi
+Xtra arg language: Python
+</code></pre><h2 id="u53D8_u91CF_u4F5C_u7528_u57DF"><a href="#u53D8_u91CF_u4F5C_u7528_u57DF" class="headerlink" title="变量作用域"></a>变量作用域</h2><p>变量的作用域是定义为其声明在程序里的可应用范围。变量可以分为全局变量和局部变量。在Python中，一个模块中最高级别的变量具有全局作用域，也就是全局变量，它的一个特点是除非被删除，否则将存活于整个脚本之中。局部变量是指在函数体内创建的，一旦函数完成，变量就会被销毁。我们需要注意的是小心地使用和全局变量同名的局部变量。</p>
+<p>如果在函数体内声明一个和全局变量同名的局部变量，全局变量的值在函数体内就会被覆盖，而该变量的全局特性和局部特性就不那么清晰。如果要在函数体内使用全局变量时，请在变量名前加上关键字<strong>global</strong>。</p>
+<pre><code>&gt;&gt;&gt; name = &apos;Python&apos;
+&gt;&gt;&gt; def func():
+    global name
+    print &apos;I like&apos;,name
+
+&gt;&gt;&gt; func()
+I like Python
+</code></pre><h2 id="u5185_u5D4C_u51FD_u6570"><a href="#u5185_u5D4C_u51FD_u6570" class="headerlink" title="内嵌函数"></a>内嵌函数</h2><p>内嵌函数是指在函数体内创建另外一个函数。内嵌函数在外部函数的作用域内，如果没有对内嵌函数的外部引用，那么除了在外部函数体内，任何地方都无法访问内嵌函数。</p>
+<pre><code>&gt;&gt;&gt; def foo():
+        def bar():
+            print &apos;bar() called.&apos;
+        print &apos;foo() called.&apos;
+        return bar
+
+&gt;&gt;&gt; foo()
+foo() called.
+bar() called.
+&gt;&gt;&gt; bar()
+
+Traceback (most recent call last):
+  File &quot;&lt;pyshell#88&gt;&quot;, line 1, in &lt;module&gt;
+    bar()
+NameError: name &apos;bar&apos; is not defined
+</code></pre><p>内嵌函数更重要的是体现在’闭包’上面。</p>
+<h3 id="u95ED_u5305_28closure_29"><a href="#u95ED_u5305_28closure_29" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h3><p>如果内嵌函数的定义中包含了在外部函数里定义的对象的引用，内部函数就会被称为<strong>闭包</strong></p>
+<p>定义在外部函数内的但由内嵌函数引用或者使用的变量被称为<strong>自由变量</strong> </p>
+<p>闭包的词法变量不属于全局名称空间域或者局部的，是属于其他的名称空间，带有流浪的作用域。</p>
+<pre><code>&gt;&gt;&gt; def func(name):
+        def inner_func(age):
+            print &apos;name:&apos;, name, &apos;age:&apos;, age
+        return inner_func
+
+&gt;&gt;&gt; name = func(&apos;Python&apos;)
+&gt;&gt;&gt; name(20)
+name: Python age: 20
+</code></pre><p>在这个例子中，当我们调用func时，就会产生一个闭包inner_func，并且该闭包持有自由变量name，当func的生命周期结束后，name这个变量依然存在，因为他被闭包引用了，暂时不会被回收。</p>
+<p>在Python中，函数对象有一个<strong>closure</strong>属性，我们可以通过这个属性看看闭包的一些细节。</p>
+<pre><code>&gt;&gt;&gt; print name.__closure__
+(&lt;cell at 0x02B02FD0: str object at 0x026913E0&gt;,)
+&gt;&gt;&gt; print type(name.__closure__[0])
+&lt;type &apos;cell&apos;&gt;
+&gt;&gt;&gt; print name.__closure__[0].cell_contents
+Python
+</code></pre><p>通过上面的理解，我们可以得出在Python中创建一个闭包可以归结为以下三点：</p>
+<ul>
+<li>闭包函数必须有内嵌函数</li>
+<li>内嵌函数需要引用外部函数中的变量</li>
+<li>闭包函数必须返回内嵌函数</li>
+</ul>
+<h2 id="u533F_u540D_u51FD_u6570"><a href="#u533F_u540D_u51FD_u6570" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>在Python中，可以使用关键字<strong>lambda</strong>来创建匿名函数。和标准函数几乎一样，只不过这个函数的定义和声明必须卸载同一行。匿名函数同样可以被调用或者引用。</p>
+<p>标准函数：</p>
+<pre><code>def add(x, y):
+    return x + y
+</code></pre><p>函数add()改写单行函数：</p>
+<pre><code>def add(x, y): return x + y
+</code></pre><p>函数add()改写匿名函数：</p>
+<pre><code>lambda x, y: x + y
+</code></pre><p>看上去匿名函数是一个函数的单行版本，匿名函数运行起来就像一个函数，当被调用时，就会创建一个框架对象。</p>
+<h3 id="u5185_u5EFA_u51FD_u6570filter_28_29_u3001map_28_29_u3001reduce_28_29"><a href="#u5185_u5EFA_u51FD_u6570filter_28_29_u3001map_28_29_u3001reduce_28_29" class="headerlink" title="内建函数filter()、map()、reduce()"></a>内建函数filter()、map()、reduce()</h3><p>在列表的学习过程中，接触过这些函数式编程的内建函数，现在，使用lambda的形式来重新认识下。</p>
+<h4 id="filter_28_29"><a href="#filter_28_29" class="headerlink" title="filter()"></a>filter()</h4><p>filter(function,sequence)方法是返回一个sequence(序列)，包括了给定序列中所有调用function(item)后返回值为true的元素。filter()函数可以看作一个过滤器来使用。</p>
+<pre><code>&gt;&gt;&gt; def div_3_or_div_5(x):
+    return x % 3 == 0 or x % 5 == 0
+&gt;&gt;&gt; filter(div_3_or_div_5,range(0,21))
+[0, 3, 5, 6, 9, 10, 12, 15, 18, 20]
+</code></pre><p>改写后：</p>
+<pre><code>&gt;&gt;&gt; filter(lambda x: x % 3 == 0 or x % 5 == 0, range(0,21))
+[0, 3, 5, 6, 9, 10, 12, 15, 18, 20]
+</code></pre><h4 id="map_28_29"><a href="#map_28_29" class="headerlink" title="map()"></a>map()</h4><p>map(function,sequence)方法是为每一个元素调用function(item)并将返回值组成一个新的列表返回。</p>
+<pre><code>&gt;&gt;&gt; def cube(x):
+    return x * x * x
+&gt;&gt;&gt; map(cube,range(0,4))
+[0, 1, 8, 27]
+</code></pre><p>改写后：</p>
+<pre><code>&gt;&gt;&gt; map(lambda x: x * x * x, range(0,4))
+[0, 1, 8, 27]
+</code></pre><h4 id="reduce_28_29"><a href="#reduce_28_29" class="headerlink" title="reduce()"></a>reduce()</h4><p>reduce(function,sequence)方法是返回一个单值，他的构造方法是：首先以序列的前两个元素调用函数function，再以返回值和第三个参数调用，依次下去。</p>
+<pre><code>&gt;&gt;&gt; def sum(seq):
+        def add(x, y):
+            return x + y
+        return reduce(add, seq, 0)
+&gt;&gt;&gt; sum(range(1,101))
+5050
+</code></pre><p>改写后：</p>
+<pre><code>&gt;&gt;&gt; reduce(lambda x, y: x + y,range(1,101))
+5050
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python学习笔记/">Python学习笔记</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/函数/">函数</a><a href="/tags/闭包/">闭包</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/05/Python学习笔记之函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/05/Python学习笔记之函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/8/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/10/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.yinwang.org/" target="_blank" title="Wangyin&#39;s Blog">Wangyin&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集体智慧编程/" title="集体智慧编程">集体智慧编程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图/" title="图">图<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/bitmap/" title="bitmap">bitmap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/堆栈/" title="堆栈">堆栈<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/队列/" title="队列">队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协作型过滤/" title="协作型过滤">协作型过滤<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/欧几里德距离，皮尔逊相关系数/" title="欧几里德距离，皮尔逊相关系数">欧几里德距离，皮尔逊相关系数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生成器/" title="生成器">生成器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离，皮尔逊相关系数/" style="font-size: 16px; color: #90f">欧几里德距离，皮尔逊相关系数</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
+    </div>
+  </div>
+
+
+  
+
+<div class="doubanshow">
+<p class="asidetitle">豆瓣秀</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/80760943/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5304795630&verifier=&dpc=1"></iframe>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Welcome , I&#39;m Dsljlbaby  <br/>
+			
+	<span id="busuanzi_container_site_uv">
+	  You are the <span id="busuanzi_value_site_uv"></span > friends to my blog , Thanks !
+	</span>
+        </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5304795630" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/Dsljlbaby" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/80760943" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/dsljlbaby" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Dsljlbaby">Dsljlbaby</a>
+		
+		
+		</p>
+		<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','BzmFyoetC1zUSSvAqrHy','2.0.0');
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dsljlbaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a214ac1fac45b4cd9289dd47d2c0600c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </body>
+ </html>

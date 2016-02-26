@@ -1,0 +1,683 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Python学习笔记之闭包 | Dsljlbaby&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Dsljlbaby">
+    
+
+    
+    <meta name="description" content="闭包是函数式编程的重要语法结构，Python是以函数对象为基础的，为闭包这一语法结构提供支持。在学习的起初，我也不是很理解闭包，经过查询资料和阅读他人博客后，对闭包有了一点见解，把它写出来，需要的朋友可以参考，如果发现不足之处，希望大家指出。
+什么是闭包闭包(Closure)是词法闭包(Lexical Closure)的简称，是引用了自由变量(或者称为环境变量)的函数。这个被引用的自然变量将和这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记之闭包">
+<meta property="og:url" content="http://dsljlbaby.github.io/2016/02/05/Python学习笔记之闭包/index.html">
+<meta property="og:site_name" content="Dsljlbaby's Blog">
+<meta property="og:description" content="闭包是函数式编程的重要语法结构，Python是以函数对象为基础的，为闭包这一语法结构提供支持。在学习的起初，我也不是很理解闭包，经过查询资料和阅读他人博客后，对闭包有了一点见解，把它写出来，需要的朋友可以参考，如果发现不足之处，希望大家指出。
+什么是闭包闭包(Closure)是词法闭包(Lexical Closure)的简称，是引用了自由变量(或者称为环境变量)的函数。这个被引用的自然变量将和这个">
+<meta property="og:updated_time" content="2016-02-05T10:04:13.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记之闭包">
+<meta name="twitter:description" content="闭包是函数式编程的重要语法结构，Python是以函数对象为基础的，为闭包这一语法结构提供支持。在学习的起初，我也不是很理解闭包，经过查询资料和阅读他人博客后，对闭包有了一点见解，把它写出来，需要的朋友可以参考，如果发现不足之处，希望大家指出。
+什么是闭包闭包(Closure)是词法闭包(Lexical Closure)的简称，是引用了自由变量(或者称为环境变量)的函数。这个被引用的自然变量将和这个">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Dsljlbaby&#39;s Blog" title="Dsljlbaby&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Dsljlbaby&#39;s Blog">Dsljlbaby&#39;s Blog</a></h1>
+				<h2 class="blog-motto">只有行动才能证明一切</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/05/Python学习笔记之闭包/" title="Python学习笔记之闭包" itemprop="url">Python学习笔记之闭包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-05T08:12:42.000Z" itemprop="datePublished"> 发表于 2016-02-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u4EC0_u4E48_u662F_u95ED_u5305"><span class="toc-number">1.</span> <span class="toc-text">什么是闭包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5185_u5D4C_u51FD_u6570"><span class="toc-number">2.</span> <span class="toc-text">内嵌函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29"><span class="toc-number">3.</span> <span class="toc-text">Python中的命名空间(namespace)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165"><span class="toc-number">4.</span> <span class="toc-text">内嵌函数的深入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u95ED_u5305_u7684_u521B_u5EFA"><span class="toc-number">5.</span> <span class="toc-text">闭包的创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#closure_u5C5E_u6027"><span class="toc-number">6.</span> <span class="toc-text">closure属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u95ED_u5305_u7684_u603B_u7ED3"><span class="toc-number">7.</span> <span class="toc-text">闭包的总结</span></a></li></ol>
+		
+		</div>
+		
+		<p>闭包是函数式编程的重要语法结构，Python是以函数对象为基础的，为闭包这一语法结构提供支持。在学习的起初，我也不是很理解闭包，经过查询资料和阅读他人博客后，对闭包有了一点见解，把它写出来，需要的朋友可以参考，如果发现不足之处，希望大家指出。</p>
+<h1 id="u4EC0_u4E48_u662F_u95ED_u5305"><a href="#u4EC0_u4E48_u662F_u95ED_u5305" class="headerlink" title="什么是闭包"></a>什么是闭包</h1><p>闭包(Closure)是词法闭包(Lexical Closure)的简称，是引用了自由变量(或者称为环境变量)的函数。这个被引用的自然变量将和这个函数一同存在，即使离开了创造它的环境也不例外。</p>
+<p>初步理解：<strong>闭包 = 函数 + 自然变量</strong></p>
+<p>那么这里的函数具体是指什么呢？自然变量又是什么呢？这两个概念先放在这个，等到我们有了一定的基础后理解它就比较容易啦。</p>
+<h1 id="u5185_u5D4C_u51FD_u6570"><a href="#u5185_u5D4C_u51FD_u6570" class="headerlink" title="内嵌函数"></a>内嵌函数</h1><p>要理解闭包，我们得知道内嵌函数，那么内嵌函数又是什么呢？</p>
+<p>内嵌函数是指在一个函数体内创建另一个函数。新创建的函数称为<strong>内嵌函数</strong>，原来的函数被称为<strong>外部函数</strong></p>
+<pre><code>def line_conf():
+    def line(x):
+        return 2*x + 1
+    print line(5)
+</code></pre><p>在上面的函数中，line_conf()称为外部函数，line()称为内嵌函数。内嵌函数存在于外部函数体内，<em>除了外部函数体内，其他地方都不能对其调用。</em></p>
+<h1 id="Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29"><a href="#Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29" class="headerlink" title="Python中的命名空间(namespace)"></a>Python中的命名空间(namespace)</h1><p>在真正地认识闭包之前，我们简单了解一下Python的namespace，有助于我们理解后面的变量。</p>
+<p>Python中通过namespace提供重名函数、变量等信息的识别。共有三种namespace,分别为：</p>
+<ul>
+<li>local namespace: 作用范围为当前函数或类方法。</li>
+<li>global namespace: 作用范围为当前模块</li>
+<li>build-in namespace: 作用范围为所有模块</li>
+</ul>
+<p>当函数、变量等信息发生重名时，Python会按照”local namespace -&gt; global namespace -&gt; build-in namespace”的顺序进行搜索用户所需元素，并且以第一个找到此元素的namespace为准。</p>
+<p>Python中的内建函数locals()和globals()可以查看不同namespace中定义的元素。</p>
+<h1 id="u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165"><a href="#u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165" class="headerlink" title="内嵌函数的深入"></a>内嵌函数的深入</h1><p>函数对象的作用域与def所在的层次相同，函数是一个对象，可以作为某个函数的返回结果。</p>
+<p>下面这段代码是接近闭包的一个构造：</p>
+<pre><code># eg1
+&gt;&gt;&gt; def line_conf():
+        def line(x):
+            return 2*x + 1
+        return line
+
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; my_line(5)
+11
+</code></pre><h1 id="u95ED_u5305_u7684_u521B_u5EFA"><a href="#u95ED_u5305_u7684_u521B_u5EFA" class="headerlink" title="闭包的创建"></a>闭包的创建</h1><pre><code># eg2
+&gt;&gt;&gt; def line_conf():
+        &apos;this is ture closure.&apos;
+        b = 15
+        def line(x):
+            return 2*x + 1
+        return line
+
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; my_line(3)
+7
+</code></pre><p>通过对比eg2和eg1的代码发现,在函数line_conf中，eg2比eg1多了一个变量。其实，这个变量就是闭包中一个重要的组成：<strong>自由变量</strong>。</p>
+<p>自由变量：定义在外部函数内的，但由内嵌函数引用或使用的变量。</p>
+<p>即<strong>闭包 = 自由变量 + 内嵌函数</strong></p>
+<p>重新审视下上面的代码，函数line_conf()是外部函数，变量b是自由变量，函数line()是内嵌函数，只能在外部函数line_conf()体内调用函数line()。line()函数访问了non_local的自由变量”b”,自由变量”b”并没有随着外部函数的退出而销毁，反而是生命周期得到了延长。</p>
+<h1 id="closure_u5C5E_u6027"><a href="#closure_u5C5E_u6027" class="headerlink" title="closure属性"></a><strong>closure</strong>属性</h1><p>在Python中，我们可以通过函数对象的<strong>closure</strong>属性查看闭包的一些细节，也可以理解为什么自由变量没有随着外部函数的退出而销毁。</p>
+<pre><code>&gt;&gt;&gt; def line_conf():
+    b =15
+    def line(x):
+        return 2 * x + b
+    return line
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; print my_line.__closure__
+(&lt;cell at 0x02AC2FF0: int object at 0x0247A230&gt;,)
+&gt;&gt;&gt; print my_line.__closure__[0].cell_contents
+15
+</code></pre><p>通过调试结果看出，<strong>closure</strong>里包含一个元组，这个元组的每个元素都是cell类型的对象，第一个cell包含的就是我们创建闭包时的自由变量b的取值。</p>
+<h1 id="u95ED_u5305_u7684_u603B_u7ED3"><a href="#u95ED_u5305_u7684_u603B_u7ED3" class="headerlink" title="闭包的总结"></a>闭包的总结</h1><p>闭包是函数式编程的重要语法结构，函数式编程和面向过程以及面向对象编程一样都是编程范式，面向过程编程中的<strong>函数</strong>，面向过程编程中的<strong>对象</strong>和<strong>闭包</strong>的相同点是：以某种逻辑方式组织代码，实现代码的可重复性使用。</p>
+<p>闭包的特性：</p>
+<ul>
+<li>闭包函数必须有内嵌函数</li>
+<li>内嵌函数需要引用外部函数中的变量</li>
+<li>闭包函数必须返回内嵌函数</li>
+</ul>
+<p>注意：我们在写闭包时，不要在内嵌函数中对自由变量进行赋值操作，至少在Python2.x中不可以。会出现UnbundLocalError错误。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python学习笔记/">Python学习笔记</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/闭包/">闭包</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"5304795630"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2078685
+2078685" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/02/10/Python学习笔记之文件/" title="Python学习笔记之文件">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Python学习笔记之文件</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/05/Python学习笔记之函数/"  title="Python学习笔记之函数">
+ <strong>下一篇：</strong><br/> 
+ <span>Python学习笔记之函数
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+ <nav id="pagination" >
+    
+    <a href="/2016/02/10/Python学习笔记之文件/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/02/05/Python学习笔记之函数/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/02/05/Python学习笔记之闭包/" data-title="Python学习笔记之闭包" data-url="http://dsljlbaby.github.io/2016/02/05/Python学习笔记之闭包/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"dsljlbaby"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u4EC0_u4E48_u662F_u95ED_u5305"><span class="toc-number">1.</span> <span class="toc-text">什么是闭包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5185_u5D4C_u51FD_u6570"><span class="toc-number">2.</span> <span class="toc-text">内嵌函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29"><span class="toc-number">3.</span> <span class="toc-text">Python中的命名空间(namespace)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165"><span class="toc-number">4.</span> <span class="toc-text">内嵌函数的深入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u95ED_u5305_u7684_u521B_u5EFA"><span class="toc-number">5.</span> <span class="toc-text">闭包的创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#closure_u5C5E_u6027"><span class="toc-number">6.</span> <span class="toc-text">closure属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u95ED_u5305_u7684_u603B_u7ED3"><span class="toc-number">7.</span> <span class="toc-text">闭包的总结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.yinwang.org/" target="_blank" title="Wangyin&#39;s Blog">Wangyin&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集体智慧编程/" title="集体智慧编程">集体智慧编程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图/" title="图">图<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/bitmap/" title="bitmap">bitmap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/堆栈/" title="堆栈">堆栈<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/队列/" title="队列">队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协作型过滤/" title="协作型过滤">协作型过滤<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/欧几里德距离，皮尔逊相关系数/" title="欧几里德距离，皮尔逊相关系数">欧几里德距离，皮尔逊相关系数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生成器/" title="生成器">生成器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离，皮尔逊相关系数/" style="font-size: 16px; color: #90f">欧几里德距离，皮尔逊相关系数</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
+    </div>
+  </div>
+
+
+  
+
+<div class="doubanshow">
+<p class="asidetitle">豆瓣秀</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/80760943/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5304795630&verifier=&dpc=1"></iframe>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Welcome , I&#39;m Dsljlbaby  <br/>
+			
+	<span id="busuanzi_container_site_uv">
+	  You are the <span id="busuanzi_value_site_uv"></span > friends to my blog , Thanks !
+	</span>
+        </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5304795630" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/Dsljlbaby" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/80760943" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/dsljlbaby" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Dsljlbaby">Dsljlbaby</a>
+		
+		
+		</p>
+		<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','BzmFyoetC1zUSSvAqrHy','2.0.0');
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dsljlbaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a214ac1fac45b4cd9289dd47d2c0600c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </body>
+</html>

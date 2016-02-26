@@ -1,0 +1,568 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Dsljlbaby&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Dsljlbaby">
+    
+
+    
+    <meta name="description" content="Walk steps step by step">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dsljlbaby's Blog">
+<meta property="og:url" content="http://dsljlbaby.github.io/page/18/index.html">
+<meta property="og:site_name" content="Dsljlbaby's Blog">
+<meta property="og:description" content="Walk steps step by step">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dsljlbaby's Blog">
+<meta name="twitter:description" content="Walk steps step by step">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Dsljlbaby&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Dsljlbaby&#39;s Blog" title="Dsljlbaby&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Dsljlbaby&#39;s Blog">Dsljlbaby&#39;s Blog</a></h1>
+				<h2 class="blog-motto">只有行动才能证明一切</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/15/Python数据结构-三/" title="Python数据结构(三)" itemprop="url">Python数据结构(三)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-15T02:18:04.000Z" itemprop="datePublished"> 发表于 2016-01-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h2><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。</p>
+<h3 id="Bitmap_u7684_u5B9A_u4E49"><a href="#Bitmap_u7684_u5B9A_u4E49" class="headerlink" title="Bitmap的定义"></a>Bitmap的定义</h3><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。简单的来说，这种数据结构存储把原来的数转化成二进制储存，每一位占一个储存单元，我们操作bimap中的数据，就相当于操作一个位。对于Python来说，整数类型默认是有符号类型，所以一个整数的可用位数为31位。</p>
+<h3 id="Bitmap_u7684_u64CD_u4F5C"><a href="#Bitmap_u7684_u64CD_u4F5C" class="headerlink" title="Bitmap的操作"></a>Bitmap的操作</h3><p>如果我们想操作某一位数，要先获取到操作数组的第几个元素，再获取相应的位索引，然后执行操作。操作的过程大致分为初始化bitmap、计算在数组中的索引、计算在数组中的位索引、相关位置1、测试相关位。</p>
+<h4 id="u521D_u59CB_u5316bitmap"><a href="#u521D_u59CB_u5316bitmap" class="headerlink" title="初始化bitmap"></a>初始化bitmap</h4><p>初始化bitmap也就是计算所需数组的大小，通常采用对最大数向上取整的方法，如果可以找到储存最大数的数组，那么其他数就不成问题了。</p>
+<pre><code>class Bitmap():
+    def __init__(self,max):
+    self.size = int ((max + 31 - 1) / 31) #max需要传入的为要排序的最大数
+</code></pre><h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15" class="headerlink" title="计算在数组中的索引"></a>计算在数组中的索引</h4><p>计算在数组中的索引与初始化btimap不同的是采用向下取整的方法，其他相同。</p>
+<h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15" class="headerlink" title="计算在数组中的位索引"></a>计算在数组中的位索引</h4><p>数组元素中的位索引可以通过取模运算来得到。令需存储的整数跟31取模即可得到位索引</p>
+<pre><code>def bitindex(self,num):
+    return num % 31
+</code></pre><h4 id="u76F8_u5173_u4F4D_u7F6E1"><a href="#u76F8_u5173_u4F4D_u7F6E1" class="headerlink" title="相关位置1"></a>相关位置1</h4><p>二进制位默认是0，将某位置1则表示在此位存储了数据</p>
+<pre><code>def set_1(self,num):
+    elemindex = num / 31
+    byteindex = self.bitindex(num)
+    ele = self.array[elemindex]
+    self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
+</code></pre><h4 id="u6D4B_u8BD5_u76F8_u5173_u4F4D"><a href="#u6D4B_u8BD5_u76F8_u5173_u4F4D" class="headerlink" title="测试相关位"></a>测试相关位</h4><p>判断某位是否为1是为了取出之前所存储的数据</p>
+<pre><code>def test_1(self,i):
+    elemindex = i / 31
+    byteindex = self.bitindex(i)
+    if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
+        return True
+    return False
+</code></pre><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
+class Bitmap():
+    def __init__(self,max):
+        &apos;确定所需数组个数&apos;
+        self.size = int ((max + 31 - 1) / 31)
+        self.array = [0 for i in range(self.size)]
+
+    def bitindex(self,num):
+        &apos;确定数组中元素的位索引&apos;
+        return num % 31
+
+    def set_1(self,num):
+        &apos;将元素所在的位置1&apos;
+        elemindex = num / 31
+        byteindex = self.bitindex(num)
+        ele = self.array[elemindex]
+        self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
+
+    def test_1(self,i):
+        &apos;检测元素存在的位置&apos;
+        elemindex = i / 31
+        byteindex = self.bitindex(i)
+        if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
+            return True
+        return False
+if __name__ == &apos;__main__&apos;:
+    Max = ord(&apos;z&apos;)
+    suffle_array = [x for x in &apos;qwelmfg&apos;]
+    result = []
+    bitmap = Bitmap(Max)
+    for c in suffle_array:
+        bitmap.set_1(ord(c))
+    for i in range(Max+1):
+        if bitmap.test_1(i):
+            result.append(chr(i))
+    print u&apos;原始数组为:    %s&apos; % suffle_array
+    print u&apos;排序后的数组为: %s&apos; % result
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/bitmap/">bitmap</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/15/Python数据结构-三/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/15/Python数据结构-三/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/17/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/19/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.yinwang.org/" target="_blank" title="Wangyin&#39;s Blog">Wangyin&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/爬虫/" title="爬虫">爬虫<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集体智慧编程/" title="集体智慧编程">集体智慧编程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/图/" title="图">图<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/bitmap/" title="bitmap">bitmap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/堆栈/" title="堆栈">堆栈<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/队列/" title="队列">队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协作型过滤/" title="协作型过滤">协作型过滤<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/欧几里德距离，皮尔逊相关系数/" title="欧几里德距离，皮尔逊相关系数">欧几里德距离，皮尔逊相关系数<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生成器/" title="生成器">生成器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离，皮尔逊相关系数/" style="font-size: 16px; color: #90f">欧几里德距离，皮尔逊相关系数</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
+    </div>
+  </div>
+
+
+  
+
+<div class="doubanshow">
+<p class="asidetitle">豆瓣秀</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/80760943/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5304795630&verifier=&dpc=1"></iframe>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Welcome , I&#39;m Dsljlbaby  <br/>
+			
+	<span id="busuanzi_container_site_uv">
+	  You are the <span id="busuanzi_value_site_uv"></span > friends to my blog , Thanks !
+	</span>
+        </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5304795630" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/Dsljlbaby" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/80760943" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/dsljlbaby" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Dsljlbaby">Dsljlbaby</a>
+		
+		
+		</p>
+		<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','BzmFyoetC1zUSSvAqrHy','2.0.0');
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dsljlbaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a214ac1fac45b4cd9289dd47d2c0600c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </body>
+ </html>
