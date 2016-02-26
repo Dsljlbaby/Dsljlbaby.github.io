@@ -319,121 +319,6 @@ def getRecommendedItems(prefs, itemMatch, user):
   </entry>
   
   <entry>
-    <title><![CDATA[Python学习笔记之正则表达式]]></title>
-    <link href="http://dsljlbaby.github.io/2016/02/13/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://dsljlbaby.github.io/2016/02/13/Python学习笔记之正则表达式/</id>
-    <published>2016-02-13T09:28:20.000Z</published>
-    <updated>2016-02-14T04:26:27.027Z</updated>
-    <content type="html"><![CDATA[<p>随着互联网的发展，信息大爆炸来临，需要我们处理的文本或数据越来越多，仅仅靠人工处理已变成泡沫，如果能够通过计算机编程来处理这些内容，我们不免感到一丝欣慰，而正则表达式为高级文本模式匹配提供了基础，我们需要简单地掌握这一方程式。</p>
-<h1 id="u6B63_u5219_u8868_u8FBE_u5F0F_28re_29"><a href="#u6B63_u5219_u8868_u8FBE_u5F0F_28re_29" class="headerlink" title="正则表达式(re)"></a>正则表达式(re)</h1><p>正则表达式是一些由字符和特殊符号组成的字符串，它们描述了这些字符和字符的某种重复方式，因此能按某种模式匹配一个有相似特征的字符串。</p>
-<h1 id="u5143_u5B57_u7B26"><a href="#u5143_u5B57_u7B26" class="headerlink" title="元字符"></a>元字符</h1><p>元字符包括了特殊字符和符号，正是他们赋予了正则表达式强大的功能和灵活性。</p>
-<ul>
-<li>管道符号(|)</li>
-</ul>
-<p>它的实现功能类似于逻辑操作符“或”，选择被管道符号分隔的多个不同的正则表达式中的一个。</p>
-<pre><code>Python | Java | C++ 匹配的字符为 Python或Java或C++
-</code></pre><ul>
-<li>单个任意匹配符号(.)</li>
-</ul>
-<p>点符号(.)匹配除了换行符之外的任意单个字符。</p>
-<pre><code>P.y  匹配在P和y之间的任意字符，如P0y，Pcy,P&amp;y...
-
-start. 匹配在字符串start之后的任意单个字符
-
-.end 匹配在字符串end之前的任意单个字符
-</code></pre><ul>
-<li>匹配字符串的开始(^) </li>
-</ul>
-<p>使用匹配符^匹配以某一字符开始的字符串</p>
-<pre><code>^py 匹配以py开头的字符串
-</code></pre><ul>
-<li>匹配字符串的结束($)</li>
-</ul>
-<p>使用匹配符$匹配以某一字符结束的字符串</p>
-<pre><code>py$ 匹配以py结束的字符串
-</code></pre><ul>
-<li>特殊字符\b和\B</li>
-</ul>
-<p>\b匹配的模式是一个单词边界，\B只匹配出现在一个单词中间的模式。</p>
-<pre><code>\bthe 任何以&apos;the&apos;开始的字符串
-\bthe\b 仅匹配单词&apos;the&apos;
-\Bthe 任意包含&apos;the&apos;但不以&apos;the&apos;开头的单词
-</code></pre><ul>
-<li>创建字符类([])</li>
-</ul>
-<p>尽管点符号可以匹配任意字符，但有时候需要匹配某些特殊的字符，使用方括号会匹配方括号内的任意一个字符。</p>
-<pre><code>b[ai]t 匹配的字符为bat, bit
-</code></pre><ul>
-<li>指定范围(-)</li>
-</ul>
-<p>方括号除了匹配单个字符外，还可以匹配所指定的字符范围。</p>
-<pre><code>z.[0-9] 字符z后面包括任意单个字符，然后是一个十进制的数字。
-[0-9a-zA-Z] 匹配一个十进制数字或大小写字母
-</code></pre><ul>
-<li>否定匹配符[^]</li>
-</ul>
-<p>不匹配此字符集中出现的任何一个字符或字符范围。</p>
-<pre><code>b[^ai]t 匹配的字符串不包括bat或bit
-b[A-Z]t 匹配的字符中不包括大写字母
-</code></pre><ul>
-<li>闭包操作符(+, ?, *, {})</li>
-</ul>
-<p>特殊字符”+”匹配前面出现的正则表达式一次或多次；</p>
-<p>特殊字符”?”匹配前面出现的正则表达式零次或一次；</p>
-<p>特殊字符”*”匹配前前面出现的正则表达式零次或多次；</p>
-<p>特殊字符”{N}”匹配前面出现的正则表达式N次；</p>
-<p>特殊字符”{M:N}”匹配前面出现的正则表达式M到N次。</p>
-<p>特殊字符”*+?{m,n}”匹配尽量多的字符，即贪心模式</p>
-<p>注意：特殊字符”?”有两个含义：1、单独使用表示匹配出现零次或一次；2、紧跟在表示重复的元字符后面时，表示要求搜索引擎匹配的字符串越短越好。</p>
-<ul>
-<li>特殊字符集<br>\d 表示匹配任何数字，与[0-9]相同，\D与之相反<br>\w 表示匹配任何数字字母字符，与[0-9A-Za-z]相同，\W与之相反<br>\s 表示匹配任何空白符，\S与之相反</li>
-</ul>
-<h1 id="re_u6A21_u5757"><a href="#re_u6A21_u5757" class="headerlink" title="re模块"></a>re模块</h1><p>简单地了解下re模块中最常用的几个函数(方法)，如match()、search()、compile()等。</p>
-<h2 id="compile_28_29"><a href="#compile_28_29" class="headerlink" title="compile()"></a>compile()</h2><p>Python的代码最终是要被编译成字节码，然后才能被解释器执行。</p>
-<p>当执行字符串形式的代码时，每次都必须对这些代码进行字节编译处理，而compile()函数则提供了一次性字节代码预编译，compile有三个必需参数，第一个参数代表了要编译的Python代码，第二个参数虽然是必须的，但是通常被置为空串，该参数代表存放代码对象的文件的名字，第三个参数是用来表示代码对象的类型，有三个值可选择，分别为’eval’可求值得表达式(和eval()一起使用)’single’单一可执行语句(和exec一起使用)’exec’可执行语句组(和exec一起使用)</p>
-<pre><code>1、可求值表达式
-&gt;&gt;&gt; eval_code = compile(&apos;200 + 300&apos;, &apos;&apos;, &apos;eval&apos;)
-&gt;&gt;&gt; eval(eval_code)
-500
-
-2、单一执行语句
-&gt;&gt;&gt; single_code = compile(&apos;print &quot;Hello world&quot;&apos;, &apos;&apos;, &apos;single&apos;)
-&gt;&gt;&gt; exec single_code
-Hello world
-
-3、可执行语句块
-&gt;&gt;&gt; exec_code = compile(&quot;&quot;&quot;
-... req = input(&apos;Count how many numbers?&apos;)
-... for eachNum in range(req):
-...     print eachNum
-... &quot;&quot;&quot;, &apos;&apos;, &apos;exec&apos;)
-
-&gt;&gt;&gt; exec exec_code
-Count how many numbers? 3
-0
-1
-2
-</code></pre><h2 id="match_28_29_u3001group_28_29_u3001groups_28_29"><a href="#match_28_29_u3001group_28_29_u3001groups_28_29" class="headerlink" title="match()、group()、groups()"></a>match()、group()、groups()</h2><p>match()函数从字符串的开头开始匹配，如果匹配成功，返回一个匹配对象，如果匹配失败，返回None。</p>
-<p>group()函数返回所有匹配对象或者是根据要求返回某个特定子组。</p>
-<p>groups()函数返回一个包含唯一或所有子组的元组。</p>
-<p>如果正则表达式中没有子组的话，group()返回全部匹配对象，groups()返回一个空元组。</p>
-<pre><code>&gt;&gt;&gt; re.match(&apos;hi&apos;, &apos;his name is hisa&apos;).group()
-&apos;hi&apos;
-&gt;&gt;&gt; re.match(&apos;hi&apos;, &apos;his name is hisa&apos;).groups()
-()
-</code></pre>]]></content>
-    <summary type="html">
-    <![CDATA[<p>随着互联网的发展，信息大爆炸来临，需要我们处理的文本或数据越来越多，仅仅靠人工处理已变成泡沫，如果能够通过计算机编程来处理这些内容，我们不免感到一丝欣慰，而正则表达式为高级文本模式匹配提供了基础，我们需要简单地掌握这一方程式。</p>
-<h1 id="u6B63_u5219]]>
-    </summary>
-    
-      <category term="正则表达式" scheme="http://dsljlbaby.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-      <category term="Python学习笔记" scheme="http://dsljlbaby.github.io/categories/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Python学习笔记之类]]></title>
     <link href="http://dsljlbaby.github.io/2016/02/13/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/"/>
     <id>http://dsljlbaby.github.io/2016/02/13/Python学习笔记之类/</id>
@@ -2542,6 +2427,43 @@ print q._Empty()
       <category term="队列" scheme="http://dsljlbaby.github.io/tags/%E9%98%9F%E5%88%97/"/>
     
       <category term="Python" scheme="http://dsljlbaby.github.io/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python爬虫基础（一）]]></title>
+    <link href="http://dsljlbaby.github.io/2016/01/02/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://dsljlbaby.github.io/2016/01/02/Python爬虫基础（一）/</id>
+    <published>2016-01-02T01:53:50.000Z</published>
+    <updated>2016-01-02T07:29:34.123Z</updated>
+    <content type="html"><![CDATA[<p>大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。</p>
+<h2 id="u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD"><a href="#u7F51_u7EDC_u722C_u866B_u7684_u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="网络爬虫的基本介绍"></a>网络爬虫的基本介绍</h2><p>学习爬虫，我想主要从以下几个方面来切入</p>
+<ul>
+<li>爬虫的原理？</li>
+<li>爬虫的作用？</li>
+<li>爬虫的实现？</li>
+<li>爬虫的工具？</li>
+</ul>
+<h2 id="u722C_u866B_u7684_u539F_u7406"><a href="#u722C_u866B_u7684_u539F_u7406" class="headerlink" title="爬虫的原理"></a>爬虫的原理</h2><p>爬虫就是一种自动获取网页内容，提取有价值的数据的技术。把互联网比喻成一个蜘蛛网，把你想象成一只蜘蛛，如果要你浏览全部网页，你会如何进行？从网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止。网络爬虫的基本操作是抓取网页。</p>
+<h2 id="u722C_u866B_u7684_u4F5C_u7528"><a href="#u722C_u866B_u7684_u4F5C_u7528" class="headerlink" title="爬虫的作用"></a>爬虫的作用</h2><p>方便获取互联网数据，为我所用。假如你是一个科幻迷，想要获取豆瓣上关于科幻电影的信息，你就可以通过写一个简单的脚本，去抓取关于科幻电影的信息。又或者朋友向你推荐一部好看的动漫，你想要下载整部动漫时，你也可以写个爬虫程序，去获取下载链接。</p>
+<h2 id="u722C_u866B_u7684_u5B9E_u73B0"><a href="#u722C_u866B_u7684_u5B9E_u73B0" class="headerlink" title="爬虫的实现"></a>爬虫的实现</h2><p><img src="http://i.imgur.com/AJenPpZ.png" alt=""></p>
+<p>爬虫实现的过程中主要包括了抓取网页、存储、网页分析、展示预期结果。</p>
+<h2 id="u722C_u866B_u7684_u5DE5_u5177"><a href="#u722C_u866B_u7684_u5DE5_u5177" class="headerlink" title="爬虫的工具"></a>爬虫的工具</h2><p>刚开始学习爬虫，我们需要掌握以下几个库的使用。</p>
+<ol>
+<li>打开网页，下载文件：urllib、urllib2</li>
+<li>解析网页：BeautifulSoup，熟悉JQuery的可以用Pyquery </li>
+<li>使用Requests来提交各种类型的请求，支持重定向，cookies等。</li>
+<li>使用Selenium，模拟浏览器提交类似用户的操作，处理js动态产生的网页</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>大家好，最近博主在学习Python，每天只是Print，感觉好枯燥，所以打算利用学习网络爬虫来加深自己的Python功底，在此将自己的学习系统地整理下来，如果大家有兴趣学习爬虫的话，可以将这些文章作为参考，也欢迎大家一共分享学习经验。</p>
+<h2 id="u7F51_u]]>
+    </summary>
+    
+      <category term="Python" scheme="http://dsljlbaby.github.io/tags/Python/"/>
+    
+      <category term="爬虫" scheme="http://dsljlbaby.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   

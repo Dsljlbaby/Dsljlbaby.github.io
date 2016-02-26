@@ -80,77 +80,85 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/10/Python学习笔记之文件/" title="Python学习笔记之文件" itemprop="url">Python学习笔记之文件</a>
+      <a href="/2016/02/05/Python学习笔记之闭包/" title="Python学习笔记之闭包" itemprop="url">Python学习笔记之闭包</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-10T03:40:31.000Z" itemprop="datePublished"> 发表于 2016-02-10</time>
+    <time datetime="2016-02-05T08:12:42.000Z" itemprop="datePublished"> 发表于 2016-02-05</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>我们在平时的工作或者学习过程中，需要对大量的文件进行处理，如果我们可以学习一门脚本语言，能够有效的处理文件，那将对我们的工作是一个很大的帮助。在Python的基本操作中，提供了一些关于文件的操作。</p>
-<h1 id="u6587_u4EF6_u5BF9_u8C61_u7684_u64CD_u4F5C"><a href="#u6587_u4EF6_u5BF9_u8C61_u7684_u64CD_u4F5C" class="headerlink" title="文件对象的操作"></a>文件对象的操作</h1><ul>
-<li>使用open()或者file()函数打开文件。</li>
-<li>使用file.read()读取文件。</li>
-<li>使用file.readline()读取文件的一行相关信息。</li>
-<li>使用file.write()进行写入文件。</li>
-<li>使用file.writelines(seq)向文件写入字符串序列seq。</li>
-<li>使用file.close()关闭文件。</li>
-<li>使用file.tell()返回当前在文件中的位置。</li>
-<li>使用file.seek(off, where=0)在文件中移动指针，从where偏移off字节。</li>
+        <p>闭包是函数式编程的重要语法结构，Python是以函数对象为基础的，为闭包这一语法结构提供支持。在学习的起初，我也不是很理解闭包，经过查询资料和阅读他人博客后，对闭包有了一点见解，把它写出来，需要的朋友可以参考，如果发现不足之处，希望大家指出。</p>
+<h1 id="u4EC0_u4E48_u662F_u95ED_u5305"><a href="#u4EC0_u4E48_u662F_u95ED_u5305" class="headerlink" title="什么是闭包"></a>什么是闭包</h1><p>闭包(Closure)是词法闭包(Lexical Closure)的简称，是引用了自由变量(或者称为环境变量)的函数。这个被引用的自然变量将和这个函数一同存在，即使离开了创造它的环境也不例外。</p>
+<p>初步理解：<strong>闭包 = 函数 + 自然变量</strong></p>
+<p>那么这里的函数具体是指什么呢？自然变量又是什么呢？这两个概念先放在这个，等到我们有了一定的基础后理解它就比较容易啦。</p>
+<h1 id="u5185_u5D4C_u51FD_u6570"><a href="#u5185_u5D4C_u51FD_u6570" class="headerlink" title="内嵌函数"></a>内嵌函数</h1><p>要理解闭包，我们得知道内嵌函数，那么内嵌函数又是什么呢？</p>
+<p>内嵌函数是指在一个函数体内创建另一个函数。新创建的函数称为<strong>内嵌函数</strong>，原来的函数被称为<strong>外部函数</strong></p>
+<pre><code>def line_conf():
+    def line(x):
+        return 2*x + 1
+    print line(5)
+</code></pre><p>在上面的函数中，line_conf()称为外部函数，line()称为内嵌函数。内嵌函数存在于外部函数体内，<em>除了外部函数体内，其他地方都不能对其调用。</em></p>
+<h1 id="Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29"><a href="#Python_u4E2D_u7684_u547D_u540D_u7A7A_u95F4_28namespace_29" class="headerlink" title="Python中的命名空间(namespace)"></a>Python中的命名空间(namespace)</h1><p>在真正地认识闭包之前，我们简单了解一下Python的namespace，有助于我们理解后面的变量。</p>
+<p>Python中通过namespace提供重名函数、变量等信息的识别。共有三种namespace,分别为：</p>
+<ul>
+<li>local namespace: 作用范围为当前函数或类方法。</li>
+<li>global namespace: 作用范围为当前模块</li>
+<li>build-in namespace: 作用范围为所有模块</li>
 </ul>
-<h1 id="u6587_u4EF6_u5BF9_u8C61_u7684_u8BBF_u95EE_u6A21_u5F0F"><a href="#u6587_u4EF6_u5BF9_u8C61_u7684_u8BBF_u95EE_u6A21_u5F0F" class="headerlink" title="文件对象的访问模式"></a>文件对象的访问模式</h1><ul>
-<li>r 以读方式打开</li>
-<li>w 以写方式打开</li>
-<li>a 以追加模式打开</li>
-<li>rU 以读方式打开，同时提供通用换行符</li>
-<li>r+、w+、a+ 以读写模式打开</li>
-<li>rb 以二进制读模式打开</li>
-<li>wb 以二进制写模式打开</li>
-<li>ab 以二进制追加模式打开</li>
-</ul>
-<h1 id="u6587_u4EF6_u5C5E_u6027"><a href="#u6587_u4EF6_u5C5E_u6027" class="headerlink" title="文件属性"></a>文件属性</h1><ul>
-<li>file.closed 返回True表示文件已经关闭</li>
-<li>file.encoding 文件所使用的编码</li>
-<li>file.name 文件名</li>
-<li>file.mode 文件打开时使用的访问模式</li>
-</ul>
-<h1 id="u6587_u4EF6_u7CFB_u7EDF"><a href="#u6587_u4EF6_u7CFB_u7EDF" class="headerlink" title="文件系统"></a>文件系统</h1><p>对于文件系统的访问大多通过Python的os模块实现的，我们要熟练地掌握这一模块。</p>
-<h1 id="u8BFB_u5199_u6587_u672C_u6570_u636E"><a href="#u8BFB_u5199_u6587_u672C_u6570_u636E" class="headerlink" title="读写文本数据"></a>读写文本数据</h1><p>使用open()函数配合r模式读取文本文件的内容。</p>
-<pre><code>with open(&apos;filename.txt&apos;,&apos;r&apos;) as f:
-    data = f.read()
-</code></pre><p>使用open()函数配合w模式对文本文件进行写入。</p>
-<pre><code>with open(&apos;filename.txt&apos;,&apos;w&apos;) as f:
-    f.write(text)
-</code></pre><p>使用open()函数配合a模式对文本文件进行追加。</p>
-<pre><code>with open(&apos;filename.txt&apos;,&apos;a&apos;) as f:
-    f.write(text)
-</code></pre><p>注意：open()函数的默认模式是’r’.在示例中采用了with语句，这会为使用的文件创建一个上下文模式，当程序的控制流程离开with语句块后，文件自动关闭。如果是普通的文件操作模式，记得手动关闭文件。</p>
-<pre><code>f = open(&apos;filename.txt&apos;,&apos;r&apos;)
-data = f.read()
-f.close()
-</code></pre><h1 id="u8BFB_u5199_u4E8C_u8FDB_u5236_u6570_u636E"><a href="#u8BFB_u5199_u4E8C_u8FDB_u5236_u6570_u636E" class="headerlink" title="读写二进制数据"></a>读写二进制数据</h1><p>使用open()函数的rb或者wb实现对二进制数据的读或写。</p>
-<pre><code>with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
-    data = f.read()
-    f.write(b&apos;Hello World&apos;)
-</code></pre><p>在读取或者写入二进制数据时，所有的数据是以字节串的形式操作，而不是文本字符串。</p>
-<p>如果要在二进制文件中读取或者写入文本内容，要确保进行编码或者解码操作。</p>
-<pre><code>with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
-    data = f.read(16)
-    text = data.decode(&apos;utf-8&apos;)
+<p>当函数、变量等信息发生重名时，Python会按照”local namespace -&gt; global namespace -&gt; build-in namespace”的顺序进行搜索用户所需元素，并且以第一个找到此元素的namespace为准。</p>
+<p>Python中的内建函数locals()和globals()可以查看不同namespace中定义的元素。</p>
+<h1 id="u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165"><a href="#u5185_u5D4C_u51FD_u6570_u7684_u6DF1_u5165" class="headerlink" title="内嵌函数的深入"></a>内嵌函数的深入</h1><p>函数对象的作用域与def所在的层次相同，函数是一个对象，可以作为某个函数的返回结果。</p>
+<p>下面这段代码是接近闭包的一个构造：</p>
+<pre><code># eg1
+&gt;&gt;&gt; def line_conf():
+        def line(x):
+            return 2*x + 1
+        return line
 
-with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
-    text = &apos;Hello World&apos;
-    f.write(text.encode(&apos;utf-8&apos;))
-</code></pre><h1 id="u4E0D_u5B58_u5728_u7684_u6587_u4EF6_u7684_u64CD_u4F5C"><a href="#u4E0D_u5B58_u5728_u7684_u6587_u4EF6_u7684_u64CD_u4F5C" class="headerlink" title="不存在的文件的操作"></a>不存在的文件的操作</h1><p>使用x模式(Python3中对open()函数的拓展)来代替w模式对一个不存在文件系统的文件操作。</p>
-<pre><code>with open(&apos;filename.txt&apos;,&apos;xt&apos;) as f:
-    f.write(&apos;Hello\n&apos;)
-</code></pre><p>本节重点在于os模块的使用。</p>
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; my_line(5)
+11
+</code></pre><h1 id="u95ED_u5305_u7684_u521B_u5EFA"><a href="#u95ED_u5305_u7684_u521B_u5EFA" class="headerlink" title="闭包的创建"></a>闭包的创建</h1><pre><code># eg2
+&gt;&gt;&gt; def line_conf():
+        &apos;this is ture closure.&apos;
+        b = 15
+        def line(x):
+            return 2*x + 1
+        return line
+
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; my_line(3)
+7
+</code></pre><p>通过对比eg2和eg1的代码发现,在函数line_conf中，eg2比eg1多了一个变量。其实，这个变量就是闭包中一个重要的组成：<strong>自由变量</strong>。</p>
+<p>自由变量：定义在外部函数内的，但由内嵌函数引用或使用的变量。</p>
+<p>即<strong>闭包 = 自由变量 + 内嵌函数</strong></p>
+<p>重新审视下上面的代码，函数line_conf()是外部函数，变量b是自由变量，函数line()是内嵌函数，只能在外部函数line_conf()体内调用函数line()。line()函数访问了non_local的自由变量”b”,自由变量”b”并没有随着外部函数的退出而销毁，反而是生命周期得到了延长。</p>
+<h1 id="closure_u5C5E_u6027"><a href="#closure_u5C5E_u6027" class="headerlink" title="closure属性"></a><strong>closure</strong>属性</h1><p>在Python中，我们可以通过函数对象的<strong>closure</strong>属性查看闭包的一些细节，也可以理解为什么自由变量没有随着外部函数的退出而销毁。</p>
+<pre><code>&gt;&gt;&gt; def line_conf():
+    b =15
+    def line(x):
+        return 2 * x + b
+    return line
+&gt;&gt;&gt; my_line = line_conf()
+&gt;&gt;&gt; print my_line.__closure__
+(&lt;cell at 0x02AC2FF0: int object at 0x0247A230&gt;,)
+&gt;&gt;&gt; print my_line.__closure__[0].cell_contents
+15
+</code></pre><p>通过调试结果看出，<strong>closure</strong>里包含一个元组，这个元组的每个元素都是cell类型的对象，第一个cell包含的就是我们创建闭包时的自由变量b的取值。</p>
+<h1 id="u95ED_u5305_u7684_u603B_u7ED3"><a href="#u95ED_u5305_u7684_u603B_u7ED3" class="headerlink" title="闭包的总结"></a>闭包的总结</h1><p>闭包是函数式编程的重要语法结构，函数式编程和面向过程以及面向对象编程一样都是编程范式，面向过程编程中的<strong>函数</strong>，面向过程编程中的<strong>对象</strong>和<strong>闭包</strong>的相同点是：以某种逻辑方式组织代码，实现代码的可重复性使用。</p>
+<p>闭包的特性：</p>
+<ul>
+<li>闭包函数必须有内嵌函数</li>
+<li>内嵌函数需要引用外部函数中的变量</li>
+<li>闭包函数必须返回内嵌函数</li>
+</ul>
+<p>注意：我们在写闭包时，不要在内嵌函数中对自由变量进行赋值操作，至少在Python2.x中不可以。会出现UnbundLocalError错误。</p>
 
         
         
@@ -169,7 +177,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/文件/">文件</a>
+  <span></span> <a href="/tags/闭包/">闭包</a>
   </div>
 
 </div>
@@ -180,7 +188,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2016/02/10/Python学习笔记之文件/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/10/Python学习笔记之文件/" data-count-type="comments">&nbsp;</a>
+		<a href="/2016/02/05/Python学习笔记之闭包/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/05/Python学习笔记之闭包/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -196,7 +204,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/6/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/">Next<span></span></a>
   </nav>
 
 </div>
@@ -229,7 +237,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 		  
 		
 		  
-			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>15</sup></a></li>
 		  
 		
 		  
@@ -254,7 +262,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 			
 		
 			
-				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+				<li><a href="/tags/尔逊相关系数/" title="尔逊相关系数">尔逊相关系数<sup>1</sup></a></li>
 			
 		
 			
@@ -298,11 +306,11 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 			
 		
 			
-				<li><a href="/tags/尔逊相关系数/" title="尔逊相关系数">尔逊相关系数<sup>1</sup></a></li>
+				<li><a href="/tags/欧几里德距离/" title="欧几里德距离">欧几里德距离<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/欧几里德距离/" title="欧几里德距离">欧几里德距离<sup>1</sup></a></li>
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
 			
 		
 			
@@ -314,15 +322,15 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
 			
 		
 			
-				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -333,7 +341,7 @@ with open(&apos;filename.bin&apos;,&apos;rb&apos;) as f:
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/尔逊相关系数/" style="font-size: 16px; color: #90f">尔逊相关系数</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离/" style="font-size: 16px; color: #90f">欧几里德距离</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
+      <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/尔逊相关系数/" style="font-size: 16px; color: #90f">尔逊相关系数</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/欧几里德距离/" style="font-size: 16px; color: #90f">欧几里德距离</a> <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
     </div>
   </div>
 

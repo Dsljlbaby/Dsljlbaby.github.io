@@ -80,80 +80,194 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/15/Python数据结构-三/" title="Python数据结构(三)" itemprop="url">Python数据结构(三)</a>
+      <a href="/2016/01/14/Python数据结构-二/" title="Python数据结构(二)" itemprop="url">Python数据结构(二)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Dsljlbaby" target="_blank" itemprop="author">Dsljlbaby</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-15T02:18:04.000Z" itemprop="datePublished"> 发表于 2016-01-15</time>
+    <time datetime="2016-01-14T02:28:32.000Z" itemprop="datePublished"> 发表于 2016-01-14</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h2><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。</p>
-<h3 id="Bitmap_u7684_u5B9A_u4E49"><a href="#Bitmap_u7684_u5B9A_u4E49" class="headerlink" title="Bitmap的定义"></a>Bitmap的定义</h3><p>bitmap是很常用的数据结构，比如用于Bloom Filter中；用于无重复整数的排序等等。bitmap通常基于数组来实现，数组中每个元素可以看成是一系列二进制数，所有元素组成更大的二进制集合。简单的来说，这种数据结构存储把原来的数转化成二进制储存，每一位占一个储存单元，我们操作bimap中的数据，就相当于操作一个位。对于Python来说，整数类型默认是有符号类型，所以一个整数的可用位数为31位。</p>
-<h3 id="Bitmap_u7684_u64CD_u4F5C"><a href="#Bitmap_u7684_u64CD_u4F5C" class="headerlink" title="Bitmap的操作"></a>Bitmap的操作</h3><p>如果我们想操作某一位数，要先获取到操作数组的第几个元素，再获取相应的位索引，然后执行操作。操作的过程大致分为初始化bitmap、计算在数组中的索引、计算在数组中的位索引、相关位置1、测试相关位。</p>
-<h4 id="u521D_u59CB_u5316bitmap"><a href="#u521D_u59CB_u5316bitmap" class="headerlink" title="初始化bitmap"></a>初始化bitmap</h4><p>初始化bitmap也就是计算所需数组的大小，通常采用对最大数向上取整的方法，如果可以找到储存最大数的数组，那么其他数就不成问题了。</p>
-<pre><code>class Bitmap():
-    def __init__(self,max):
-    self.size = int ((max + 31 - 1) / 31) #max需要传入的为要排序的最大数
-</code></pre><h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u7D22_u5F15" class="headerlink" title="计算在数组中的索引"></a>计算在数组中的索引</h4><p>计算在数组中的索引与初始化btimap不同的是采用向下取整的方法，其他相同。</p>
-<h4 id="u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15"><a href="#u8BA1_u7B97_u5728_u6570_u7EC4_u4E2D_u7684_u4F4D_u7D22_u5F15" class="headerlink" title="计算在数组中的位索引"></a>计算在数组中的位索引</h4><p>数组元素中的位索引可以通过取模运算来得到。令需存储的整数跟31取模即可得到位索引</p>
-<pre><code>def bitindex(self,num):
-    return num % 31
-</code></pre><h4 id="u76F8_u5173_u4F4D_u7F6E1"><a href="#u76F8_u5173_u4F4D_u7F6E1" class="headerlink" title="相关位置1"></a>相关位置1</h4><p>二进制位默认是0，将某位置1则表示在此位存储了数据</p>
-<pre><code>def set_1(self,num):
-    elemindex = num / 31
-    byteindex = self.bitindex(num)
-    ele = self.array[elemindex]
-    self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
-</code></pre><h4 id="u6D4B_u8BD5_u76F8_u5173_u4F4D"><a href="#u6D4B_u8BD5_u76F8_u5173_u4F4D" class="headerlink" title="测试相关位"></a>测试相关位</h4><p>判断某位是否为1是为了取出之前所存储的数据</p>
-<pre><code>def test_1(self,i):
-    elemindex = i / 31
-    byteindex = self.bitindex(i)
-    if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
-        return True
-    return False
-</code></pre><h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
-class Bitmap():
-    def __init__(self,max):
-        &apos;确定所需数组个数&apos;
-        self.size = int ((max + 31 - 1) / 31)
-        self.array = [0 for i in range(self.size)]
+        <h2 id="u4E8C_u53C9_u6811_u7684_u5B9E_u73B0"><a href="#u4E8C_u53C9_u6811_u7684_u5B9E_u73B0" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h2><h3 id="u6811_u7684_u5B9A_u4E49"><a href="#u6811_u7684_u5B9A_u4E49" class="headerlink" title="树的定义"></a>树的定义　　</h3><p>　　树是一种重要的非线性数据结构，直观地看，它是数据元素（在树中称为结点）按分支关系组织起来的结构，很象自然界中的树那样。树结构在客观世界中广泛存在，如人类社会的族谱和各种社会组织机构都可用树形象表示。树在计算机领域中也得到广泛应用，如在编译源程序时，可用树表示源程序的语法结构。又如在数据库系统中，树型结构也是信息的重要组织形式之一。一切具有层次关系的问题都可用树来描述。</p>
+<p> 树结构的特点是：它的每一个结点都可以有不止一个直接后继，除根结点外的所有结点都有且只有一个直接前驱。</p>
+<p>树的递归定义如下：</p>
+<ul>
+<li>至少有一个结点（称为根）</li>
+<li>其它是互不相交的子树</li>
+</ul>
+<h3 id="u4E8C_u53C9_u6811"><a href="#u4E8C_u53C9_u6811" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树是由n（n≥0）个结点组成的有限集合、每个结点最多有两个子树的有序树。它或者是空集，或者是由一个根和称为左、右子树的两个不相交的二叉树组成。</p>
+<p>特点：</p>
+<ul>
+<li>二叉树是有序树，即使只有一个子树，也必须区分左、右子树；</li>
+</ul>
+<ul>
+<li>二叉树的每个结点的度不能大于2，只能取0、1、2三者之一；</li>
+</ul>
+<ul>
+<li>二叉树中所有结点的形态有5种：空结点、无左右子树的结点、只有左子树的结点、只有右子树的结点和具有左右子树的结点。</li>
+</ul>
+<h3 id="u6E90_u4EE3_u7801_uFF1A"><a href="#u6E90_u4EE3_u7801_uFF1A" class="headerlink" title="源代码："></a>源代码：</h3><pre><code>#-*- encoding:utf-8 -*-
 
-    def bitindex(self,num):
-        &apos;确定数组中元素的位索引&apos;
-        return num % 31
+&apos;&apos;&apos;
+树的构建：
+     5
+  6     7
+8         9
+&apos;&apos;&apos;
 
-    def set_1(self,num):
-        &apos;将元素所在的位置1&apos;
-        elemindex = num / 31
-        byteindex = self.bitindex(num)
-        ele = self.array[elemindex]
-        self.array[elemindex] = ele | (1 &lt;&lt; byteindex)
-
-    def test_1(self,i):
-        &apos;检测元素存在的位置&apos;
-        elemindex = i / 31
-        byteindex = self.bitindex(i)
-        if self.array[elemindex] &amp; (1 &lt;&lt; byteindex):
+class Tree():
+   &apos;树的实现&apos;
+    def __init__(self,ltree = 0,rtree = 0,data = 0):
+        self.ltree = ltree
+        self.rtree = rtree
+        self.data = data
+class BTree():
+    &apos;二叉树的实现&apos;
+    def __init__(self,base = 0):
+        self.base = base
+    def _Empty(self):
+        &apos;是否为空树&apos;
+        if self.base == 0:
             return True
-        return False
-if __name__ == &apos;__main__&apos;:
-    Max = ord(&apos;z&apos;)
-    suffle_array = [x for x in &apos;qwelmfg&apos;]
-    result = []
-    bitmap = Bitmap(Max)
-    for c in suffle_array:
-        bitmap.set_1(ord(c))
-    for i in range(Max+1):
-        if bitmap.test_1(i):
-            result.append(chr(i))
-    print u&apos;原始数组为:    %s&apos; % suffle_array
-    print u&apos;排序后的数组为: %s&apos; % result
+        else:
+            return False
+    def qout(self,tree_base):
+        &apos;前序遍历:根-左-右&apos;
+        if tree_base == 0:
+            return
+        print tree_base.data
+        self.qout(tree_base.ltree)
+        self.qout(tree_base.rtree)
+    def mout(self,tree_base):
+        &apos;中序遍历:左-根-右&apos;
+        if tree_base == 0:
+            return
+        self.mout(tree_base.ltree)
+        print tree_base.data
+        self.mout(tree_base.rtree)
+    def hout(self,tree_base):
+        &apos;后序遍历:左-右-根&apos;
+        if tree_base == 0:
+            return
+        self.hout(tree_base.ltree)
+        self.hout(tree_base.rtree)
+        print tree_base.data
+#test
+
+tree1 = Tree(data=8)
+tree2 = Tree(data=9)
+tree3 = Tree(tree1,data=6)
+tree4 = Tree(tree2,0,data=7)
+base = Tree(tree3,tree4,5)
+btree = BTree(base)
+print &apos;前序遍历结果:&apos;
+btree.qout(btree.base)
+print &apos;中序遍历结果:&apos;
+btree.mout(btree.base)
+print &apos;后序遍历结果:&apos;
+btree.hout(btree.base)
+</code></pre><h2 id="u94FE_u8868_u7684_u5B9E_u73B0"><a href="#u94FE_u8868_u7684_u5B9E_u73B0" class="headerlink" title="链表的实现"></a>链表的实现</h2><h3 id="u94FE_u8868_u7684_u5B9A_u4E49"><a href="#u94FE_u8868_u7684_u5B9A_u4E49" class="headerlink" title="链表的定义"></a>链表的定义</h3><p>　　链表(linked list)是由一组被称为结点的数据元素组成的数据结构，每个结点都包含结点本身的信息和指向下一个结点的地址。由于每个结点都包含了可以链接起来的地址信息，所以用一个变量就能够访问整个结点序列。也就是说，结点包含两部分信息：一部分用于存储数据元素的值，称为信息域；另一部分用于存储下一个数据元素地址的指针，称为指针域。链表中的第一个结点的地址存储在一个单独的结点中，称为头结点或首结点。链表中的最后一个结点没有后继元素，其指针域为空。</p>
+<h3 id="u6E90_u4EE3_u7801"><a href="#u6E90_u4EE3_u7801" class="headerlink" title="源代码"></a>源代码</h3><pre><code># -*- encoding:utf-8 -*-
+class Node():
+    &apos;创建节点&apos;
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkList():
+    &apos;创建列表&apos;
+    def __init__(self, node):
+        &apos;初始化列表&apos;
+        self.head = node
+        self.head.next = None
+        self.tail = self.head
+
+    def add_node(self, node):
+        &apos;添加节点&apos;
+        self.tail.next = node
+        self.tail = self.tail.next
+
+    def view(self):
+        &apos;查看列表&apos;
+        node = self.head
+        link_str = &apos;&apos;
+        while node is not None:
+            if node.next is not None:
+                link_str += str(node.data) + &apos;--&gt;&apos;
+            else:
+                link_str += str(node.data)
+            node = node.next
+        print &apos;The Linklist is:&apos; + link_str
+
+    def length(self):
+        &apos;列表长度&apos;
+        node = self.head
+        count = 1
+        while node.next is not None:
+            count += 1
+            node = node.next
+        print &apos;The length of linklist are %d&apos; % count
+        return count
+
+    def delete_node(self, index):
+        &apos;删除节点&apos;
+        if index+1 &gt; self.length():
+            raise IndexError(&apos;index out of bounds&apos;)
+        num = 0
+        node = self.head
+        while True:
+            if num == index-1:
+                break
+            node = node.next
+            num += 1
+        tmp_node = node.next
+        node.next = node.next.next
+        return tmp_node.data
+
+    def find_node(self, index):
+        &apos;查看具体节点&apos;
+        if index+1 &gt; self.length():
+            raise IndexError(&apos;index out of bounds&apos;)
+        num = 0
+        node = self.head
+        while True:
+            if num == index:
+                break
+            node = node.next
+            num += 1
+        return node.data
+
+# test
+
+node1 = Node(10)
+node2 = Node(&apos;dec&apos;)
+node3 = Node(1010)
+node4 = Node(&apos;bin&apos;)
+node5 = Node(12)
+node6 = Node(&apos;oct&apos;)
+node7 = Node(&apos;A&apos;)
+node8 = Node(&apos;hex&apos;)
+
+linklist = LinkList(node1)
+linklist.add_node(node2)
+linklist.add_node(node3)
+linklist.add_node(node4)
+linklist.add_node(node5)
+linklist.add_node(node6)
+linklist.add_node(node7)
+linklist.add_node(node8)
+
+linklist.view()
+linklist.length()
+linklist.delete_node(1)
+linklist.view()
+find_node = linklist.find_node(6)
+print find_node
 </code></pre>
         
         
@@ -172,7 +286,7 @@ if __name__ == &apos;__main__&apos;:
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/bitmap/">bitmap</a>
+  <span></span> <a href="/tags/二叉树/">二叉树</a><a href="/tags/链表/">链表</a>
   </div>
 
 </div>
@@ -183,7 +297,7 @@ if __name__ == &apos;__main__&apos;:
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2016/01/15/Python数据结构-三/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/15/Python数据结构-三/" data-count-type="comments">&nbsp;</a>
+		<a href="/2016/01/14/Python数据结构-二/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/14/Python数据结构-二/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -199,7 +313,7 @@ if __name__ == &apos;__main__&apos;:
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/17/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/19/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/19/">Next<span></span></a>
   </nav>
 
 </div>
@@ -232,7 +346,7 @@ if __name__ == &apos;__main__&apos;:
 		  
 		
 		  
-			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>16</sup></a></li>
+			<li><a href="/categories/Python学习笔记/" title="Python学习笔记">Python学习笔记<sup>15</sup></a></li>
 		  
 		
 		  
@@ -257,7 +371,7 @@ if __name__ == &apos;__main__&apos;:
 			
 		
 			
-				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
+				<li><a href="/tags/尔逊相关系数/" title="尔逊相关系数">尔逊相关系数<sup>1</sup></a></li>
 			
 		
 			
@@ -301,11 +415,11 @@ if __name__ == &apos;__main__&apos;:
 			
 		
 			
-				<li><a href="/tags/尔逊相关系数/" title="尔逊相关系数">尔逊相关系数<sup>1</sup></a></li>
+				<li><a href="/tags/欧几里德距离/" title="欧几里德距离">欧几里德距离<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/欧几里德距离/" title="欧几里德距离">欧几里德距离<sup>1</sup></a></li>
+				<li><a href="/tags/迭代器/" title="迭代器">迭代器<sup>1</sup></a></li>
 			
 		
 			
@@ -317,15 +431,15 @@ if __name__ == &apos;__main__&apos;:
 			
 		
 			
-				<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/模块/" title="模块">模块<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/文件/" title="文件">文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/异常/" title="异常">异常<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -336,7 +450,7 @@ if __name__ == &apos;__main__&apos;:
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/尔逊相关系数/" style="font-size: 16px; color: #90f">尔逊相关系数</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/欧几里德距离/" style="font-size: 16px; color: #90f">欧几里德距离</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #90f">正则表达式</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
+      <a href="/tags/闭包/" style="font-size: 19.5px; color: #cc0080">闭包</a> <a href="/tags/协作型过滤/" style="font-size: 16px; color: #90f">协作型过滤</a> <a href="/tags/尔逊相关系数/" style="font-size: 16px; color: #90f">尔逊相关系数</a> <a href="/tags/Python/" style="font-size: 23px; color: #f00">Python</a> <a href="/tags/集体智慧编程/" style="font-size: 16px; color: #90f">集体智慧编程</a> <a href="/tags/机器学习/" style="font-size: 16px; color: #90f">机器学习</a> <a href="/tags/图/" style="font-size: 16px; color: #90f">图</a> <a href="/tags/二叉树/" style="font-size: 16px; color: #90f">二叉树</a> <a href="/tags/链表/" style="font-size: 16px; color: #90f">链表</a> <a href="/tags/bitmap/" style="font-size: 16px; color: #90f">bitmap</a> <a href="/tags/堆栈/" style="font-size: 16px; color: #90f">堆栈</a> <a href="/tags/队列/" style="font-size: 16px; color: #90f">队列</a> <a href="/tags/集合/" style="font-size: 16px; color: #90f">集合</a> <a href="/tags/欧几里德距离/" style="font-size: 16px; color: #90f">欧几里德距离</a> <a href="/tags/迭代器/" style="font-size: 16px; color: #90f">迭代器</a> <a href="/tags/生成器/" style="font-size: 16px; color: #90f">生成器</a> <a href="/tags/类/" style="font-size: 16px; color: #90f">类</a> <a href="/tags/模块/" style="font-size: 16px; color: #90f">模块</a> <a href="/tags/文件/" style="font-size: 16px; color: #90f">文件</a> <a href="/tags/异常/" style="font-size: 16px; color: #90f">异常</a> <a href="/tags/错误/" style="font-size: 16px; color: #90f">错误</a> <a href="/tags/序列/" style="font-size: 16px; color: #90f">序列</a> <a href="/tags/字符串/" style="font-size: 16px; color: #90f">字符串</a> <a href="/tags/字典/" style="font-size: 16px; color: #90f">字典</a> <a href="/tags/列表/" style="font-size: 16px; color: #90f">列表</a> <a href="/tags/函数/" style="font-size: 16px; color: #90f">函数</a> <a href="/tags/元组/" style="font-size: 16px; color: #90f">元组</a>
     </div>
   </div>
 
